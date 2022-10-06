@@ -6,7 +6,8 @@ import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.WebStorage;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
@@ -82,7 +83,7 @@ public class banner_Final_Demo
 	@BeforeTest 
 	  public void TestLocalStorageSetAndGetItem()
 	{
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/browsers/chromedriver");	
+		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/106/chromedriver.exe");
 	    driver = new ChromeDriver();
 	    driver.get("https://admin-portal.us-east-1.dev.mediflix.com");
 

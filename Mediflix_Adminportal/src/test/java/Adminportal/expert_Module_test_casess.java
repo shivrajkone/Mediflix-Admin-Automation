@@ -1,5 +1,7 @@
 package Adminportal;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.html5.LocalStorage;
@@ -47,7 +49,7 @@ public class expert_Module_test_casess
 	@BeforeTest
 	  public void Local_Storage()
 	{
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/browsers/chromedriver");	
+		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/106/chromedriver.exe");
 	    driver = new ChromeDriver();
 	    driver.get("https://admin-portal.us-east-1.dev.mediflix.com");
 
