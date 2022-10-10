@@ -28,7 +28,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 
 
-public class collection_module_test 
+public class Collection_module_testcases 
 {
 
 	ChromeDriver driver; 
@@ -566,7 +566,7 @@ public class collection_module_test
 				    	
 				Thread.sleep(3000);
 				
-		 }
+		 } 
 	     
 	     @Test (priority=6)
 		 public void Create_New_Collection_With_All_Fields() throws InterruptedException

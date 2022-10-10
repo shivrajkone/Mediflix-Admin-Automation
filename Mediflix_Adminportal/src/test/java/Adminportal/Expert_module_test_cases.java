@@ -28,7 +28,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.TakesScreenshot;
 
-public class expert_Module_test_casess 
+public class Expert_module_test_cases 
 {
 
 	ChromeDriver driver; 
@@ -415,7 +415,7 @@ public class expert_Module_test_casess
 			
 				driver.findElement(By.id("slug")).sendKeys(expert_slug2);
 			    driver.findElement(By.id("expert-bio")).sendKeys(expert_bio2);
-			    
+			     
 					   
 			    WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[6]/div/button"));
 		        tab_button.click();

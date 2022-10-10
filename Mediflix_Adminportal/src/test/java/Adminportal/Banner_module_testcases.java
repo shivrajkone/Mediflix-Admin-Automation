@@ -31,7 +31,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.TakesScreenshot;
 
-public class banner_Final_Demo 
+public class Banner_module_testcases 
 {
 
 	ChromeDriver driver; 
