@@ -47,7 +47,7 @@ public class Collection_module_testcases
 	WebElement expert;
 	WebElement institution;
 	
-	String coll_name="Whats on ur mind";
+	String coll_name="Peacefull Mind";
 	String coll_slug="21ygdue7";
 	String coll_desc=" Is the usual way of asking what people are thinking of doing";
 	String tagcount;
@@ -65,7 +65,7 @@ public class Collection_module_testcases
 	WebElement expert2;
 	WebElement institution2;
 	
-	String coll_name2="Happy Life";
+	String coll_name2="Skin Care";
 	String coll_slug2="11jh488";
 	String coll_desc2="How to live happy life";
 	String tagcount2;
@@ -109,15 +109,15 @@ public class Collection_module_testcases
 	 {
 		 driver.manage().window().maximize();
 		 Thread.sleep(6000);
-		 System.out.println("Verifying Mandatory Fields Validation Is Working Or Not**************");
+		 System.out.println("Collection -> Verifying Mandatory Fields Validation Is Working Or Not**************");
 		 
-		 Reporter.log("Verifying Mandatory Fields Validation Is Working Or Not");
+		 Reporter.log("Collection -> Verifying Mandatory Fields Validation Is Working Or Not");
 		 
 //		 WebDriverWait wait_create = new WebDriverWait(driver, Duration.ofSeconds(30));
 //		 wait_create.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class=\'MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium primary-btn css-cbq6w5\']"))).click();
 		    
 		 
-		 WebElement create_collection_button = driver.findElement(By.xpath("//button[@class=\'MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium primary-btn css-cbq6w5\']"));
+		 WebElement create_collection_button = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[2]"));
 		 create_collection_button.click();
 			
 		 Thread.sleep(3000);
@@ -131,9 +131,9 @@ public class Collection_module_testcases
 		 
 		 Thread.sleep(3000);
 		 
-		 System.out.println(" Verify The Create Collection With Mandatory Fields Only**************");
+		 System.out.println("Collection -> Verify The Create Collection With Mandatory Fields Only**************");
 		
-		 Reporter.log("Create Collection With Mandatory Fields Only");
+		 Reporter.log("Collection -> Create Collection With Mandatory Fields Only");
 		 //collection name
 		 name= driver.findElement(By.id("collection-name"));
 		 name.sendKeys(coll_name);
@@ -152,6 +152,10 @@ public class Collection_module_testcases
 	     WebElement savebutton2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
 		 savebutton2.click();
 		 
+		 WebDriverWait after_save = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 after_save.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]")));
+		    
+		
 	     
 	 }
 	 
@@ -163,8 +167,8 @@ public class Collection_module_testcases
 		 	Thread.sleep(3000);
 		 	driver.manage().window().maximize();
 		 	 
-		    System.out.println("search and view the newly created collection*******************");
-		    Reporter.log("Search And View The Newly Created Collection");
+		    System.out.println("Collection -> search and view the newly created collection*******************");
+		    Reporter.log("Collection -> Search And View The Newly Created Collection");
 		    
 			WebElement coll_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			coll_searchbox.sendKeys(coll_name);
@@ -224,14 +228,15 @@ public class Collection_module_testcases
 			 Thread.sleep(3000);
 		 }
 			
-		@Test (enabled = false)
-//		 @Test (priority=4)
-		 public void Edit_Banner_With_All_Fields() throws InterruptedException 
+//		@Test (enabled = false)
+		 @Test (priority=4)
+		 public void Edit_Collection_With_All_Fields() throws InterruptedException 
 		 {
 			    driver.navigate().refresh();
 			    Thread.sleep(3000);
-			   
-			    Reporter.log("Search And Edit The Newly Created Collection With Remaining Fields");
+			    
+			    System.out.println("Collection -> Search And Edit The Newly Created Collection With Remaining Fields");
+			    Reporter.log("Collection -> Search And Edit The Newly Created Collection With Remaining Fields");
 			    
 			    WebElement coll_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 				coll_searchbox.sendKeys(coll_name);
@@ -239,7 +244,7 @@ public class Collection_module_testcases
 				Thread.sleep(3000);
 			    
 			    WebDriverWait wait_edit = new WebDriverWait(driver, Duration.ofSeconds(30));
-			    wait_edit.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[8]/button[1]"))).click();
+			    wait_edit.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[8]/button[1]"))).click();
 				    	
 			    Thread.sleep(3000);
 			    
@@ -257,7 +262,7 @@ public class Collection_module_testcases
 			    
 			    WebElement select_button = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[2]/button[2]"));
 			    select_button.click();
-			    
+			    //slug 
 			    slug = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[4]/div/input"));
 			    slug.sendKeys(coll_slug);
 			    
@@ -350,6 +355,8 @@ public class Collection_module_testcases
 			    
 				 WebElement save_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
 				 save_button.click();
+				 
+				 Thread.sleep(5000);
 			    
 		 }
 	
@@ -357,12 +364,13 @@ public class Collection_module_testcases
 	     @Test (priority=5)
 		 public void View_And_Verify_Edited_Collection_() throws InterruptedException 
 		 {
+	    	 	driver.manage().window().maximize();
 			    driver.navigate().refresh();
 			 	Thread.sleep(3000);
-			 	driver.manage().window().maximize();
+			 	
 			 	 
-			    System.out.println("search and view edited  collection*******************");
-			    Reporter.log("Search And View Edited  Collection");
+			    System.out.println("Collection -> search and view edited  collection*******************");
+			    Reporter.log("Collection -> Search And View Edited  Collection");
 			    
 				WebElement coll_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 				coll_searchbox.sendKeys(coll_name);
@@ -377,7 +385,7 @@ public class Collection_module_testcases
 				
 				Thread.sleep(2000);
 				
-				
+				 
 				//collection name
 				String s1 = driver.findElement(By.xpath("//input[@id='collection-name']")).getAttribute("value");
 				System.out.println("Collection name is ____________________________"+s1);
@@ -567,7 +575,8 @@ public class Collection_module_testcases
 				Thread.sleep(3000);
 				
 		 } 
-	     
+		 
+//		 @Test (enabled = false)
 	     @Test (priority=6)
 		 public void Create_New_Collection_With_All_Fields() throws InterruptedException
 		 {
@@ -579,7 +588,7 @@ public class Collection_module_testcases
 			    	 
 		//	 Thread.sleep(5000);
 
-			 Reporter.log("Verifying Create New Collection With All Information");
+			 Reporter.log("Collection -> Verifying Create New Collection With All Information");
 			 	 
 			 WebElement create_collection_button = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[2]"));
 			 create_collection_button.click();
@@ -601,7 +610,7 @@ public class Collection_module_testcases
 		     click_coll.click();
 		     
 		   //image
-			    image2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[3]/button/p"));
+			    image2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[3]/button"));
 			    image2.click();
 			    
 			    Thread.sleep(2000);
@@ -707,6 +716,13 @@ public class Collection_module_testcases
 			    
 				 WebElement save_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
 				 save_button.click();
+				 
+				 Thread.sleep(5000);
+				 
+//				 WebDriverWait after_save = new WebDriverWait(driver, Duration.ofSeconds(30));
+//				 after_save.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]")));
+				    
+				 
 			 
 		 }	 
 
@@ -714,12 +730,13 @@ public class Collection_module_testcases
 	     @Test (priority=7)
 	 	 public void View_And_Verify_New_Collection_() throws InterruptedException 
 	 	 {
+	    	 	
 	 		    driver.navigate().refresh();
 	 		 	Thread.sleep(3000);
 	 		 	driver.manage().window().maximize();
 	 		 	 
-	 		    System.out.println("search and view new collection*******************");
-	 		    Reporter.log("Search And View New Collection");
+	 		    System.out.println("Collection -> search and view new collection*******************");
+	 		    Reporter.log("Collection -> Search And View New Collection");
 	 		    
 	 			WebElement coll_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 	 			coll_searchbox.sendKeys(coll_name2);
@@ -921,13 +938,16 @@ public class Collection_module_testcases
 	 				Thread.sleep(3000);
 	 	 }
 	     
-	 	 @Test (enabled = false)
-//	     @Test (priority=8)
+//	 	 @Test (enabled = false)
+	     @Test (priority=8)
 	 	 public void Delete_New_Collection_() throws InterruptedException 
 	 	 {
 	     	    driver.manage().window().maximize();
-	 		    System.out.println("search and delete new collection*******************");
-	 		    Reporter.log("Search And Delete New Collection");
+	     	    driver.navigate().refresh();
+	     	   Thread.sleep(2000);
+//	     	    wait(self.driver, 60).until(EC.presence_of_all_elements_located);
+	 		    System.out.println("Collection -> search and delete new collection*******************");
+	 		    Reporter.log("Collection -> Search And Delete New Collection");
 	 		    
 	 			WebElement coll_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 	 			coll_searchbox.sendKeys(coll_name2);
@@ -952,8 +972,8 @@ public class Collection_module_testcases
 				
 				driver.navigate().refresh();
 				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-				System.out.println("Verifying the filter from collection page");
-				Reporter.log("Verifying the filter from collection page");
+				System.out.println("Collection -> Verifying the filter from collection page");
+				Reporter.log("Collection -> Verifying the filter from collection page");
 				
 				WebElement filter = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[1]"));
 				filter.click();
@@ -993,7 +1013,8 @@ public class Collection_module_testcases
 			}
 	     
 	 	@AfterTest
-		 public void closeBrowser() {
+		 public void closeBrowser() 
+	 	{
 		 	driver.quit();
 		 	
 		 }

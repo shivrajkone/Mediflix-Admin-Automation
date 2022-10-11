@@ -35,16 +35,16 @@ public class Expert_module_test_cases
 //	SoftAssert softAssert; 
 	SoftAssert softAssert = new SoftAssert();
 	
-	String expert_name="Smith Wall";
+	String expert_name="Dr.Divid";
 	String expert_slug="123dsc";
 	String expert_bio="University Of Cambridge";
 	String expert_tagcount;
 	
-	String expert_name2="S Jobs ";
+	String expert_name2="MD.Patrick";
 	String expert_slug2="sdkhgcs1223";
 	String expert_bio2="University Of NY";
 	String expert_tagcount2;
-	
+	WebElement searchbox4;
 	
 	@BeforeTest
 	  public void Local_Storage()
@@ -84,7 +84,8 @@ public class Expert_module_test_cases
 	public void Create_Expert_With_Madatory_fields() throws InterruptedException 
 	{
 		driver.manage().window().maximize();
-		System.out.println("Verifying Mandatory Fields Validation Is Working Or Not**************");
+		Thread.sleep(3000);
+		System.out.println("Expert -> Verifying Mandatory Fields Validation Is Working Or Not**************");
 		 
 		Reporter.log("Expert -> Verifying Mandatory Fields Validation Is Working Or Not");
 		
@@ -106,16 +107,16 @@ public class Expert_module_test_cases
 	    
 	    Thread.sleep(2000);
 	    
-	    System.out.println(" Verify The Create Button From Expert Module With Mandatory Fields Only**************");
+	    System.out.println("Expert -> Verify The Create Button From Expert Module With Mandatory Fields Only**************");
 		
-		Reporter.log("Create Expert With Mandatory Fields Only"); 
+		Reporter.log("Expert -> Create Expert With Mandatory Fields Only"); 
 	    
 	    driver.findElement(By.id("expert-name")).sendKeys(expert_name);
 	    Thread.sleep(2000);
 	    
 	    WebElement save_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
 	    save_button.click();
-	    Thread.sleep(3000);
+	    Thread.sleep(5000);
 	}
 	
 	
@@ -123,8 +124,8 @@ public class Expert_module_test_cases
 	public void View_And_Verify_Expert_With_Mandatory_Fields() throws InterruptedException
 	{
 
-	System.out.println("search and view the newly created expert*******************");
-    Reporter.log("Search And View The Newly Created Expert");
+	System.out.println("Expert -> search and view the newly created expert*******************");
+    Reporter.log("Expert -> Search And View The Newly Created Expert");
 			   
 	WebElement searchbox1 = driver.findElement(By.xpath("//input[@type='text']"));
 
@@ -174,7 +175,8 @@ public class Expert_module_test_cases
 			driver.manage().window().maximize();
 			driver.navigate().refresh();
 			
-			Reporter.log("Search And Edit The Newly Created Expert With Remaining Fields");
+			System.out.println("Expert -> Search And Edit The Newly Created Expert With Remaining Fields");
+			Reporter.log("Expert -> Search And Edit The Newly Created Expert With Remaining Fields");
 			
 			
 			WebElement searchbox2 = driver.findElement(By.xpath("//input[@type='text']"));
@@ -270,11 +272,12 @@ public class Expert_module_test_cases
 		@Test (priority=5)
 	public void View_And_Verify_Edited_Expert() throws InterruptedException
 	{
+			
 	    	driver.manage().window().maximize();
 	    	driver.navigate().refresh();
 	    	    	
-	    	System.out.println("search and view the edited  expert*******************");
-	        Reporter.log("Search And View The Edited  Expert");
+	    	System.out.println("Expert -> search and view the edited  expert*******************");
+	        Reporter.log("Expert -> Search And View The Edited  Expert");
 	    			   
 	    	WebElement searchbox1 = driver.findElement(By.xpath("//input[@type='text']"));
 
@@ -359,7 +362,7 @@ public class Expert_module_test_cases
 	    	WebElement closebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"));
 	        closebutton.click();
 	       
-	        Thread.sleep(3000);
+	        Thread.sleep(5000);
 	   	
 	}
 	    
@@ -373,7 +376,7 @@ public class Expert_module_test_cases
 			  	driver.navigate().refresh();
 			
 				System.out.println("Expert -> Verifying Verifying Create New Expert With All Information**************");
-				Reporter.log("Verifying Create New Expert With All Information");
+				Reporter.log("Expert ->Verifying Create New Expert With All Information");
 				
 				WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 				load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
@@ -448,8 +451,12 @@ public class Expert_module_test_cases
 				 
 				 WebElement save_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
 				 save_button.click();
+				 Thread.sleep(3000);
+//				 WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+//				 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+
 			
-				 Thread.sleep(5000);
+				 Thread.sleep(3000);
 				
 		
 		 }
@@ -461,8 +468,8 @@ public class Expert_module_test_cases
 					driver.manage().window().maximize();
 			    	driver.navigate().refresh();
 			   
-			    	System.out.println("search and view the new created expert*******************");
-			        Reporter.log("Search And View The New Created Expert");
+			    	System.out.println("Expert -> search and view the new created expert*******************");
+			        Reporter.log("Expert -> Search And View The New Created Expert");
 			   
 			    	WebElement searchbox1 = driver.findElement(By.xpath("//input[@type='text']"));
 
@@ -553,24 +560,33 @@ public class Expert_module_test_cases
 	    
 
 	   
-	    @Test (enabled = false)
-//		@Test (priority=8)
+//	    @Test (enabled = false)
+		@Test (priority=8)
 		public void Verify_delete_Expert_is_working() throws InterruptedException
 		{
 	    	Thread.sleep(3000);
 	   		driver.manage().window().maximize();
 	   		driver.navigate().refresh();
+	   		
+	   		System.out.println("Expert -> Verifying the Delete from collection page");
+			Reporter.log("Expert -> Verifying the Delete from collection page");
+	   		
 			WebElement searchbox3 = driver.findElement(By.xpath("//input[@type='text']"));
-			searchbox3.sendKeys("Turner");
-					
-			Thread.sleep(5000);
+			searchbox3.sendKeys(expert_name);
+							
+			Thread.sleep(3000);
+			
 			WebElement icon_delete = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[6]/button[3]"));
 			icon_delete.click();
 			
 			Thread.sleep(3000);
 			
-			WebElement deletebutton = driver.findElement(By.xpath("//Button[@class=\'MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-size MuiButton-outlinedSize css-1hm3okx\']"));
+			WebElement deletebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
 			deletebutton.click();
+			
+			Thread.sleep(3000);
+	
+			
 			
 		}
 		

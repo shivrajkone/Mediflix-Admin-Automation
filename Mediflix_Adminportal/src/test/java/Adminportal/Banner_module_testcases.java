@@ -17,6 +17,7 @@ import java.util.Date;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -47,7 +48,7 @@ public class Banner_module_testcases
 	WebElement	banner_searchbox;
 	WebElement tagcount1;
 	
-	String banner_title="Global Health";
+	String banner_title="AIG Health";
 	String banner_subtitle="global";
 	String banner_overtitle="health";
 	String banner_alttext="health org";
@@ -64,7 +65,7 @@ public class Banner_module_testcases
 	WebElement action_button_title2;
 	WebElement	banner_searchbox2;
 		
-	String banner_title2="Neuro Physician";
+	String banner_title2="Issues in Brain";
 	String banner_subtitle2="Neurologists";
 	String banner_overtitle2="Dr";
 	String banner_alttext2="health org";
@@ -118,9 +119,9 @@ public class Banner_module_testcases
 	 public void Create_Banner_With_Madatory_fields() throws InterruptedException 
 	 {
 		 driver.manage().window().maximize();
-		 System.out.println("Verifying Mandatory Fields Validation Is Working Or Not**************");
+		 System.out.println("Banner -> Verifying Mandatory Fields Validation Is Working Or Not**************");
 		 
-		 Reporter.log("Verifying Mandatory Fields Validation Is Working Or Not");
+		 Reporter.log("Banner -> Verifying Mandatory Fields Validation Is Working Or Not");
 		 
 		 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
@@ -135,9 +136,9 @@ public class Banner_module_testcases
 		 
 		 Thread.sleep(1000);
 		 
-		 System.out.println(" Verify The Create From Banner Module With Mandatory Fields Only**************");
+		 System.out.println("Banner -> Verify The Create From Banner Module With Mandatory Fields Only**************");
 		
-		 Reporter.log("Create Banner With Mandatory Fields Only");
+		 Reporter.log("Banner -> Create Banner With Mandatory Fields Only");
 		 //banner title
 		 title= driver.findElement(By.id("title"));
 		 title.sendKeys(banner_title);
@@ -171,12 +172,13 @@ public class Banner_module_testcases
 	 @Test (priority=3)
 	 public void View_And_Verify_Banner_With_Mandatory_Fields() throws InterruptedException 
 	 {
+		 	
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
 //		 	Thread.sleep(3000);
 		 			 	 
-		    System.out.println("search and view the newly created banner*******************");
-		    Reporter.log("Search And View The Newly Created Banner");
+		    System.out.println("Banner -> search and view the newly created banner*******************");
+		    Reporter.log("Banner -> Search And View The Newly Created Banner");
 		 			 
 			WebElement banner_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			banner_searchbox.sendKeys(banner_title);
@@ -240,8 +242,8 @@ public class Banner_module_testcases
 		    driver.navigate().refresh();
 
 		    driver.manage().window().maximize();
-		   		    
-		    Reporter.log("Search And Edit The Newly Created Banner With Remaining Fields");
+		    System.out.println("Banner -> Search And Edit The Newly Created Banner With Remaining Fields");
+		    Reporter.log("Banner -> Search And Edit The Newly Created Banner With Remaining Fields");
 			
 		    WebElement banner_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			banner_searchbox.sendKeys(banner_title);
@@ -299,14 +301,14 @@ public class Banner_module_testcases
 			 
 			 WebElement action_type=driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[3]/div/div"));
 			 action_type.click();
-			 
+			 Thread.sleep(1000);
 			 WebElement action_select=driver.findElement(By.xpath("/html/body/div[4]/div[3]/ul/li[5]"));
 			 action_select.click();
-			 
+			 Thread.sleep(1000);
 			 WebElement save_actionbutton=driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
 			 save_actionbutton.click();
 			 
-			 Thread.sleep(1000);
+			 Thread.sleep(3000);
 
 			 WebElement savebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
 			 savebutton.click();
@@ -318,11 +320,12 @@ public class Banner_module_testcases
 	 @Test (priority=5)
 	 public void View_And_Verify_Edited_Banner()  throws InterruptedException 
 	 {
+		 Thread.sleep(10000);
 		     driver.navigate().refresh();
 		 	 driver.manage().window().maximize();
 		 	 
-		    System.out.println("search and view the edited banner*******************");
-		    Reporter.log("Search and View The Edited Banner");
+		    System.out.println("Banner -> search and view the edited banner*******************");
+		    Reporter.log("Banner -> Search and View The Edited Banner");
 		    
 			WebElement banner_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			banner_searchbox.sendKeys(banner_title);
@@ -482,7 +485,8 @@ public class Banner_module_testcases
 		 driver.manage().window().maximize();
 		 driver.navigate().refresh();
 	
-		 Reporter.log("Verifying Create New Banner With All Information");
+		 System.out.println("Banner -> Verifying Create New Banner With All Information");
+		 Reporter.log("Banner -> Verifying Create New Banner With All Information");
 		 
 		 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
@@ -529,7 +533,7 @@ public class Banner_module_testcases
 			WebElement tab_button2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[7]/button"));
 		     tab_button2.click();
 			    
-		     Thread.sleep(1000);
+		     Thread.sleep(3000);
 			 
 		     WebElement tab_topic2 = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[4]/div[1]/div[1]/label"));
 			 tab_topic2.click();
@@ -558,13 +562,15 @@ public class Banner_module_testcases
 			 WebElement select_type=driver.findElement(By.xpath("/html/body/div[4]/div[3]/ul/li[1]"));
 			 select_type.click();
 			 
-			 Thread.sleep(1000);
+			 Thread.sleep(2000);
 			 
 			 WebElement action_type=driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[3]/div/div"));
 			 action_type.click();
+			 Thread.sleep(2000);
 			 
 			 WebElement action_select=driver.findElement(By.xpath("/html/body/div[4]/div[3]/ul/li[5]"));
 			 action_select.click();
+			 Thread.sleep(2000);
 			 
 			 WebElement save_actionbutton=driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
 			 save_actionbutton.click();
@@ -584,8 +590,8 @@ public class Banner_module_testcases
 		 driver.navigate().refresh();
 	 	 driver.manage().window().maximize();
 		 	 
-		    System.out.println("search and view the new banner*******************");
-		    Reporter.log("Search and View The New Banner");
+		    System.out.println("Banner -> search and view the new banner*******************");
+		    Reporter.log("Banner -> Search and View The New Banner");
 		    
 			WebElement banner_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			banner_searchbox.sendKeys(banner_title2);
@@ -729,7 +735,8 @@ public class Banner_module_testcases
 					Reporter.log( "[ERROR] -> Banner -> View Screen -> Banner Image is not present in Banner View Screen.");
 					
 			}
-			
+	
+			/*
 			// verify banner button
 						//order
 						
@@ -799,52 +806,61 @@ public class Banner_module_testcases
 											Reporter.log( "[ERROR] -> Banner -> View Screen -> Banner Button -> Banner Button Action type is not present in Banner view screen.");
 										
 										}
+										*/
+										softAssert.assertAll();
 							
 										WebElement closebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"));
-										closebutton.click();
-		 	    
-										softAssert.assertAll();
+										closebutton.click();									
 										Thread.sleep(3000);
 		 
 	 }
 	 
 	 
-	 @Test (enabled = false)
-//	 @Test (priority=7)
-	 public void delete_banner() throws InterruptedException 
+//	 @Test (enabled = false)
+	 @Test (priority=7)
+	 public void Delete_Banner() throws InterruptedException 
 	 {
-		 driver.manage().window().maximize();
-		    System.out.println("search and delete the banner*******************");
-		    Reporter.log("Search and delete the banner");
-			WebElement banner_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
+		 	driver.manage().window().maximize();
+		 	driver.navigate().refresh();
+		 			 	
+		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+
+		 	
+		    System.out.println("Banner -> search and delete the banner*******************");
+		    Reporter.log("Banner -> Search and delete the banner");
+			
+		    WebElement banner_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			banner_searchbox.sendKeys(banner_title);
 		 
 			Thread.sleep(3000);
 			//first delete the action button 
 			
-			WebElement edit_icon = driver.findElement(By.xpath("//Button[@aria-label='Edit']"));
+			WebElement edit_icon = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[6]/button[1]"));
 			edit_icon.click();
 			
 			Thread.sleep(3000);
 			
-			WebElement delete_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[8]/div[2]/div/div[2]/div[2]/div/div/div/div/div[6]/span/button[2]"));
-			delete_button.click();
+			//delete action button
+			WebElement delete = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[8]/div[2]/div/div[2]/div[2]/div/div/div/div/div[6]/span/button[2]"));
+			delete.click();
 			
 			Thread.sleep(3000);
 			
 			WebElement save_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
 			save_button.click();
+			 
+			Thread.sleep(3000);
+			
+			WebElement delete2 = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[6]/button[3]"));
+			delete2.click();
 			
 			Thread.sleep(3000);
 			
-			WebElement icon_delete = driver.findElement(By.xpath("//Button[@aria-label='Delete']"));
-			icon_delete.click();
-		 
-			Thread.sleep(3000);
-			
-			WebElement deletebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
-			deletebutton.click();
-		 
+			WebElement delete3 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
+			delete3.click();
+
+		  
 	 }
 	 
 	 @Test (enabled = false)
@@ -854,8 +870,8 @@ public class Banner_module_testcases
 			
 			driver.navigate().refresh();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-			System.out.println("Stared verifying the filter from banner page");
-			Reporter.log("Stared verifying the filter from banner page");
+			System.out.println("Banner -> verifying the filter from banner page");
+			Reporter.log("Banner -> Verifying the filter from banner page");
 			
 			WebElement filter = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[1]"));
 			filter.click();
@@ -882,14 +898,14 @@ public class Banner_module_testcases
 			
 			
 		}
-	 
+/*	 
 	 @AfterTest
 	 public void closeBrowser() {
 	 	driver.quit();
 	 	
 	 }
 	 
- 
+ */
 	 
 }
 
