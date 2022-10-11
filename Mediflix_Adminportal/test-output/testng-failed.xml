@@ -1,28 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test(failed)">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Adminportal.collection_module_test">
+      <class name="Adminportal.Collection_module_testcases">
         <methods>
-          <include name="View_And_Verify_Collection_With_Mandatory_Fields"/>
-          <include name="View_And_Verify_Edited_Collection_"/>
           <include name="TestLocalStorageSetAndGetItem"/>
-          <include name="Create_Collection_With_Madatory_fields"/>
+          <include name="Create_New_Collection_With_All_Fields"/>
           <include name="closeBrowser"/>
         </methods>
-      </class> <!-- Adminportal.collection_module_test -->
-      <class name="Adminportal.expert_Module_test_casess">
-        <methods>
-          <include name="View_And_Verify_The_New_Expert"/>
-          <include name="closeBrowser"/>
-          <include name="View_And_Verify_Expert_With_Mandatory_Fields"/>
-          <include name="Create_New_Expert_With_All_Fields"/>
-          <include name="View_And_Verify_Edited_Expert"/>
-          <include name="Local_Storage"/>
-          <include name="Edit_Expert_With_All_Fields"/>
-        </methods>
-      </class> <!-- Adminportal.expert_Module_test_casess -->
+      </class> <!-- Adminportal.Collection_module_testcases -->
     </classes>
-  </test> <!-- Test(failed) -->
-</suite> <!-- Failed suite [Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

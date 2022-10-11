@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-  <test thread-count="5" name="Test">
+  <test  name="Test 1">
     <classes>
-      <class name="Adminportal.expert_Module_test_casess"/>
-      <class name="Adminportal.banner_Final_Demo"/>
-      <class name="Adminportal.collection_module_test"/>
+      <class name="Adminportal.Expert_module_test_cases"/>
+     
+      
     </classes>
   </test> <!-- Test -->
+  <test name="Test 2">
+        <classes>
+             <class name="Adminportal.Banner_module_testcases"/>
+        </classes>
+    </test>
+    <test name="Test 3">
+        <classes>
+            <class name="Adminportal.Collection_module_testcases"/>
+        </classes>
+    </test>
 </suite> <!-- Suite -->

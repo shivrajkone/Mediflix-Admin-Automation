@@ -3,16 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Adminportal.banner_Final_Demo">
+      <class name="Adminportal.Collection_module_testcases">
         <methods>
-          <include name="View_And_Verify_Banner_With_Mandatory_Fields"/>
-          <include name="Edit_Banner_With_All_Fields"/>
-          <include name="Create_New_Banner_With_All_Fields"/>
-          <include name="Create_Banner_With_Madatory_fields"/>
-          <include name="View_And_Verify_Edited_Banner"/>
-          <include name="View_And_Verify_The_New_Banner"/>
+          <include name="TestLocalStorageSetAndGetItem"/>
+          <include name="Create_New_Collection_With_All_Fields"/>
+          <include name="closeBrowser"/>
         </methods>
-      </class> <!-- Adminportal.banner_Final_Demo -->
+      </class> <!-- Adminportal.Collection_module_testcases -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

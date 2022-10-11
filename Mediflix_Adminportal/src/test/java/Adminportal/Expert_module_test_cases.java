@@ -40,7 +40,7 @@ public class Expert_module_test_cases
 	String expert_bio="University Of Cambridge";
 	String expert_tagcount;
 	
-	String expert_name2="S Jobs ";
+	String expert_name2="Luciy Jobs ";
 	String expert_slug2="sdkhgcs1223";
 	String expert_bio2="University Of NY";
 	String expert_tagcount2;
@@ -49,7 +49,7 @@ public class Expert_module_test_cases
 	@BeforeTest
 	  public void Local_Storage()
 	{
-		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/106/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "src/test/resources/browsers/chromedriver"); 
 	    driver = new ChromeDriver();
 	    driver.get("https://admin-portal.us-east-1.dev.mediflix.com");
 
@@ -368,10 +368,10 @@ public class Expert_module_test_cases
 //	    @Test (enabled = false)
 		  @Test (priority=6)
 		 public void Create_New_Expert_With_All_Fields() throws InterruptedException
-		 {
+		 {      Thread.sleep(3000);
 			  	driver.manage().window().maximize();
 			  	driver.navigate().refresh();
-			
+			  	Thread.sleep(3000);
 				System.out.println("Expert -> Verifying Verifying Create New Expert With All Information**************");
 				Reporter.log("Verifying Create New Expert With All Information");
 				
@@ -395,7 +395,8 @@ public class Expert_module_test_cases
 			    
 			    WebElement select_img = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[1]/div/div[2]/div[2]/div[13]/div/div/p"));
 			    select_img.click();
-			
+			    Thread.sleep(3000);
+			    
 			    WebElement select_button = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[2]/button[2]"));
 			    select_button.click();
 			    
@@ -409,10 +410,13 @@ public class Expert_module_test_cases
 			  
 			    WebElement select_img2 = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[1]/div/div[2]/div[2]/div[4]/div/img"));
 			    select_img2.click();
+			    Thread.sleep(3000);
+			    
 			
 			    WebElement select_button2 = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[2]/button[2]"));
 			    select_button2.click();
-			
+			    Thread.sleep(3000);
+			    
 				driver.findElement(By.id("slug")).sendKeys(expert_slug2);
 			    driver.findElement(By.id("expert-bio")).sendKeys(expert_bio2);
 			     
@@ -420,27 +424,29 @@ public class Expert_module_test_cases
 			    WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[6]/div/button"));
 		        tab_button.click();
 			    
-		        Thread.sleep(1000);
+		        Thread.sleep(3000);
 		       
 			    WebElement tab_topic = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[7]/div[1]/div[1]/label"));
 			    tab_topic.click();
 			    
-			    Thread.sleep(1000);
+			    Thread.sleep(3000);
 			    
 			    WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
 			    selectbutton.click();
 				
-			    Thread.sleep(1000);
+			    Thread.sleep(3000);
 				
 				 // tags count
 			     expert_tagcount2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[6]/div/button")).getText();
 				 System.out.println("the tag count is __________________"+expert_tagcount2); 
 				
-				 Thread.sleep(1000);
+				 Thread.sleep(3000);
 				    
 				 WebElement zip_click = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[7]/div/div"));
 				 zip_click.click();
-				 
+				 Thread.sleep(3000);
+				 Thread.sleep(3000);
+				    
 				 WebElement zip_select = driver.findElement(By.xpath("/html/body/div[3]/div[3]/ul/li[2]"));
 				 zip_select.click();
 				 
@@ -454,27 +460,27 @@ public class Expert_module_test_cases
 		
 		 }
       
-//			@Test (enabled = false)
+		//@Test (enabled = false)
 			@Test (priority=7)
 			 public void View_And_Verify_The_New_Expert() throws InterruptedException
-			 {
+			 {      Thread.sleep(7000);
 					driver.manage().window().maximize();
 			    	driver.navigate().refresh();
 			   
 			    	System.out.println("search and view the new created expert*******************");
 			        Reporter.log("Search And View The New Created Expert");
-			   
+			        Thread.sleep(5000);
 			    	WebElement searchbox1 = driver.findElement(By.xpath("//input[@type='text']"));
 
 			    	searchbox1.sendKeys(expert_name2);
 			    	
 			    	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 					load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
-
+					Thread.sleep(5000);
 			    	WebElement icon_view = driver.findElement(By.xpath("(//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1muvhzt'])[1]"));
 			    	icon_view.click();
 			    	
-			    	Thread.sleep(1000);
+			    	Thread.sleep(5000);
 			    	
 			    	//expert name
 			    	String s11 = driver.findElement(By.xpath("//input[@id='expert-name']")).getAttribute("value");
@@ -553,15 +559,15 @@ public class Expert_module_test_cases
 	    
 
 	   
-	    @Test (enabled = false)
-//		@Test (priority=8)
+	   // @Test (enabled = false)
+		@Test (priority=8)
 		public void Verify_delete_Expert_is_working() throws InterruptedException
 		{
 	    	Thread.sleep(3000);
 	   		driver.manage().window().maximize();
 	   		driver.navigate().refresh();
 			WebElement searchbox3 = driver.findElement(By.xpath("//input[@type='text']"));
-			searchbox3.sendKeys("Turner");
+			searchbox3.sendKeys(expert_name);
 					
 			Thread.sleep(5000);
 			WebElement icon_delete = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[6]/button[3]"));
@@ -569,14 +575,18 @@ public class Expert_module_test_cases
 			
 			Thread.sleep(3000);
 			
-			WebElement deletebutton = driver.findElement(By.xpath("//Button[@class=\'MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedError MuiButton-size MuiButton-outlinedSize css-1hm3okx\']"));
+			WebElement deletebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
 			deletebutton.click();
+			
+			
+			
 			
 		}
 		
 		
 	    @AfterTest
-		 public void closeBrowser() {
+		 public void closeBrowser() throws InterruptedException {
+	    	Thread.sleep(10000);
 		 	driver.quit();
 		 	
 		 }

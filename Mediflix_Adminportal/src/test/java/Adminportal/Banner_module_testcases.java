@@ -27,7 +27,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -83,7 +82,7 @@ public class Banner_module_testcases
 	@BeforeTest 
 	  public void TestLocalStorageSetAndGetItem()
 	{
-		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/106/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "src/test/resources/browsers/chromedriver"); 
 	    driver = new ChromeDriver();
 	    driver.get("https://admin-portal.us-east-1.dev.mediflix.com");
 
@@ -236,7 +235,7 @@ public class Banner_module_testcases
 //	 @Test (enabled = false)
 	 @Test (priority=4)
 	 public void Edit_Banner_With_All_Fields() throws InterruptedException 
-	 {
+	 {      Thread.sleep(3000);
 		    driver.navigate().refresh();
 
 		    driver.manage().window().maximize();
@@ -267,17 +266,17 @@ public class Banner_module_testcases
 			WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[7]/button"));
 		     tab_button.click();
 			    
-		     Thread.sleep(1000);
+		     Thread.sleep(3000);
 			 
 		     WebElement tab_topic = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[4]/div[1]/div[1]/label"));
 			 tab_topic.click();
 
-			 Thread.sleep(1000);
+			 Thread.sleep(3000);
 			    
 			 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
 			 selectbutton.click();
 			    
-			 Thread.sleep(1000);
+			 Thread.sleep(3000);
 			
 			 // tags count
 			 tagcount2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[7]/button/p")).getText();
@@ -809,20 +808,21 @@ public class Banner_module_testcases
 	 }
 	 
 	 
-	 @Test (enabled = false)
-//	 @Test (priority=7)
+	// @Test (enabled = false)
+	 @Test (priority=7)
 	 public void delete_banner() throws InterruptedException 
 	 {
 		 driver.manage().window().maximize();
+		 driver.navigate().refresh();
 		    System.out.println("search and delete the banner*******************");
 		    Reporter.log("Search and delete the banner");
 			WebElement banner_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
-			banner_searchbox.sendKeys(banner_title);
+			banner_searchbox.sendKeys(banner_title2);
 		 
 			Thread.sleep(3000);
 			//first delete the action button 
 			
-			WebElement edit_icon = driver.findElement(By.xpath("//Button[@aria-label='Edit']"));
+			WebElement edit_icon = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[6]/button[1]"));
 			edit_icon.click();
 			
 			Thread.sleep(3000);
