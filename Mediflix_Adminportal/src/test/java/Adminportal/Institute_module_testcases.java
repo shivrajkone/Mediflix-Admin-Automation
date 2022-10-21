@@ -104,7 +104,8 @@ public class Institute_module_testcases
 	 public void Create_Institutions_With_Madatory_fields() throws InterruptedException 
 	 {
 		 driver.manage().window().maximize();
-	
+		 Thread.sleep(10000);
+		 
 		 System.out.println("Institute -> Verifying Mandatory Fields Validation Is Working Or Not**************");
 		 Reporter.log("Institute -> Verifying Mandatory Fields Validation Is Working Or Not");
 		 		 
@@ -157,14 +158,14 @@ public class Institute_module_testcases
 		  WebElement select_button = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[2]/button[2]"));
 		  select_button.click();
 	     
-	      Thread.sleep(3000);
+		  Thread.sleep(5000);
 	     
 	      WebDriverWait wait_save2 = new WebDriverWait(driver, Duration.ofSeconds(30));
 	      wait_save2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
 		 		
 //	     WebElement savebutton2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
 //		 savebutton2.click();
-		 Thread.sleep(3000);
+	      Thread.sleep(10000);
 	     
 	 }
 	 
@@ -173,8 +174,9 @@ public class Institute_module_testcases
 	 public void View_And_Verify_Institutions_With_Mandatory_Fields() throws InterruptedException 
 	 {
 		 	driver.manage().window().maximize();
+		 	 Thread.sleep(5000);
 		    driver.navigate().refresh();
-		 	Thread.sleep(3000);
+		    Thread.sleep(10000);
 		 	
 		    System.out.println("Institution -> search and view the newly created institution*******************");
 		    Reporter.log("Institution -> Search And View The Newly Created Institution");
@@ -257,7 +259,8 @@ public class Institute_module_testcases
 		 {
 			 	driver.manage().window().maximize();
 			    driver.navigate().refresh();
-			  
+			    Thread.sleep(10000);
+			    
 			    WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 				load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
 				
@@ -266,6 +269,8 @@ public class Institute_module_testcases
 			    
 			    WebElement coll_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 				coll_searchbox.sendKeys(inst_name);
+				
+				Thread.sleep(3000);
 			 			
 				WebElement icon_edit = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[8]/button[1]"));
 				icon_edit.click();
@@ -275,7 +280,7 @@ public class Institute_module_testcases
 				
 				driver.findElement(By.id("slug")).sendKeys(inst_slug);
 				
-				Thread.sleep(1000);
+				Thread.sleep(3000);
 				// expert
 				expert = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[7]/div/div/div"));
 				expert.click(); 
@@ -283,39 +288,42 @@ public class Institute_module_testcases
 				WebElement expert_select = driver.findElement(By.xpath("/html/body/div[3]/div/ul/li[16]"));
 				expert_select.click();
 				
+				Thread.sleep(3000);
 				WebElement m1=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/h2/p"));
 			    m1.click();
-				
+			    Thread.sleep(3000);
 				//collection 
 				collection = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[9]/div/div/input"));
 				collection.click();
 				
 				WebElement coll_select = driver.findElement(By.xpath("/html/body/div[3]/div/ul/li[119]"));
 				coll_select.click();
-				
+				Thread.sleep(3000);
 				// videos
 				videos = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[10]/div/div/div/input"));
 				videos.click();
 				
 				WebElement videos_select = driver.findElement(By.xpath("/html/body/div[3]/div/ul/li[7]"));
 				videos_select.click();
-				
+				Thread.sleep(3000);
 				//zip
 				zipcode = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[11]/div/div"));
 				zipcode.click();
 				
 				WebElement zip_select = driver.findElement(By.xpath("/html/body/div[3]/div[3]/ul/li[2]"));
 				zip_select.click();
+				Thread.sleep(3000);
 				
 				WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
 				load2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/h2/p"))).click();
 								
-				Thread.sleep(2000);
+				Thread.sleep(5000);
 				
 				WebElement save_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
+				 Thread.sleep(1000);
 				save_button.click();
 				
-				Thread.sleep(5000);
+				Thread.sleep(10000);
 			
 		 } 
 	
@@ -324,8 +332,10 @@ public class Institute_module_testcases
 			 public void View_And_Verify_Edited_Institutions() throws InterruptedException 
 			 {
 		    	driver.manage().window().maximize();
+		    	 Thread.sleep(5000);
 			    driver.navigate().refresh();
-			   			    
+			    Thread.sleep(10000);
+			    
 			    WebDriverWait wait_pageload = new WebDriverWait(driver, Duration.ofSeconds(30));
 				wait_pageload.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
 							 	
@@ -506,6 +516,7 @@ public class Institute_module_testcases
 			 {
 				 driver.manage().window().maximize();
 				 driver.navigate().refresh();
+				 Thread.sleep(10000);
 				 
 				 WebDriverWait wait_pageload = new WebDriverWait(driver, Duration.ofSeconds(30));
 				 wait_pageload.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
@@ -516,16 +527,19 @@ public class Institute_module_testcases
 				 WebElement create_institute_button = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button"));
 				 create_institute_button.click();
 				 
+				 Thread.sleep(3000);
+				 				 
 				//institute name
 				 name= driver.findElement(By.id("institution-name"));
 				 name.sendKeys(inst_name2);
 				 
-				 Thread.sleep(1000);
-				 // inst logo
-				 								
-				  logo2=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[3]/button"));
-				  logo2.click();
-				  
+				
+				 
+	    		 // inst logo
+				 															
+				  WebDriverWait logo2_click = new WebDriverWait(driver, Duration.ofSeconds(30));
+				  logo2_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[3]/button"))).click();
+					   				 								
 				  WebDriverWait wait_logo2 = new WebDriverWait(driver, Duration.ofSeconds(30));
 				  wait_logo2.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[1]/div/div[2]/div[2]/div[1]/div/img")));
 					    		 
@@ -606,15 +620,13 @@ public class Institute_module_testcases
 				     tagcount2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[8]/div/button")).getText();
 					 System.out.println("the tag count is __________________"+tagcount2); 
 					
-					 Thread.sleep(2000);
+					 Thread.sleep(5000);
 					 
 					 WebElement savebutton2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
 					 savebutton2.click();
 					 
-					 Thread.sleep(3000);
-	//				 WebDriverWait wait_pageload2 = new WebDriverWait(driver, Duration.ofSeconds(30));
-	//				 wait_pageload2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
-									 	
+					 Thread.sleep(10000);
+							 	
 					 
 			
 			 }
@@ -624,7 +636,9 @@ public class Institute_module_testcases
 			 public void View_And_Verify_New_Institutions() throws InterruptedException 
 			 {
 		    	driver.manage().window().maximize();
+		    	 Thread.sleep(5000);
 			    driver.navigate().refresh();
+			    Thread.sleep(10000);
 			    
 			    WebDriverWait wait_pageload = new WebDriverWait(driver, Duration.ofSeconds(30));
 				wait_pageload.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
@@ -808,8 +822,10 @@ public class Institute_module_testcases
 			{
 		    	
 		   		driver.manage().window().maximize();
+		   	    Thread.sleep(5000);
 		   		driver.navigate().refresh();
-		   				   		
+		   		Thread.sleep(10000);
+		   		
 		   		System.out.println("Institution -> Verifying the Delete from Institution page");
 				Reporter.log("Institution -> Verifying the Delete from Institution page");
 				

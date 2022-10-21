@@ -103,7 +103,10 @@ public class Advice_module_testcases
 	 public void Create_Advice_With_Madatory_fields() throws InterruptedException 
 	 {
 			 
-		 driver.manage().window().maximize();
+		 	driver.manage().window().maximize();
+		 	driver.navigate().refresh();
+		 	Thread.sleep(10000);
+		 
 		 System.out.println("Advice -> Verifying Mandatory Fields Validation Is Working Or Not**************");
 		 
 		 Reporter.log("Advice -> Verifying Mandatory Fields Validation Is Working Or Not");
@@ -111,8 +114,12 @@ public class Advice_module_testcases
 		 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
 
-		 WebElement create_advice_button = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button"));
-		 create_advice_button.click();
+		 
+		 WebDriverWait Create_advice_click = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 Create_advice_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button"))).click();
+	 
+//		 WebElement create_advice_button = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button"));
+//		 create_advice_button.click();
 			
 		 Thread.sleep(1000);
 		    
@@ -194,13 +201,19 @@ public class Advice_module_testcases
 		 	
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
-		 	Thread.sleep(3000);
+		 	Thread.sleep(10000);
+		 	
+		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+
 		 			 	 
 		    System.out.println("Advice -> search and view the newly created Advice*******************");
 		    Reporter.log("Advice -> Search And View The Newly Created Advice");
 		 			 
 			WebElement advice_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			advice_searchbox.sendKeys(advice_question);
+			
+			Thread.sleep(3000);
 			
 			WebDriverWait view_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 			view_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[6]/button[2]"))).click();
@@ -241,7 +254,7 @@ public class Advice_module_testcases
 					}	
 					
 					//close button 
-					
+					softAssert.assertAll();
 					WebElement close_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"));
 					close_button.click();
 					Thread.sleep(3000);
@@ -254,13 +267,17 @@ public class Advice_module_testcases
 		 	
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
-		 	Thread.sleep(3000);
+		 	Thread.sleep(10000);
+		 	
+		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
 		 			 	 
 		    System.out.println("Advice -> Search And Edit The Newly Created Advice With Remaining Fields");
 			Reporter.log("Advice -> Search And Edit The Newly Created Advice With Remaining Fields");
 		 			 
 			WebElement advice_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			advice_searchbox.sendKeys(advice_question);
+			Thread.sleep(3000);
 			
 			WebDriverWait edit_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 			edit_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[6]/button[1]"))).click();
@@ -329,6 +346,8 @@ public class Advice_module_testcases
 			 Thread.sleep(3000);
 			 
 			 //save button from edit popup
+			 
+			 
 			 WebDriverWait save_edit_popup = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 save_edit_popup.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
 		 
@@ -344,13 +363,18 @@ public class Advice_module_testcases
 		 	
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
-		 	Thread.sleep(3000);
-		 			 	 
+		 	Thread.sleep(10000);
+		 	
+		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+		 		
 		 	System.out.println("Banner -> search and view the edited advice*******************");
 		    Reporter.log("Banner -> Search and View The Edited Advice");
 		    
 			WebElement advice_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			advice_searchbox.sendKeys(advice_question);
+			
+			Thread.sleep(3000);
 			
 			WebDriverWait view_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 			view_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[6]/button[2]"))).click();
@@ -438,7 +462,7 @@ public class Advice_module_testcases
 							softAssert.assertEquals(s5, s5);
 							Reporter.log( "[ERROR] -> Advice -> View Screen -> Advice Expert is not present in Advice view screen.");
 					}
-	
+					softAssert.assertAll();
 					Thread.sleep(3000);
 			//close button
 			 
@@ -451,9 +475,9 @@ public class Advice_module_testcases
 	 @Test (priority=6)
 	 public void Create_New_Advice_With_All_Fields() throws InterruptedException
 	 {
-		 driver.manage().window().maximize();
-		 driver.navigate().refresh();
-		 Thread.sleep(3000);
+		 	driver.manage().window().maximize();
+		 	driver.navigate().refresh();
+		 	Thread.sleep(10000);
 	
 		 System.out.println("Advice -> Verifying Create New Advice With All Information");
 		 Reporter.log("Advice -> Verifying Create New Advice With All Information");
@@ -463,6 +487,8 @@ public class Advice_module_testcases
 
 		 WebElement create_advice_button = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button"));
 		 create_advice_button.click();
+		 
+		 Thread.sleep(5000);
 		 
 		//advice question 
 		 question = driver.findElement(By.id("tag-category"));
@@ -476,8 +502,18 @@ public class Advice_module_testcases
 		 slug2.sendKeys(advice_slug2);
 		 
 		 //tags
-		 Thread.sleep(1000);
-		 														 
+		 Thread.sleep(3000);
+		 
+		 	WebDriverWait tab_button = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 	tab_button.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[5]/div/button"))).click();
+		 	 Thread.sleep(3000);
+		 	WebDriverWait tab_topic = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 	tab_topic.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[6]/div[1]/div[1]/label"))).click();
+		 	 Thread.sleep(3000);
+		 	WebDriverWait select = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 	select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"))).click();
+		 
+		/* 														 
 			WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[5]/div/button"));
 		     tab_button.click();
 			    
@@ -490,7 +526,7 @@ public class Advice_module_testcases
 			    
 			 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
 			 selectbutton.click();
-			 
+		*/	 
 			 //tags count
 			 	 
 			 tagcount2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[5]/div/button")).getText();
@@ -498,7 +534,9 @@ public class Advice_module_testcases
 			 
 			 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
-			 																  
+			 	
+			 Thread.sleep(3000);
+			 
 			//add answer press yes
 			 WebDriverWait wait_click_yes = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 wait_click_yes.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"))).click();
@@ -528,13 +566,14 @@ public class Advice_module_testcases
 			 
 			 WebElement save_button=driver.findElement(By.xpath("/html/body/div[4]/div[3]/div/div[2]/button[2]"));
 			 save_button.click();
-			 Thread.sleep(2000);
+			 Thread.sleep(5000);
 			 
 			 //cancel click
 			 		
 			 WebDriverWait wait_click_cancel = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 wait_click_cancel.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[1]"))).click();
-			 Thread.sleep(3000);
+			 
+			 Thread.sleep(10000);
 		 
 	 }
 	 
@@ -546,10 +585,10 @@ public class Advice_module_testcases
 		 	
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
-		 	Thread.sleep(3000);
+		 	Thread.sleep(10000);
 		 			 	 
-		 	System.out.println("Banner -> search and view the new advice*******************");
-		    Reporter.log("Banner -> Search and View The New Advice");
+		 	System.out.println("Advice -> search and view the new advice*******************");
+		    Reporter.log("Advice -> Search and View The New Advice");
 		    
 			WebElement advice_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			advice_searchbox.sendKeys(advice_question2);
@@ -640,6 +679,8 @@ public class Advice_module_testcases
 							softAssert.assertEquals(s5, s5);
 							Reporter.log( "[ERROR] -> Advice -> View Screen -> New Advice Expert is not present in Advice view screen.");
 					}
+					
+					softAssert.assertAll();
 	
 			//close button
 			
@@ -655,10 +696,13 @@ public class Advice_module_testcases
 		 	
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
-		 	Thread.sleep(3000);
-		 			 	 
-		 	System.out.println("Banner -> search and delete the  advice*******************");
-		    Reporter.log("Banner -> Search and Delete The  Advice");
+		 	Thread.sleep(10000);
+		 	
+		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+		 				 			 	 
+		 	System.out.println("Advice -> search and delete the  advice*******************");
+		    Reporter.log("Advice -> Search and Delete The  Advice");
 		    
 			WebElement advice_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			advice_searchbox.sendKeys(advice_question2);
@@ -680,7 +724,7 @@ public class Advice_module_testcases
 			WebDriverWait save_edit_popup = new WebDriverWait(driver, Duration.ofSeconds(30));
 			save_edit_popup.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
 						 
-			Thread.sleep(3000);
+			Thread.sleep(10000);
 			
 			//delete icon 
 			WebDriverWait delete_icon = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -690,7 +734,7 @@ public class Advice_module_testcases
 			WebDriverWait delete2 = new WebDriverWait(driver, Duration.ofSeconds(30));
 			delete2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
 			
-			Thread.sleep(3000);				 	
+			Thread.sleep(5000);				 	
 					
 	 }
 	 

@@ -108,7 +108,9 @@ public class Collection_module_testcases
 	 public void Create_Collection_With_Madatory_fields() throws InterruptedException 
 	 {
 		 driver.manage().window().maximize();
-//		 Thread.sleep(3000);
+		 driver.navigate().refresh();
+		 Thread.sleep(20000);
+		 
 		 System.out.println("Collection -> Verifying Mandatory Fields Validation Is Working Or Not**************");
 		 
 		 Reporter.log("Collection -> Verifying Mandatory Fields Validation Is Working Or Not");
@@ -140,22 +142,19 @@ public class Collection_module_testcases
 		 type = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[2]/div/div"));
 	     type.click();
 		 
-	 //    WebDriverWait wait_click_coll = new WebDriverWait(driver, Duration.ofSeconds(30));
-	 //    wait_click_coll.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[3]/div/ul/li[4]"))).click();
-		    	     
+  	     
 	     WebElement click_coll=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[3]/div/ul/li[4]"));
 	     click_coll.click();
 	     
-	     Thread.sleep(3000);
-	     
-	     WebElement savebutton2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
-		 savebutton2.click();
+	     Thread.sleep(10000);
+	      
+		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
 		 
-		 Thread.sleep(3000);
 		 
-//		 WebDriverWait after_save = new WebDriverWait(driver, Duration.ofSeconds(30));
-//		 after_save.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]")));
-		    
+		 Thread.sleep(10000);
+		 
+    
 		
 	     
 	 }
@@ -164,10 +163,15 @@ public class Collection_module_testcases
 	 @Test (priority=3)
 	 public void View_And_Verify_Collection_With_Mandatory_Fields() throws InterruptedException 
 	 {
+		    driver.manage().window().maximize();
+		    Thread.sleep(5000);
 		    driver.navigate().refresh();
-		 	Thread.sleep(3000);
-		 	driver.manage().window().maximize();
-		 	 
+		    Thread.sleep(3000);
+		    
+		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[8]/button[2]")));
+		    
+			
 		    System.out.println("Collection -> search and view the newly created collection*******************");
 		    Reporter.log("Collection -> Search And View The Newly Created Collection");
 		    
@@ -223,10 +227,12 @@ public class Collection_module_testcases
 			
 			//close button
 			
+			Thread.sleep(5000);
+			
 			 WebDriverWait wait_close = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 wait_close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
 			    	
-			 Thread.sleep(3000);
+			 Thread.sleep(10000);
 		 }
 			
 //		@Test (enabled = false)
@@ -235,7 +241,9 @@ public class Collection_module_testcases
 		 {
 			    driver.manage().window().maximize();
 			    driver.navigate().refresh();
-			    Thread.sleep(3000);
+			    Thread.sleep(10000);
+			    WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+				load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[8]/button[2]")));
 			    
 			    System.out.println("Collection -> Search And Edit The Newly Created Collection With Remaining Fields");
 			    Reporter.log("Collection -> Search And Edit The Newly Created Collection With Remaining Fields");
@@ -272,13 +280,14 @@ public class Collection_module_testcases
 			    desc = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[6]/div/textarea[1]"));
 			    desc.sendKeys(coll_desc);
 			    
-			    //banner click 
-			    banner=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[5]/div/div/input"));
-			    banner.click();
-			    //select banner
-			    WebElement banner_select=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[6]/div/ul/li[16]"));
-			    banner_select.click();
+			    //banner 
 			    
+			    WebDriverWait banner_click = new WebDriverWait(driver, Duration.ofSeconds(30));
+			    banner_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[5]/div/div/input"))).click();
+			    
+			    WebDriverWait banner_select = new WebDriverWait(driver, Duration.ofSeconds(30));
+			    banner_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[6]/div/ul/li[16]"))).click();
+			        			    
 			    //video click 
 			    video=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[1]/div/div/div/input"));
 			    video.click();
@@ -353,12 +362,12 @@ public class Collection_module_testcases
 				 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
 				 selectbutton.click();
 				    
-				 Thread.sleep(2000);
+				 Thread.sleep(10000);
 			    
 				 WebDriverWait save_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 				 save_click.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
 				 
-				 Thread.sleep(5000);
+				 Thread.sleep(10000);
 			    
 		 }
 	
@@ -367,8 +376,9 @@ public class Collection_module_testcases
 		 public void View_And_Verify_Edited_Collection_() throws InterruptedException 
 		 {
 	    	 	driver.manage().window().maximize();
+	    	 	 Thread.sleep(5000);
 			    driver.navigate().refresh();
-			 	Thread.sleep(3000);
+			    Thread.sleep(10000);
 			 	
 			 	 
 			    System.out.println("Collection -> search and view edited  collection*******************");
@@ -584,6 +594,7 @@ public class Collection_module_testcases
 		 {
 			 driver.manage().window().maximize();
 			 driver.navigate().refresh();
+			 Thread.sleep(10000);
 			 
 			 WebDriverWait wait_pageload = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 wait_pageload.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]/div/div"))).click();
@@ -714,12 +725,12 @@ public class Collection_module_testcases
 				 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
 				 selectbutton.click();
 				    
-				 Thread.sleep(2000);
+				 Thread.sleep(10000);
 			    
 				 WebElement save_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
 				 save_button.click();
 				 
-				 Thread.sleep(5000);
+				 Thread.sleep(10000);
 				  
 //				 WebDriverWait after_save = new WebDriverWait(driver, Duration.ofSeconds(30));
 //				 after_save.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]")));
@@ -732,11 +743,12 @@ public class Collection_module_testcases
 	     @Test (priority=7)
 	 	 public void View_And_Verify_New_Collection_() throws InterruptedException 
 	 	 {
-	    	 	
+	    	 	driver.manage().window().maximize();
+	    	 	 Thread.sleep(5000);
 	 		    driver.navigate().refresh();
-	 		 	Thread.sleep(3000);
-	 		 	driver.manage().window().maximize();
-	 		 	 
+	 		 		 	
+	 		 	Thread.sleep(10000);
+	 		 	
 	 		    System.out.println("Collection -> search and view new collection*******************");
 	 		    Reporter.log("Collection -> Search And View New Collection");
 	 		    
@@ -946,7 +958,8 @@ public class Collection_module_testcases
 	 	 {
 	     	    driver.manage().window().maximize();
 	     	    driver.navigate().refresh();
-	     	   Thread.sleep(2000);
+	     	    Thread.sleep(10000);
+	     	   
 //	     	    wait(self.driver, 60).until(EC.presence_of_all_elements_located);
 	 		    System.out.println("Collection -> search and delete new collection*******************");
 	 		    Reporter.log("Collection -> Search And Delete New Collection");
@@ -964,6 +977,8 @@ public class Collection_module_testcases
 	 			 	 
 	 			WebElement delete_click = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
 	 			delete_click.click();
+	 			
+	 			Thread.sleep(4000);
 	 			 	 	
 	 	   }
 	     
