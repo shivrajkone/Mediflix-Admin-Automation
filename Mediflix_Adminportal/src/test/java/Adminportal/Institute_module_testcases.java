@@ -324,7 +324,7 @@ public class Institute_module_testcases
 				save_button.click();
 				
 				Thread.sleep(10000);
-			
+			 
 		 } 
 	
 //			@Test (enabled = false)

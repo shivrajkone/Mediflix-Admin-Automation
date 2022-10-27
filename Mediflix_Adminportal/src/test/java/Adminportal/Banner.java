@@ -175,7 +175,7 @@ public class Banner
 	 @Test (priority=3)
 	 public void View_And_Verify_Banner_With_Mandatory_Fields() throws InterruptedException 
 	 {
-		 	
+		 	 
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
 //		 	Thread.sleep(3000);

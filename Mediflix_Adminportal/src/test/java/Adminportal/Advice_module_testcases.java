@@ -364,7 +364,7 @@ public class Advice_module_testcases
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
 		 	Thread.sleep(10000);
-		 	
+		 	 
 		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
 		 		

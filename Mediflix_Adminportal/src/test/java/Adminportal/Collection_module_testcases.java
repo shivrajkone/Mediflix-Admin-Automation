@@ -161,7 +161,7 @@ public class Collection_module_testcases
 	 
 //	 @Test (enabled = false)
 	 @Test (priority=3)
-	 public void View_And_Verify_Collection_With_Mandatory_Fields() throws InterruptedException 
+	 public void View_And_Verify_Collection_With_Mandatory_Fields() throws InterruptedException  
 	 {
 		    driver.manage().window().maximize();
 		    Thread.sleep(5000);
