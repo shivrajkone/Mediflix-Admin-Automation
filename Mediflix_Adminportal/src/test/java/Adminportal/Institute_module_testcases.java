@@ -251,7 +251,7 @@ public class Institute_module_testcases
 			    	
 			 Thread.sleep(3000);
 			
-	 }
+	 } 
 	
 //		@Test (enabled = false)
 		 @Test (priority=4)

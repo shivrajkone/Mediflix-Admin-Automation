@@ -170,7 +170,7 @@ public class Banner
 		 Thread.sleep(20000);
 
 	 }
-	 
+	  
 //	 @Test (enabled = false)
 	 @Test (priority=3)
 	 public void View_And_Verify_Banner_With_Mandatory_Fields() throws InterruptedException 

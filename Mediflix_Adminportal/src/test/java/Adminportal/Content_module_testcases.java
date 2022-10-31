@@ -857,7 +857,14 @@ public class Content_module_testcases
 				delete2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
 				
 				Thread.sleep(3000);
-			    
+			     
+		 }
+		 
+		 @AfterTest
+		 public void closeBrowser() 
+		 {
+		 	driver.quit();
+		 	
 		 }
 		 
 

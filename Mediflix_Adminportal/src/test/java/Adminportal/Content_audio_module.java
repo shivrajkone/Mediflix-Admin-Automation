@@ -552,7 +552,7 @@ public class Content_audio_module
 						Reporter.log( "[ERROR] -> Content Audio -> View Screen -> New Content Audio Description is not present in Content View Screen.");
 					}			
 					
-					//image  
+					//image   
 					
 					String s4 =driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[4]/button")).getText();
 					System.out.println("New content audio image is_________________________"+s4);
@@ -617,6 +617,13 @@ public class Content_audio_module
 				
 				Thread.sleep(3000); 
 								 
+			 }
+			 
+			 @AfterTest
+			 public void closeBrowser() 
+			 {
+			 	driver.quit();
+			 	
 			 }
 				
 	 

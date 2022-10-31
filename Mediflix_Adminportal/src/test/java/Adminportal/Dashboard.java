@@ -459,7 +459,7 @@ public class Dashboard
 		 System.out.println("Dashboard Sponsor count is_______________________"+sponsor_Dcount);
 				 
 		 // sponsor click
-				 
+				  
 		 WebDriverWait sponsor_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 sponsor_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[8]/div/a"))).click();
 						 																						 																		
@@ -493,7 +493,12 @@ public class Dashboard
 		 
 	 
 	 }
-	 
+	 @AfterTest
+	 public void closeBrowser() 
+	 {
+	 	driver.quit();
+	 	
+	 }
 	 
 
 }

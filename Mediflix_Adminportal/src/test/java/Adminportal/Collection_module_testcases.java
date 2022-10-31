@@ -9,6 +9,7 @@ import org.testng.asserts.SoftAssert;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
@@ -234,14 +235,16 @@ public class Collection_module_testcases
 			    	
 			 Thread.sleep(10000);
 		 }
-			
+			 
 //		@Test (enabled = false)
 		 @Test (priority=4)
 		 public void Edit_Collection_With_All_Fields() throws InterruptedException 
 		 {
 			    driver.manage().window().maximize();
 			    driver.navigate().refresh();
-			    Thread.sleep(10000);
+//			    Thread.sleep(10000);
+			    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)) ;
+			    
 			    WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 				load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[8]/button[2]")));
 			    
@@ -362,7 +365,7 @@ public class Collection_module_testcases
 				 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
 				 selectbutton.click();
 				    
-				 Thread.sleep(10000);
+				 Thread.sleep(5000);
 			    
 				 WebDriverWait save_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 				 save_click.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
