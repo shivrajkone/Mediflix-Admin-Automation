@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Admin-Portal" >
-
-<test name="Expert">
-	<classes>
-			<class name="Adminportal.Expert_module_test_cases"/>
-	</classes>
-</test>
- 
-<test name="Banner">
-	<classes>
-			 <class name="Adminportal.Banner"/>  
-	</classes>
-</test>
-
-
-<test name="Institution">
-	<classes>
-			<class name="Adminportal.Institute_module_testcases"/>
-	</classes>
-</test>
-
-<test name="Collection">
-	<classes>
-			<class name="Adminportal.Collection_module_testcases"/>
-	</classes>
-</test>
-
-<test name="Advice">
-	<classes>
-			 <class name="Adminportal.Advice_module_testcases"/>
-	</classes>
-</test>
-
-
+<suite name="Mediflix-Admin-Portal" parallel= "classes">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="Adminportal.Expert_module_test_cases"/>
+      <class name="Adminportal.Banner"/>
+      <class name="Adminportal.Institute_module_testcases"/>
+      <class name="Adminportal.Collection_module_testcases"/>		
+      <class name="Adminportal.Advice_module_testcases"/>
+	  <class name="Adminportal.Collection_module_testcases"/>
+	  <class name="Adminportal.Content_audio_module"/>
+	  <class name="Adminportal.Sponsor_module_testcases"/>
+	  <class name="Adminportal.Tags_module_testcase"/>
+	  <class name="Adminportal.Tags_category"/>	  
+	  <class name="Adminportal.Tags_relationship"/>
+	  <class name="Adminportal.Connect_Exp_module_testcases"/>
+	  <class name="Adminportal.Dashboard"/>
+      
+    </classes>
+  </test> <!-- Test -->
 </suite> <!-- Suite -->

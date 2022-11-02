@@ -62,9 +62,8 @@ public class Dashboard
 	String sponsor_Dcount;
 	String sponsor_count;
 	
-
 	@BeforeTest 
-	  public void Local_Storage() throws InterruptedException
+	public void Local_Storage() throws InterruptedException
 	{
 		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/106/chromedriver.exe");
 	    driver = new ChromeDriver();

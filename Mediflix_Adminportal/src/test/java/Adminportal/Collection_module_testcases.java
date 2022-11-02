@@ -28,7 +28,6 @@ import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.TakesScreenshot;
 
 
-
 public class Collection_module_testcases 
 {
 
@@ -70,6 +69,7 @@ public class Collection_module_testcases
 	String coll_slug2="11jh488";
 	String coll_desc2="How to live happy life";
 	String tagcount2;
+	
 	
 	@BeforeTest
 	  public void TestLocalStorageSetAndGetItem()

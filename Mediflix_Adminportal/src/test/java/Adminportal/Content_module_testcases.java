@@ -106,8 +106,7 @@ public class Content_module_testcases
 	    click_content.click();		
 	    
 	    Thread.sleep(10000);
-	    
-	    
+	    	    
 	 }
 	
 	 @Test (priority=1)

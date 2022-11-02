@@ -33,29 +33,22 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.TakesScreenshot;
 
-public class Tags_module_testcase 
+public class Sponsor_module_testcases 
 {
 	
 	ChromeDriver driver; 
 	SoftAssert softAssert = new SoftAssert();
 	
-	WebElement name;
-	WebElement category;
-	WebElement desc;
-	
-	String tags_name="spine";
-	String tags_desc="The bones in the spine are called vertebrae.";
-	
-	WebElement name2;
-	WebElement category2;
-	WebElement desc2;
-	
-	String tags_name2="Osteopenia";
-	String tags_desc2="Osteopenia is a term used for low bone mass that isn't low enough to be osteoporosis.";
-	
+	WebElement sponsor;
+	WebElement logo;
+	String sponsor_name = "Care ";
+
+	WebElement sponsor2;
+	WebElement logo2;
+	String sponsor_name2 = "Global";
 	
 	@BeforeTest 
-	public void LocalStorage()
+	  public void Local_Storage()
 	{
 		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/106/chromedriver.exe");
 	    driver = new ChromeDriver();
@@ -83,368 +76,233 @@ public class Tags_module_testcase
 	    local.setItem("CognitoIdentityServiceProvider.16vn2ni6d429tfd3mi86refk2p.38eaef6d-6a98-454c-b3df-861c17cd1fcd.userData","{\"PreferredMfaSetting\":\"SMS_MFA\",\"UserAttributes\":[{\"Name\":\"sub\",\"Value\":\"38eaef6d-6a98-454c-b3df-861c17cd1fcd\"},{\"Name\":\"name\",\"Value\":\"shivraj2\"},{\"Name\":\"phone_number\",\"Value\":\"+919834330981\"},{\"Name\":\"email\",\"Value\":\"shivrajtech37@gmail.com\"}],\"UserMFASettingList\":[\"SMS_MFA\"],\"Username\":\"38eaef6d-6a98-454c-b3df-861c17cd1fcd\"}");
 	    local.setItem("CognitoIdentityServiceProvider.31nq4cspngju2rtsvekfo8oj7g.saurav.anand@mediflix.com.idToken","eyJraWQiOiIzNkZrcURhRWt1eU9WcVo3V2JMaE15UVZ2UFRNY1Z5QVJ3N2IzYUJIdXU4PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJjNGQ2ZjE4ZS1lNGU5LTQ1MGItOTllZC03MzNiOTJiYjAwNDUiLCJjb2duaXRvOmdyb3VwcyI6WyJBZG1pbiJdLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy1lYXN0LTEuYW1hem9uYXdzLmNvbVwvdXMtZWFzdC0xX2owRHkzcVg4TiIsImNvZ25pdG86dXNlcm5hbWUiOiJzYXVyYXYuYW5hbmRAbWVkaWZsaXguY29tIiwiZ2l2ZW5fbmFtZSI6IlNhdXJhdiIsIm9yaWdpbl9qdGkiOiJmZDJjNTYzOS03Yzc1LTRjNjItOWJlYS1mMWM4OGU0MzcyMDQiLCJhdWQiOiIzMW5xNGNzcG5nanUycnRzdmVrZm84b2o3ZyIsImV2ZW50X2lkIjoiMDQ4ODVjODAtZDY5NS00ZGRjLWE3ZDItNzExMjc4NDRmZWQwIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE2NTI0NDQzNjYsImV4cCI6MTY1NDIzNDgyNSwiaWF0IjoxNjU0MjMxMjI1LCJmYW1pbHlfbmFtZSI6IkFuYW5kIiwianRpIjoiNDk2YTZkYWEtYjU1NS00MTBmLWIwYzYtNTgwZjUxYmVjNzQwIiwiZW1haWwiOiJzYXVyYXYuYW5hbmRAbWVkaWZsaXguY29tIn0.h3BOXh2CIjvlBX0y7M-r4YTVOJBagj390V0EprKTER9xfVTB5coHFZ9Y84-2tqbn_3VYO5SJwLOe9sSx_CfdhxcnNNnmAnXvycAPq5NaylrebPxtS-BMprhqWwxHvThmjAPGbSRqvWf9OGKOMCnFtvuJVv6LhN_1KB2k_UR3qgjZ223BQvF0iKvetmS8gfJHwPebDrT3l1Wctlau3dt_PmTEF4yv_ccdC-g1pAtVUM64857RjNT1cG-W_dezzd0jabjZHzzYlQ5sQ6DbzgU91xWkQynlLfkrhWlxxvorzk1F8vaT3NvO2eeJg-6kDJjtSsRjF-thV4qEZjtANwVvEA");
 	    
-	    driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/tags");
+	    driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/sponsors");
 	    
 	 }
+	
 	 @Test (priority=1)
 //	 @Test (enabled = false)
-	 public void Create_Tags_With_Madatory_fields() throws InterruptedException 
+	 public void Create_Sponsor() throws InterruptedException 
 	 {
 			 
-		 	driver.manage().window().maximize();
-		 	driver.navigate().refresh();
-		 	Thread.sleep(4000);
-		 
-		 System.out.println("Tags -> Verifying Mandatory Fields Validation Is Working Or Not**************");
-		 
-		 Reporter.log("Tags -> Verifying Mandatory Fields Validation Is Working Or Not");
+		 driver.manage().window().maximize();
+		 driver.navigate().refresh();
+		 Thread.sleep(4000);
+		 	
+		 System.out.println("Sponsor -> Verify The Create Sponsor With All Fields**************");
+		 Reporter.log("Sponsor -> Verify The Create Sponsor With All Fields");
 		 
 		 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
-
-		 WebDriverWait Create_tags_click = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 Create_tags_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/div[2]/button[3]"))).click();
 		 
-		 Thread.sleep(1000);
-		    
-		 WebDriverWait save_click = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 WebDriverWait Create_sponsor = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 Create_sponsor.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button"))).click();
+		 		 
+		 Thread.sleep(2000);
 		 
-		 Thread.sleep(1000);
-		 
-		 System.out.println("Tags -> Verify The Create From Tags Module With Mandatory Fields Only**************");
-		 Reporter.log("Tags -> Create Tags With Mandatory Fields Only");
-		 
-		 //tags name
-		 name = driver.findElement(By.id("tag-name"));
-		 name.sendKeys(tags_name);
+		 sponsor = driver.findElement(By.id("sponsor-name"));
+		 sponsor.sendKeys(sponsor_name);
 		 
 		 Thread.sleep(2000);
 		 
-		 // tags category
+		 // logo select
 		 
-		 WebElement category_click=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div/div[2]/div/div/div/input"));
-		 category_click.click();
+		 WebDriverWait logo_click = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 logo_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[2]/button"))).click();
 		 
-		 Thread.sleep(3000);
+		 WebDriverWait select_image = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 select_image.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[1]/div/div[2]/div[2]/div[3]/div/img"))).click();
 		 
-		 WebDriverWait cat_select = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 cat_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div/ul/li[1]"))).click();
-		 		  
-		 Thread.sleep(2000);
-		 //save   
+		 WebDriverWait select = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[2]/button[2]"))).click();
+		 		
+		 // save 
 		 
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
-		 		  
-		 Thread.sleep(5000);
+		 		
+		 Thread.sleep(4000);
 		 
 	 }
 	 
 //	 @Test (enabled = false)
 	 @Test (priority=2)
-	 public void View_And_Verify_Tags_With_Mandatory_Fields() throws InterruptedException 
+	 public void View_And_Verify_Sponsor() throws InterruptedException 
 	 {
-		System.out.println("Tags-> view the newly created Tags*******************");
-		Reporter.log("Tags ->  View The Newly Created Tags");
+//		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/sponsors");
+		 
+		System.out.println("Sponsor -> view the newly created Sponsor*******************");
+		Reporter.log("Sponsor ->  View The Newly Created Sponsor ");
+		
+		WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+		load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
 		 
 		WebDriverWait view_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
-		view_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[5]/button[2]"))).click();
+		view_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[3]/button[2]"))).click();
 
 		Thread.sleep(3000);
 		
-		// tags name
+		// sponsor name
 		
-		String s1 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[1]/div[1]/div/input")).getAttribute("value");
-		System.out.println("Tags name is_________________________"+s1);
-					
-		// tags category
-					
-		String s2 =driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[1]/div[2]/div/div/div/input")).getAttribute("value");
-		System.out.println("Tags category is_________________________"+s2);
-						        
+		String s1 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[1]/div/input")).getAttribute("value");
+		System.out.println("Sponsor name is_________________________"+s1);
+				
+		if(s1.equals(sponsor_name))
+		{
+				System.out.println("Sponsor name is present");
+				softAssert.assertEquals(s1, sponsor_name); 
+		}
+		else
+		{
+				System.out.println("Sponsor name is not present");
+				softAssert.assertEquals(s1, sponsor_name);
+				Reporter.log( "[ERROR] -> Tags Category -> View Screen -> Sponsor is not present in Sponsor View Category Screen.");
+		}
+		
+		// logo
+		
+		String s2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[2]/div/div/div/img")).getAttribute("src");
+        System.out.println("Logo is_________________________"+s2);
+        
+        if(s2.equals(s2))
+		{
+			System.out.println("logo is present");
+			softAssert.assertEquals(s2, s2); 
+		}
+		else
+		{
+			System.out.println("logo is not present");
+			softAssert.assertEquals(s2, s2);
+			Reporter.log( "[ERROR] -> Content -> View Screen -> Sponsor logo is not present in Sponsor View Screen.");
+		}	
+        
+        Thread.sleep(2000);
+        
 		// close
 								
 		WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
 		close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
 
-		Thread.sleep(5000);
-		
+		Thread.sleep(4000);
+        
 	 }
-	
 //	 @Test (enabled = false)
 	 @Test (priority=3)
-	 public void Edit_Tags_With_All_Fields() throws InterruptedException 
+	 public void Edit_Sponsor() throws InterruptedException 
 	 {
-		 System.out.println("Tags-> Search And Edit The Newly Created Tags With Remaining Fields");
-		 Reporter.log("Tags-> Search And Edit The Newly Created Tags With Remaining Fields");
-			
-		 WebDriverWait edit_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 edit_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[5]/button[1]"))).click();
+		System.out.println("Sponsor -> Edit newly created Sponsor*******************");
+		Reporter.log("Sponsor ->  Edit The Newly Created Sponsor ");
+		
+		WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+		load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
+		 
+		WebDriverWait edit_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
+		edit_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[3]/button[1]"))).click();
 
-		 Thread.sleep(3000);
-			
-			//desc		
-			 
-		 desc = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[1]/div[3]/div/textarea[1]"));
-		 desc.sendKeys(tags_desc);
+		Thread.sleep(3000);
+		
+		sponsor2 = driver.findElement(By.id("sponsor-name"));
+		sponsor2.sendKeys(sponsor_name2);
 		 
-		 Thread.sleep(2000);
-		 
+		Thread.sleep(2000);
+		      
+		 // save
+									
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
-
-		 Thread.sleep(5000);
-		 	 
+		 
+		 Thread.sleep(4000);
+		
 	 }
-	 
 //	 @Test (enabled = false)
 	 @Test (priority=4)
-	 public void View_And_Verify_Edited_Tags() throws InterruptedException 
+	 public void View_And_Verify_Edited_Sponsor() throws InterruptedException 
 	 {
-		 	System.out.println("Tags-> view the newly created Tags*******************");
-			Reporter.log("Tags ->  View The Newly Created Tags");
-			 
-			WebDriverWait view_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
-			view_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[5]/button[2]"))).click();
+//		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/sponsors");
+		 
+		System.out.println("Sponsor -> view the edited Sponsor*******************");
+		Reporter.log("Sponsor ->  View The Edited Sponsor ");
+		
+		WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+		load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
+		 
+		WebDriverWait view_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
+		view_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[3]/button[2]"))).click();
 
-			Thread.sleep(3000);
-			
-			// tags name
-			
-			String s1 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[1]/div[1]/div/input")).getAttribute("value");
-			System.out.println("Tags name is_________________________"+s1);
-			
-			if(s1.equals(tags_name))
-			{
-				System.out.println("Tags name is present");
-				softAssert.assertEquals(s1, tags_name); 
-			}
-			else
-			{
-				System.out.println("Tags name is not present");
-				softAssert.assertEquals(s1, tags_name);
-				Reporter.log( "[ERROR] -> Tags -> View Screen -> Tags name is not present in Tags View Screen.");
-			}		
-			
-						
-			// tags category
-						
-			String s2 =driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[1]/div[2]/div/div/div/input")).getAttribute("value");
-			System.out.println("Tags category is_________________________"+s2);
-			
-			if(s2.equals(s2))
-			{
-				System.out.println("Tags name is present");
-				softAssert.assertEquals(s2, s2); 
-			}
-			else
-			{
-				System.out.println("Tags name is not present");
-				softAssert.assertEquals(s2, s2);
-				Reporter.log( "[ERROR] -> Tags -> View Screen -> Tags name is not present in Tags View Screen.");
-			}		
-			
-			// desc
-			
-			String s3 =driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[1]/div[3]/div/textarea[1]")).getText();
-			System.out.println("Tags description is_________________________"+s3);
-			
-			if(s3.equals(tags_desc))
-			{
-				System.out.println("Tags name is present");
-				softAssert.assertEquals(s3, tags_desc); 
-			}
-			else
-			{
-				System.out.println("Tags name is not present");
-				softAssert.assertEquals(s3, tags_desc);
-				Reporter.log( "[ERROR] -> Tags -> View Screen -> Tags name is not present in Tags View Screen.");
-			}	
-			
-			softAssert.assertAll();
-			Thread.sleep(2000);			
-			// close
-						
-			WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-			close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+		Thread.sleep(3000);
+		
+		// sponsor name
+		
+		String s1 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[1]/div/input")).getAttribute("value");
+		System.out.println("Sponsor name is_________________________"+s1);
+				
+		if(s1.equals(sponsor_name))
+		{
+				System.out.println("Sponsor name is present");
+				softAssert.assertEquals(s1, sponsor_name); 
+		}
+		else
+		{
+				System.out.println("Sponsor name is not present");
+				softAssert.assertEquals(s1, sponsor_name);
+				Reporter.log( "[ERROR] -> Tags Category -> View Screen -> Sponsor is not present in Sponsor View Category Screen.");
+		}
+		
+		// logo
+		
+		String s2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[2]/div/div/div/img")).getAttribute("src");
+        System.out.println("Logo is_________________________"+s2);
+        
+        if(s2.equals(s2))
+		{
+			System.out.println("logo is present");
+			softAssert.assertEquals(s2, s2); 
+		}
+		else
+		{
+			System.out.println("logo is not present");
+			softAssert.assertEquals(s2, s2);
+			Reporter.log( "[ERROR] -> Content -> View Screen -> Sponsor logo is not present in Sponsor View Screen.");
+		}	
+        
+        Thread.sleep(2000);
+        
+		// close
+								
+		WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
+		close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
 
-			Thread.sleep(4000);	
-			
+		Thread.sleep(4000);
+        
 	 }
 	 
-	// create new tags content with all fields
+//	 @Test (enabled = false)
 	 @Test (priority=5)
-	 public void Create_New_Tags_With_All_Fields() throws InterruptedException
-	 {	
-		 driver.manage().window().maximize();
-		 driver.navigate().refresh();
-		 System.out.println("Tags -> Verifying Create New Tags  With All Information*****************");
-		 Reporter.log("Tags -> Verifying Create New Tags  With All Information");
-		 
-		 
-		 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
-
-		 WebDriverWait Create_tags_click = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 Create_tags_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/div[2]/button[3]"))).click();
-		 
-		 Thread.sleep(1000);	 
-			
-		 //tags name
-		 name2 = driver.findElement(By.id("tag-name"));
-		 name2.sendKeys(tags_name2);
-		 
-		 Thread.sleep(2000);
-		 
-		 // tags category
-		 
-		 WebElement category_click=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div/div[2]/div/div/div/input"));
-		 category_click.click();
-		 
-		 Thread.sleep(3000);
-		 
-		 WebDriverWait cat_select = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 cat_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div/ul/li[1]"))).click();
-		 		  
-		 Thread.sleep(2000);	
-		 
-		//desc		
-		 
-		 desc2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[1]/div[3]/div/textarea[1]"));
-		 desc2.sendKeys(tags_desc2);
-		 
-		 Thread.sleep(2000);
-		 
-		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
-		 		  
-		 Thread.sleep(5000);		 
-		 		 
-	 }
-	 
-//	 @Test (enabled = false)
-	 @Test (priority=6)
-	 public void View_And_Verify_New_Tags() throws InterruptedException 
+	 public void Delete_Sponsor() throws InterruptedException 
 	 {
-		 	driver.manage().window().maximize();
-		 	driver.navigate().refresh();
-		 	
-		 	System.out.println("Tags ->  View The New Created Tags*******************");
-		    Reporter.log("Tags ->  View The New Created Tags");
-		    
-		    WebDriverWait view_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
-			view_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[5]/button[2]"))).click();
+		System.out.println("Tags Catagory -> delete sponsor*******************");
+		Reporter.log("Tags Catagory ->  Delete Sponsor ");
+		
+		WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+		load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
+		 
+		WebDriverWait delete_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
+		delete_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[3]/button[3]"))).click();
 
-			Thread.sleep(3000);
-			
-			// tags name
-			
-			String s1 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[1]/div[1]/div/input")).getAttribute("value");
-			System.out.println("New Tags name is_________________________"+s1);
-			
-			if(s1.equals(tags_name2))
-			{
-				System.out.println("New Tags name is present");
-				softAssert.assertEquals(s1, tags_name2); 
-			}
-			else
-			{
-				System.out.println("New Tags name is not present");
-				softAssert.assertEquals(s1, tags_name2);
-				Reporter.log( "[ERROR] -> Tags -> View Screen ->New Tags name is not present in Tags View Screen.");
-			}		
-			
-						
-			// tags category
-						
-			String s2 =driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[1]/div[2]/div/div/div/input")).getAttribute("value");
-			System.out.println("New Tags category is_________________________"+s2);
-			
-			if(s2.equals(s2))
-			{
-				System.out.println("New Tags name is present");
-				softAssert.assertEquals(s2, s2); 
-			}
-			else
-			{
-				System.out.println("Tags name is not present");
-				softAssert.assertEquals(s2, s2);
-				Reporter.log( "[ERROR] -> Tags -> View Screen -> New Tags name is not present in Tags View Screen.");
-			}		
-			
-			// desc
-			
-			String s3 =driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[1]/div[3]/div/textarea[1]")).getText();
-			System.out.println("Tags description is_________________________"+s3);
-			
-			if(s3.equals(tags_desc2))
-			{
-				System.out.println("New Tags name is present");
-				softAssert.assertEquals(s3, tags_desc2); 
-			}
-			else
-			{
-				System.out.println("New Tags name is not present");
-				softAssert.assertEquals(s3, tags_desc2);
-				Reporter.log( "[ERROR] -> Tags -> View Screen ->New Tags name is not present in Tags View Screen.");
-			}	
-			
-			softAssert.assertAll();
-			Thread.sleep(2000);			
-			// close
-						
-			WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-			close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
-
-			Thread.sleep(4000);	
-		    
-		     
+		Thread.sleep(3000);
+		
+		WebDriverWait delete = new WebDriverWait(driver, Duration.ofSeconds(30));
+		delete.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		
+		Thread.sleep(5000);
 	 }
 	 
-//	 @Test (enabled = false)
-	 @Test (priority=7)
-	 public void View_And_Verify_Delete_Tags() throws InterruptedException 
-	 {
-		 driver.manage().window().maximize();
-		 driver.navigate().refresh();
-		 
-		 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
-		 
-		 System.out.println("Tags -> search and delete the Tags*******************");
-		 Reporter.log("Tags -> Search and Delete The Tags");
-		 
-		 WebElement tags_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
-		 tags_searchbox.sendKeys(tags_name);
-
-		 WebDriverWait delete_icon = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 delete_icon.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[5]/button[3]"))).click();
-	 
-		 Thread.sleep(2000);
-		
-		 WebDriverWait delete = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 delete.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
-		
-		 Thread.sleep(3000); 
-		 
-		 
-						 
-	 }
-	  
 	 @AfterTest
 	 public void closeBrowser() 
 	 {
 	 	driver.quit();
 	 	
 	 }
-		 
-		 
-	 
+	
+
 }
-	 
-	 
-	 
-	 
-
-
