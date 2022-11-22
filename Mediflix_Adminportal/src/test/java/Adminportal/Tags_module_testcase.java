@@ -84,7 +84,7 @@ public class Tags_module_testcase extends admin_user
 		 Thread.sleep(1000);
 		    
 		 WebDriverWait save_click = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 save_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 		 
 		 Thread.sleep(1000);
 		 
@@ -111,7 +111,7 @@ public class Tags_module_testcase extends admin_user
 		 //save   
 		 
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 		 		  
 		 Thread.sleep(5000);
 		 
@@ -142,7 +142,7 @@ public class Tags_module_testcase extends admin_user
 		// close
 								
 		WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-		close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+		close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 
 		Thread.sleep(5000);
 		
@@ -168,7 +168,7 @@ public class Tags_module_testcase extends admin_user
 		 Thread.sleep(2000);
 		 
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 
 		 Thread.sleep(5000);
 		 	 
@@ -184,7 +184,7 @@ public class Tags_module_testcase extends admin_user
 			WebDriverWait view_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 			view_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[5]/button[2]"))).click();
 
-			Thread.sleep(3000);
+			Thread.sleep(6000);
 			
 			// tags name
 			
@@ -243,7 +243,7 @@ public class Tags_module_testcase extends admin_user
 			// close
 						
 			WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-			close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+			close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 
 			Thread.sleep(4000);	
 			
@@ -293,7 +293,7 @@ public class Tags_module_testcase extends admin_user
 		 Thread.sleep(2000);
 		 
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 		 		  
 		 Thread.sleep(5000);		 
 		 		 
@@ -303,16 +303,26 @@ public class Tags_module_testcase extends admin_user
 	 @Test (priority=6)
 	 public void View_And_Verify_New_Tags() throws InterruptedException 
 	 {
+//		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/tags");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
 		 	
 		 	System.out.println("Tags ->  View The New Created Tags*******************");
 		    Reporter.log("Tags ->  View The New Created Tags");
 		    
+		    // load	    		
+		    WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+		    		
+		    // search
+			WebElement searchbox1 = driver.findElement(By.xpath("//input[@type='text']"));
+			searchbox1.sendKeys(tags_name2);
+			
+		    
 		    WebDriverWait view_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 			view_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[5]/button[2]"))).click();
 
-			Thread.sleep(3000);
+			Thread.sleep(6000);
 			
 			// tags name
 			
@@ -371,7 +381,7 @@ public class Tags_module_testcase extends admin_user
 			// close
 						
 			WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-			close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+			close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 
 			Thread.sleep(4000);	
 		    
@@ -408,12 +418,12 @@ public class Tags_module_testcase extends admin_user
 						 
 	 }
 	  
-	 @AfterTest
-	 public void closeBrowser() 
-	 {
-	 	driver.quit();
-	 	
-	 }
+//	 @AfterTest
+//	 public void closeBrowser() 
+//	 {
+//	 	driver.quit();
+//	 	
+//	 }
 		 
 		 
 	 

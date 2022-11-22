@@ -92,7 +92,7 @@ public class Advice_module_testcases extends admin_user
 			
 		 Thread.sleep(1000);
 		    
-		 WebElement savebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
+		 WebElement savebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"));
 		 savebutton.click();
 		 
 		 Thread.sleep(1000);
@@ -111,7 +111,7 @@ public class Advice_module_testcases extends admin_user
 			 
 		 Thread.sleep(1000);
 		 	 
-		 WebElement save_advice=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
+		 WebElement save_advice=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"));
 		 save_advice.click();
 		 
 		 Thread.sleep(3000);
@@ -147,7 +147,7 @@ public class Advice_module_testcases extends admin_user
 		 
 		 Thread.sleep(2000);
 		 
-		 WebElement save_button=driver.findElement(By.xpath("/html/body/div[4]/div[3]/div/div[2]/button[2]"));
+		 WebElement save_button=driver.findElement(By.xpath("/html/body/div[4]/div[3]/div/div[2]/div/button[2]"));
 		 save_button.click();
 		 Thread.sleep(2000);
 		 
@@ -167,7 +167,7 @@ public class Advice_module_testcases extends admin_user
 	 @Test (priority=2)
 	 public void View_And_Verify_Advice_With_Mandatory_Fields() throws InterruptedException 
 	 {
-		 	
+		// 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
 		 	Thread.sleep(10000);
@@ -224,7 +224,7 @@ public class Advice_module_testcases extends admin_user
 					
 					//close button 
 					softAssert.assertAll();
-					WebElement close_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"));
+					WebElement close_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"));
 					close_button.click();
 					Thread.sleep(3000);
 	 }
@@ -233,7 +233,7 @@ public class Advice_module_testcases extends admin_user
 	 @Test (priority=3)
 	 public void Edit_Advice_With_All_Fields() throws InterruptedException 
 	 {
-		 	
+		//  driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
 		 	Thread.sleep(10000);
@@ -269,7 +269,7 @@ public class Advice_module_testcases extends admin_user
 
 			 Thread.sleep(1000);
 			    
-			 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
+			 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"));
 			 selectbutton.click();
 			 
 			 //edit answer  
@@ -310,7 +310,7 @@ public class Advice_module_testcases extends admin_user
 			 Thread.sleep(1000);
 			 // save button from edit answer			 
 			 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-			 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"))).click();
+			 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"))).click();
 		 
 			 Thread.sleep(3000);
 			 
@@ -318,7 +318,7 @@ public class Advice_module_testcases extends admin_user
 			 
 			 
 			 WebDriverWait save_edit_popup = new WebDriverWait(driver, Duration.ofSeconds(30));
-			 save_edit_popup.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+			 save_edit_popup.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 		 
 			 Thread.sleep(3000);
 			 			 
@@ -329,7 +329,7 @@ public class Advice_module_testcases extends admin_user
 	 @Test (priority=4)
 	 public void View_And_Verify_Edited_Advice() throws InterruptedException 
 	 {
-		 	
+		//  driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
 		 	Thread.sleep(10000);
@@ -435,7 +435,7 @@ public class Advice_module_testcases extends admin_user
 					Thread.sleep(3000);
 			//close button
 			 
-			WebElement close_button =driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"));
+			WebElement close_button =driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"));
 			close_button.click();
 			Thread.sleep(2000);
 	 }
@@ -444,6 +444,7 @@ public class Advice_module_testcases extends admin_user
 	 @Test (priority=5)
 	 public void Create_New_Advice_With_All_Fields() throws InterruptedException
 	 {
+		//  driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
 		 	Thread.sleep(10000);
@@ -480,7 +481,7 @@ public class Advice_module_testcases extends admin_user
 		 	tab_topic.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[6]/div[1]/div[1]/label"))).click();
 		 	 Thread.sleep(3000);
 		 	WebDriverWait select = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 	select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"))).click();
+		 	select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"))).click();
 		 
 		/* 														 
 			WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[5]/div/button"));
@@ -502,7 +503,7 @@ public class Advice_module_testcases extends admin_user
 			 System.out.println("tags count is ___________________________"+tagcount2);	 
 			 
 			 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-			 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+			 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 			 	
 			 Thread.sleep(3000);
 			 
@@ -533,7 +534,7 @@ public class Advice_module_testcases extends admin_user
 			 
 			 Thread.sleep(2000);
 			 
-			 WebElement save_button=driver.findElement(By.xpath("/html/body/div[4]/div[3]/div/div[2]/button[2]"));
+			 WebElement save_button=driver.findElement(By.xpath("/html/body/div[4]/div[3]/div/div[2]/div/button[2]"));
 			 save_button.click();
 			 Thread.sleep(5000);
 			 
@@ -551,7 +552,7 @@ public class Advice_module_testcases extends admin_user
 	 @Test (priority=6)
 	 public void View_And_Verify_New_Advice() throws InterruptedException 
 	 {
-		 	
+		//  driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
 		 	Thread.sleep(10000);
@@ -653,7 +654,7 @@ public class Advice_module_testcases extends admin_user
 	
 			//close button
 			
-			WebElement close_button =driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"));
+			WebElement close_button =driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"));
 			close_button.click();
 	 }
 	 
@@ -662,7 +663,7 @@ public class Advice_module_testcases extends admin_user
 	 @Test (priority=7)
 	 public void View_And_Verify_Delete_Advice() throws InterruptedException 
 	 {
-		 	
+		 //	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
 		 	Thread.sleep(10000);
@@ -691,7 +692,7 @@ public class Advice_module_testcases extends admin_user
 											
 			//save button from edit popup
 			WebDriverWait save_edit_popup = new WebDriverWait(driver, Duration.ofSeconds(30));
-			save_edit_popup.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+			save_edit_popup.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 						 
 			Thread.sleep(10000);
 			
@@ -707,12 +708,7 @@ public class Advice_module_testcases extends admin_user
 					
 	 }
 	 
-	 @AfterTest
-	 public void closeBrowser() 
-	 {
-	 	driver.quit();
-	 	
-	 }
+
 	  
 	 
 	

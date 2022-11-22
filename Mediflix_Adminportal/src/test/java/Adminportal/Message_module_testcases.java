@@ -157,7 +157,7 @@ public class Message_module_testcases extends BaseTest
 		 click_bkthread.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div[2]/div[1]/div[2]/div"))).click();
 		 
 		 Thread.sleep(3000);
-		 // message   
+		 // message    
 		 		 
 //		 read_msg = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div[2]/div/div/div[10]/p")).getText();
 //		 System.out.println("message is _______________"+read_msg);

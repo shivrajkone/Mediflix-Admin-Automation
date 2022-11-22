@@ -38,7 +38,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class Connect_Exp_module_testcases extends admin_user
 {
-	ChromeDriver driver; 
+	
 	SoftAssert softAssert = new SoftAssert();
 	
 	WebElement conn;
@@ -89,9 +89,6 @@ public class Connect_Exp_module_testcases extends admin_user
 			+ "</p>\r\n"
 			+ "</div>"; 
 	
-		
-	
-
 	
 	 @Test (priority=1)
 //	 @Test (enabled = false)
@@ -130,7 +127,7 @@ public class Connect_Exp_module_testcases extends admin_user
 		 // save 
 		 
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 		 		
 		 Thread.sleep(4000);
 		 
@@ -190,7 +187,7 @@ public class Connect_Exp_module_testcases extends admin_user
 		// close
 								
 		WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-		close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+		close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 
 		Thread.sleep(4000);
 		
@@ -226,7 +223,7 @@ public class Connect_Exp_module_testcases extends admin_user
 		 // save
 									
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 		 
 		 Thread.sleep(4000);
 		
@@ -304,7 +301,7 @@ public class Connect_Exp_module_testcases extends admin_user
 		// close
 								
 		WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-		close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+		close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 
 		Thread.sleep(4000);
 		
@@ -330,12 +327,12 @@ public class Connect_Exp_module_testcases extends admin_user
 		Thread.sleep(5000);
 	 }
 	 
-	 @AfterTest
-	 public void closeBrowser() 
-	 {
-	 	driver.quit();
-	 	
-	 }
+//	 @AfterTest
+//	 public void closeBrowser() 
+//	 {
+//	 	driver.quit();
+//	 	
+//	 }
 	 	
 
 }

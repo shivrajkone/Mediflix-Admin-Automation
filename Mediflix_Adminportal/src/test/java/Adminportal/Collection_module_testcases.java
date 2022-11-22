@@ -40,6 +40,7 @@ public class Collection_module_testcases extends admin_user
 	WebElement name;
 	WebElement type;
 	WebElement image;
+	WebElement Bg_image;
 	WebElement slug;
 	WebElement banner;
 	WebElement desc;
@@ -98,10 +99,10 @@ public class Collection_module_testcases extends admin_user
 		 Thread.sleep(3000);
 		    
 		 WebDriverWait wait_save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 wait_save.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 wait_save.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 		    
 		 
-		 WebElement savebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
+		 WebElement savebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"));
 		 savebutton.click();
 		 
 		 Thread.sleep(3000);
@@ -113,21 +114,24 @@ public class Collection_module_testcases extends admin_user
 		 name= driver.findElement(By.id("collection-name"));
 		 name.sendKeys(coll_name);
 		 
-		 type = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[2]/div/div"));
-	     type.click();
+		 Thread.sleep(2000);
+		 // collection type   
+		 type = driver.findElement(By.xpath("(//*[@class='MuiAutocomplete-endAdornment css-2iz2x6'])[1]"));
 		 
-  	     
+		 type.click();
+	     
+		 Thread.sleep(2000);
+		 												  
 	     WebElement click_coll=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[3]/div/ul/li[4]"));
 	     click_coll.click();
 	     
 	     Thread.sleep(5000);
 	      
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Save']"))).click();
 		 
 		 Thread.sleep(10000);
-		 
-    
+	
 		
 	     
 	 }
@@ -136,6 +140,7 @@ public class Collection_module_testcases extends admin_user
 	 @Test (priority=3)
 	 public void View_And_Verify_Collection_With_Mandatory_Fields() throws InterruptedException  
 	 {
+//		    driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/collections");
 		    driver.manage().window().maximize();
 		    Thread.sleep(5000);
 		    driver.navigate().refresh();
@@ -203,7 +208,7 @@ public class Collection_module_testcases extends admin_user
 			Thread.sleep(5000);
 			
 			 WebDriverWait wait_close = new WebDriverWait(driver, Duration.ofSeconds(30));
-			 wait_close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+			 wait_close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 			    	
 			 Thread.sleep(10000);
 		 }
@@ -211,7 +216,8 @@ public class Collection_module_testcases extends admin_user
 //		@Test (enabled = false)
 		 @Test (priority=4)
 		 public void Edit_Collection_With_All_Fields() throws InterruptedException 
-		 {
+		 {		
+//			 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/collections");
 			    driver.manage().window().maximize();
 			    driver.navigate().refresh();
 //			    Thread.sleep(10000);
@@ -233,7 +239,8 @@ public class Collection_module_testcases extends admin_user
 				    	
 			    Thread.sleep(3000);
 			    
-			    //image
+			    
+			    //collection image
 			    image = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[3]/button/p"));
 			    image.click();
 			    
@@ -247,22 +254,39 @@ public class Collection_module_testcases extends admin_user
 			    
 			    WebElement select_button = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[2]/button[2]"));
 			    select_button.click();
-			    //slug 
-			    slug = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[4]/div/input"));
-			    slug.sendKeys(coll_slug);
 			    
-			        
-			    desc = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[6]/div/textarea[1]"));
-			    desc.sendKeys(coll_desc);
+			    Thread.sleep(2000);
+			    
+			    //bg image  
+			    Bg_image = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[4]/button/p"));
+			    Bg_image.click();
+			    Thread.sleep(2000);
+			    
+			    WebDriverWait wait_bg_image = new WebDriverWait(driver, Duration.ofSeconds(30));
+			    wait_bg_image.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[1]/div/div[2]/div[2]/div[1]/div/img"))).click();
+			    
+			    Thread.sleep(3000);
+			   //select button
+			    
+			    WebElement select_button2 = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[2]/button[2]"));
+			    select_button2.click();
+			    
+			    //slug 
+			    slug = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[5]/div/input"));
+			    slug.sendKeys(coll_slug);
 			    
 			    //banner 
 			    
 			    WebDriverWait banner_click = new WebDriverWait(driver, Duration.ofSeconds(30));
-			    banner_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[5]/div/div/input"))).click();
+			    banner_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[6]/div/div/input"))).click();
 			    
 			    WebDriverWait banner_select = new WebDriverWait(driver, Duration.ofSeconds(30));
-			    banner_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[6]/div/ul/li[16]"))).click();
+			    banner_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[7]/div/ul/li[3]"))).click();
 			        			    
+			    //description
+			    desc = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[7]/div/textarea[1]"));
+			    desc.sendKeys(coll_desc);
+			    
 			    //video click 
 			    video=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[1]/div/div/div/input"));
 			    video.click();
@@ -324,7 +348,7 @@ public class Collection_module_testcases extends admin_user
 			    m6.click();
 			    
 			    //tags
-			    WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[7]/div/button"));
+			    WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[8]/div/button"));
 			    tab_button.click();
 				    
 			     Thread.sleep(2000);
@@ -334,13 +358,13 @@ public class Collection_module_testcases extends admin_user
 							  
 				 Thread.sleep(2000);
 				    
-				 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
+				 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"));
 				 selectbutton.click();
 				    
 				 Thread.sleep(5000);
 			    
 				 WebDriverWait save_click = new WebDriverWait(driver, Duration.ofSeconds(30));
-				 save_click.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+				 save_click.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 				 
 				 Thread.sleep(10000);
 			    
@@ -350,6 +374,7 @@ public class Collection_module_testcases extends admin_user
 	     @Test (priority=5)
 		 public void View_And_Verify_Edited_Collection_() throws InterruptedException 
 		 {
+//	    	    driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/collections");
 	    	 	driver.manage().window().maximize();
 	    	 	 Thread.sleep(5000);
 			    driver.navigate().refresh();
@@ -557,8 +582,8 @@ public class Collection_module_testcases extends admin_user
 				softAssert.assertAll();
 	 	 
 				WebDriverWait wait_close = new WebDriverWait(driver, Duration.ofSeconds(30));
-				wait_close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
-				    	
+				wait_close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
+																				   
 				Thread.sleep(3000);
 				
 		 } 
@@ -567,6 +592,7 @@ public class Collection_module_testcases extends admin_user
 	     @Test (priority=6)
 		 public void Create_New_Collection_With_All_Fields() throws InterruptedException
 		 {
+	    	 driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/collections");
 			 driver.manage().window().maximize();
 			 driver.navigate().refresh();
 			 Thread.sleep(10000);
@@ -597,7 +623,7 @@ public class Collection_module_testcases extends admin_user
 		     WebElement click_coll=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[3]/div/ul/li[4]"));
 		     click_coll.click();
 		     
-		   //image
+		   //colection image
 			    image2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[3]/button"));
 			    image2.click();
 			    
@@ -612,19 +638,36 @@ public class Collection_module_testcases extends admin_user
 			    WebElement select_button = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[2]/button[2]"));
 			    select_button.click();
 			    
-			    slug2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[4]/div/input"));
+			  //background image
+			    WebElement bg_image2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[4]/button"));
+			    bg_image2.click();					                
+			    
+			    Thread.sleep(2000);
+			    
+			    WebDriverWait wait_image2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			    wait_image2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[1]/div/div[2]/div[2]/div[1]/div/img"))).click();
+			    
+			    Thread.sleep(3000);
+			   //select button
+			    
+			    WebElement select_button2 = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div/div/div[2]/button[2]"));
+			    select_button2.click();
+			    
+			    
+			    slug2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[5]/div/input"));
 			    slug2.sendKeys(coll_slug2);
 			    
-			        
-			    desc2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[6]/div/textarea[1]"));
-			    desc2.sendKeys(coll_desc2);
-			    
 			    //banner click 
-			    banner2=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[5]/div/div/input"));
+			    banner2=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[6]/div/div/input"));
 			    banner2.click();
 			    //select banner
-			    WebElement banner_select=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[6]/div/ul/li[16]"));
+			    WebElement banner_select=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[7]/div/ul/li[3]"));
 			    banner_select.click();
+			    
+			    desc2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[7]/div/textarea[1]"));
+			    desc2.sendKeys(coll_desc2);
+			    
+			    
 			    
 			    //video click 
 			    video2=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[1]/div/div/div/input"));
@@ -639,10 +682,16 @@ public class Collection_module_testcases extends admin_user
 			    
 			    //child click 
 			    child2=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div[2]/div/div/div/input"));
-			    child2.click();
-			    //child select 
-			    WebElement child_select=driver.findElement(By.xpath("/html/body/div[3]/div/ul/li[3]"));
-			    child_select.click();
+			    child2.sendKeys(coll_name);
+			    Thread.sleep(2000);
+//			    //child select 
+//			    WebElement child_select=driver.findElement(By.xpath("/html/body/div[3]/div/ul/li[3]"));
+//			    child_select.click();
+			    // select the searched collection
+			    WebElement search_select = driver.findElement(By.xpath("/html/body/div[3]/div/ul/li"));
+			    search_select.click();
+			    
+			    
 			    WebElement m2=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/h2/p"));
 			    m2.click();
 			    
@@ -687,7 +736,7 @@ public class Collection_module_testcases extends admin_user
 			    m6.click();
 			    
 			    //tags
-			    WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[7]/div/button"));
+			    WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[8]/div/button"));
 			    tab_button.click();
 				    
 			     Thread.sleep(2000);
@@ -697,29 +746,25 @@ public class Collection_module_testcases extends admin_user
 							  
 				 Thread.sleep(2000);
 				    
-				 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
+				 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"));
 				 selectbutton.click();
 				    
 				 Thread.sleep(10000);
 			    
-				 WebElement save_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
+				 WebElement save_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"));
 				 save_button.click();
 				 
 				 Thread.sleep(10000);
-				  
-//				 WebDriverWait after_save = new WebDriverWait(driver, Duration.ofSeconds(30));
-//				 after_save.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]")));
-				    
-				 
-			 
+		 
 		 }	 
 
-//	 	@Test (enabled = false)
+//	 	 @Test (enabled = false)
 	     @Test (priority=7)
 	 	 public void View_And_Verify_New_Collection_() throws InterruptedException 
 	 	 {
+//	    	 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/collections");
 	    	 	driver.manage().window().maximize();
-	    	 	 Thread.sleep(5000);
+	    	 	Thread.sleep(5000);
 	 		    driver.navigate().refresh();
 	 		 		 	
 	 		 	Thread.sleep(10000);
@@ -920,17 +965,87 @@ public class Collection_module_testcases extends admin_user
 	 				}			
 	 							
 	 				softAssert.assertAll();
+	 				
+	 				Thread.sleep(2000);
+	 				
+	 				
 	 	 	 
 	 				WebDriverWait wait_close = new WebDriverWait(driver, Duration.ofSeconds(30));
-	 				wait_close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+	 				wait_close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 	 				    	
 	 				Thread.sleep(3000);
 	 	 }
 	     
 //	 	 @Test (enabled = false)
 	     @Test (priority=8)
+	 	 public void Verify_Parent_Collection() throws InterruptedException 
+	 	 {
+	    	    driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/collections");
+			    driver.manage().window().maximize();
+			    Thread.sleep(5000);
+			    driver.navigate().refresh();
+			    Thread.sleep(3000);
+			    
+			 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+				load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[8]/button[2]")));
+			    
+				
+			    System.out.println("Collection -> search and view the newly created collection*******************");
+			    Reporter.log("Collection -> Search And View The Newly Created Collection");
+			    
+				WebElement coll_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
+				coll_searchbox.sendKeys(coll_name);
+			 
+				Thread.sleep(3000);
+				
+				 WebDriverWait wait_view = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 wait_view.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[8]/button[2]"))).click();
+				    			
+	 			Thread.sleep(2000);
+	 			 
+	 			// verify the parent collection 
+	 				
+	 				WebElement click_parent_coll = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/h2/button"));
+	 				click_parent_coll.click();
+	 				
+	 				//  load
+	 				WebDriverWait wait_parent_coll = new WebDriverWait(driver, Duration.ofSeconds(30));
+	 				wait_parent_coll.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[3]/div/div[1]/ul")));
+	 				    	
+	 				//read
+	 				String Verify_parent_coll =driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/ul")).getText();
+	 				System.out.println("Parent collections are___________________________"+Verify_parent_coll);
+	 				
+	 				if(Verify_parent_coll.equals(Verify_parent_coll))
+	 				{
+	 						System.out.println("Parent collection is present");
+	 						softAssert.assertEquals(Verify_parent_coll, Verify_parent_coll); 
+	 				 }
+	 				 else
+	 				 {
+	 						System.out.println("Parent collection is not present");
+	 						softAssert.assertEquals(Verify_parent_coll, Verify_parent_coll);
+	 						Reporter.log( "[ERROR] -> Collection -> View Screen -> Parent collection is not present in Collection view screen.");
+	 				 }		
+	 			 
+	 				// close parent  /html/body/div[3]/div[3]/div/div[2]/button
+	 				 
+	 				 WebDriverWait wait_close_parent = new WebDriverWait(driver, Duration.ofSeconds(30));
+	 				 wait_close_parent.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button"))).click();
+	 				
+	 				// close view  
+	 				
+	 				 WebDriverWait wait_close = new WebDriverWait(driver, Duration.ofSeconds(30));
+	 				 wait_close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
+	 			
+	 	 }
+	     
+//	 	 @Test (enabled = false)
+	     @Test (priority=9)
 	 	 public void Delete_New_Collection_() throws InterruptedException 
 	 	 {
+	    	 
+//	    	 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/collections");
 	     	    driver.manage().window().maximize();
 	     	    driver.navigate().refresh();
 	     	    Thread.sleep(10000);
@@ -956,6 +1071,9 @@ public class Collection_module_testcases extends admin_user
 	 			Thread.sleep(4000);
 	 			 	 	
 	 	   }
+	     
+	     
+	     
 	     
 	 	@Test (enabled = false)
 //		 @Test (priority=9)
@@ -1004,12 +1122,12 @@ public class Collection_module_testcases extends admin_user
 				
 			}
 	     
-	 	@AfterTest
-		 public void closeBrowser() 
-	 	{
-		 	driver.quit();
-		 	
-		 }
+//	 	@AfterTest
+//		 public void closeBrowser() 
+//	 	{
+//		 	driver.quit();
+//		 	
+//		 }
 	
 }
 

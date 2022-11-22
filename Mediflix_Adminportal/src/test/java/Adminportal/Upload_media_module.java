@@ -39,7 +39,7 @@ public class Upload_media_module extends admin_user
 	
 	SoftAssert softAssert = new SoftAssert();
 
-	String File_path ="C://Users//Prasad_aute//Downloads//mediflix//Videos file//BBC.Planet.Earth.mkv";
+	String File_path ="C://Users//Prasad_aute//Downloads//mediflix//Videos file//1234_MP4_1920_18MG.mp4";
 	String Status;
 	String Brighcove_ID;
 	String Folder;
@@ -100,13 +100,11 @@ public class Upload_media_module extends admin_user
 		
 		 //logic for length of video 
 		 
-		 WebDriverWait pwait = new WebDriverWait(driver, Duration.ofSeconds(90));
+		 WebDriverWait pwait = new WebDriverWait(driver, Duration.ofSeconds(5000));
 		 boolean progress_status= pwait.until(ExpectedConditions.attributeToBe(Progress_bar, "aria-valuenow", "100"));
-		 if(progress_status==true)
-		 {
-			 pwait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div/div/div[2]/span[2]")));
+		 pwait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div/div/div[2]/span[2]")));
 			 
-		 }
+		
 		 		 
 		 // brightcove id
 		 String s1 = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div/div/span")).getText();
@@ -124,6 +122,7 @@ public class Upload_media_module extends admin_user
 		 s4 = s4.substring(8);
 		 System.out.println("Folder name________________"+s4);
 		 Folder = s4;
+		 
 		 		 	 
 		//status
 		 String s2 =driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div/div/div[2]/span[2]")).getText();

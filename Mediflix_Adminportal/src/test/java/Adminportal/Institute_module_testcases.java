@@ -91,7 +91,7 @@ public class Institute_module_testcases extends admin_user
 		 Thread.sleep(3000);
 		    
 		 WebDriverWait wait_save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 wait_save.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 wait_save.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 
 		 Thread.sleep(2000);
 		 
@@ -134,7 +134,7 @@ public class Institute_module_testcases extends admin_user
 		  Thread.sleep(5000);
 	     
 	      WebDriverWait wait_save2 = new WebDriverWait(driver, Duration.ofSeconds(30));
-	      wait_save2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+	      wait_save2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 		 		
 //	     WebElement savebutton2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
 //		 savebutton2.click();
@@ -177,7 +177,7 @@ public class Institute_module_testcases extends admin_user
 			{
 				System.out.println("Institution name is not present");
 				AssertJUnit.assertEquals(s1, inst_name);
-				Reporter.log( "[ERROR] -> Institution -> View Screen -> Institution Name Is Not Present In Banner view Screen.");
+				Reporter.log( "[ERROR] -> Institution -> View Screen -> Institution Name Is Not Present In Institution view Screen.");
 			}
 			
 			// logo and image
@@ -194,7 +194,7 @@ public class Institute_module_testcases extends admin_user
 			{
 					System.out.println("logo is not present");
 					AssertJUnit.assertEquals(s8, s8);
-					Reporter.log( "[ERROR] -> Institution -> View Screen -> Institution Logo is not present in Banner View Screen.");
+					Reporter.log( "[ERROR] -> Institution -> View Screen -> Institution Logo is not present in Institution View Screen.");
 					
 			}
 		 
@@ -210,7 +210,7 @@ public class Institute_module_testcases extends admin_user
 			{
 					System.out.println("image is not present");
 					AssertJUnit.assertEquals(s9, s9);
-					Reporter.log( "[ERROR] -> Institution -> View Screen -> Institution Image is not present in Banner View Screen.");
+					Reporter.log( "[ERROR] -> Institution -> View Screen -> Institution Image is not present in Institution View Screen.");
 					
 			}
 			
@@ -219,7 +219,7 @@ public class Institute_module_testcases extends admin_user
 			//close button
 			
 			 WebDriverWait wait_close = new WebDriverWait(driver, Duration.ofSeconds(30));
-			 wait_close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+			 wait_close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 			    	
 			 Thread.sleep(3000);
 			
@@ -291,7 +291,7 @@ public class Institute_module_testcases extends admin_user
 								
 				Thread.sleep(5000);
 				
-				WebElement save_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
+				WebElement save_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"));
 				 Thread.sleep(1000);
 				save_button.click();
 				
@@ -476,7 +476,7 @@ public class Institute_module_testcases extends admin_user
 					softAssert.assertAll();
 				 	 
 					WebDriverWait wait_close = new WebDriverWait(driver, Duration.ofSeconds(30));
-					wait_close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+					wait_close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 					    	
 					Thread.sleep(3000);
 				
@@ -583,7 +583,7 @@ public class Institute_module_testcases extends admin_user
 								  
 					 Thread.sleep(1000);
 					    
-					 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
+					 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"));
 					 selectbutton.click();
 					    
 					 Thread.sleep(1000);
@@ -594,8 +594,8 @@ public class Institute_module_testcases extends admin_user
 					
 					 Thread.sleep(5000);
 					 
-					 WebElement savebutton2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
-					 savebutton2.click();
+					 WebElement savebutton2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"));
+					 savebutton2.click();		                           
 					 
 					 Thread.sleep(10000);
 							 	
@@ -779,7 +779,7 @@ public class Institute_module_testcases extends admin_user
 					softAssert.assertAll();
 				 	 
 					WebDriverWait wait_close = new WebDriverWait(driver, Duration.ofSeconds(30));
-					wait_close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+					wait_close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 					    	
 					Thread.sleep(3000);
 		   	
@@ -826,11 +826,11 @@ public class Institute_module_testcases extends admin_user
 				
 			} 
 		    
-		    @AfterTest
-			 public void closeBrowser() {
-			 	driver.quit();
-			 	
-			 }
+//		    @AfterTest
+//			 public void closeBrowser() {
+//			 	driver.quit();
+//			 	
+//			 }
 
 	
 }

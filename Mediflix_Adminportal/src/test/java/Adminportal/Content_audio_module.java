@@ -37,7 +37,7 @@ import org.openqa.selenium.TakesScreenshot;
  
 public class Content_audio_module extends admin_user
 {
-	
+	 
 	SoftAssert softAssert = new SoftAssert();
 	
 	WebElement title;

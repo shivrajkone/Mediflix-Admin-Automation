@@ -105,7 +105,7 @@ public class Tags_relationship extends admin_user
 		 //save  
 		 
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 		 
 		 Thread.sleep(4000);
 	 
@@ -184,7 +184,7 @@ public class Tags_relationship extends admin_user
 		
 		//close 
 		 WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+		 close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 		 
 		 Thread.sleep(4000);
 		
@@ -221,7 +221,7 @@ public class Tags_relationship extends admin_user
 		 //save  
 		 
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 		 
 		 Thread.sleep(4000);
 		
@@ -301,7 +301,7 @@ public class Tags_relationship extends admin_user
 		
 		//close  
 		 WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+		 close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 		 
 		 Thread.sleep(4000);
 
@@ -311,7 +311,7 @@ public class Tags_relationship extends admin_user
 	 @Test (priority=5)
 	 public void Delete_Tags_Relationship() throws InterruptedException 
 	 {
-		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/tag-relationship");
+//		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/tag-relationship");
 		 
 		System.out.println("Tags relationship -> Delete Tags Relationship*******************");
 		Reporter.log("Tags relationship  ->  Delete Tags Relationship");
@@ -330,12 +330,7 @@ public class Tags_relationship extends admin_user
 		Thread.sleep(3000);
 		
 	 }
-	 @AfterTest
-	 public void closeBrowser() 
-	 {
-	 	driver.quit();
-	 	
-	 }
+
 		 
 	
 }

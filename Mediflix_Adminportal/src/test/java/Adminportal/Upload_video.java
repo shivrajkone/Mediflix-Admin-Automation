@@ -13,6 +13,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
+
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.ArrayList;
@@ -40,7 +42,7 @@ public class Upload_video extends admin_user
 {
 	SoftAssert softAssert = new SoftAssert();
 
-	String File_path ="C://Users//Prasad_aute//Downloads//mediflix//Videos file//BBC.Planet.Earth.mkv";
+	String File_path ="C://Users//Prasad_aute//Downloads//mediflix//Videos file//1234_MP4_1920_18MG.mp4";
 	String Status;
 	String Brighcove_ID;
 	String Folder;
@@ -89,11 +91,26 @@ public class Upload_video extends admin_user
 		 Thread.sleep(2000);
 		 
 		 // click and create new folder
+		 DateFormat dateFormat = new SimpleDateFormat("dd MMM HH:mm");
+		 Date date = new Date();
+		 String date1= dateFormat.format(date);
+		 System.out.println("Current date and time is " +date1.toString());
 		 
+		 WebElement create_folder = driver.findElement(By.xpath("//*[@id='select-folder']"));
+		 create_folder.sendKeys(date1);
 		 
+		 Thread.sleep(2000);
+		 // click create folder   
 		 
+		 WebElement click_create_folder = driver.findElement(By.xpath("/html/body/div[2]/div/ul"));
+		 click_create_folder.click();
 		 
+		 Thread.sleep(2000);
+		 //click ramdom
+		 WebElement click_ramdom= driver.findElement(By.xpath("/html/body/div/div/div[2]/header/div"));
+		 click_ramdom.click();
 		 
+		 Thread.sleep(2000);
 //		 //select
 //		 WebDriverWait select_folder = new WebDriverWait(driver, Duration.ofSeconds(30));
 //		 select_folder.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div/ul/li[7]"))).click();
@@ -106,7 +123,7 @@ public class Upload_video extends admin_user
 		 Thread.sleep(4000);
 		 WebElement Progress_bar = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div/div/div[2]/span[1]"));
 			
-		 WebDriverWait pwait = new WebDriverWait(driver, Duration.ofSeconds(90));
+		 WebDriverWait pwait = new WebDriverWait(driver, Duration.ofSeconds(5000));
 		 boolean progress_status= pwait.until(ExpectedConditions.attributeToBe(Progress_bar, "aria-valuenow", "100"));
 		 if(progress_status==true)
 		 {
@@ -126,8 +143,8 @@ public class Upload_video extends admin_user
 		 Filename = s3;
 	 	  
 		 // folder name  
-		 String s4 = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div/div/p")).getText();
-		 s4 = s4.substring(8);
+		 String s4 = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/main/div[2]/div/div/div[1]/div[2]/div/div/div/div/input")).getAttribute("value");
+//		 s4 = s4.substring(8);
 		 System.out.println("Folder name________________"+s4);
 		 Folder = s4;
 		 		 	 
@@ -138,6 +155,126 @@ public class Upload_video extends admin_user
 		 
 		 Thread.sleep(4000);
 	 }
-
+	 
+	 @Test (priority=2)
+//	 @Test (enabled = false)
+	 public  void Verify_Upload_Videos() throws InterruptedException 
+	 {
+		 driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/upload");
+		 driver.manage().window().maximize();
+		 driver.navigate().refresh();
+		 Thread.sleep(4000);
+		 
+		 WebDriverWait click_video = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 click_video.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/div/div/div[1]/button[4]"))).click();
+	
+		 Thread.sleep(4000);
+		 	
+		 System.out.println("Verify Upload video -> search and view the newly created uploaded video***********");
+		 Reporter.log("Verify Upload video -> Search And View The Newly Created Uploaded Video");
+		 
+		 //search 
+		 
+		 WebElement searchbox = driver.findElement(By.xpath("//input[@type='text']"));
+		 searchbox.sendKeys(Brighcove_ID);
+		 
+		 Thread.sleep(4000);
+		 
+		 // load 
+		 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div/div[2]")));
+		 System.out.println("element is loaded");
+		
+		 
+		 WebDriverWait click_search_video = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 click_search_video.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div/div[12]/button[3]"))).click();
+		 System.out.println("element is clicked");
+		 Thread.sleep(4000);
+		 
+		  view_filename = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div/div/div/div[1]/div/div/div[1]/div/textarea[1]")).getText();
+		
+		 // verify the file name
+		 if(view_filename.equals(Filename))
+		 {
+				System.out.println("Video file name is present");
+				softAssert.assertEquals(view_filename, Filename); 
+		 }
+		 else
+		 {
+				System.out.println("Video file name is not present");
+				softAssert.assertEquals(view_filename, Filename);
+				Reporter.log( "[ERROR] -> Content -> View Screen -> Video file name is not present in Content view screen.");
+		 }		
+		 
+		 // Brightcove ID
+		 
+		 view_brightcove_id = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div/div/div/div[2]/div/div[1]/div[1]/div/input")).getAttribute("value");
+		
+		 if(view_brightcove_id.equals(Brighcove_ID))
+		 {
+				System.out.println("Video Brighcove_ID is present");
+				softAssert.assertEquals(view_brightcove_id, Brighcove_ID); 
+		 }
+		 else
+		 {
+				System.out.println("Video Brighcove_ID is not present");
+				softAssert.assertEquals(view_brightcove_id, Brighcove_ID);
+				Reporter.log( "[ERROR] -> Content -> View Screen -> Video Brighcove_ID is not present in Content view screen.");
+		 }		
+		 
+		 	softAssert.assertAll();
+			Thread.sleep(2000);
+			//close button
+	 
+			WebElement close_button =driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/header/div/button[2]"));
+			close_button.click();
+			Thread.sleep(2000);
+		 
+			// search for folder
+			driver.navigate().refresh();
+			
+			 WebDriverWait click_video2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			 click_video2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/div/div/div[1]/button[4]"))).click();
+		
+			 Thread.sleep(4000);
+			 	
+			 System.out.println("Verify Upload video -> search and view the folder***********");
+			 Reporter.log("Verify Upload video -> Search And View The Folder");
+			 
+			 //search 
+			 
+			 WebElement searchbox2 = driver.findElement(By.xpath("//input[@aria-label='search folders']"));
+			 searchbox2.sendKeys(Folder);
+			 
+			 //click  
+			 
+			 WebDriverWait result_click = new WebDriverWait(driver, Duration.ofSeconds(30));
+			 result_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[1]/ul/div[2]/div/p"))).click();
+		
+			 // 
+			 
+			 String result_folder = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[1]/ul/div[2]/div/p")).getText();
+			 System.out.println("folder name is_______________"+result_folder);
+			 
+			 if(result_folder.equals(Folder))
+			 {
+				 System.out.println("folder name is same");
+				 softAssert.assertEquals(result_folder, Folder); 
+			 }
+			 else
+			 {
+				 System.out.println("folder name is not same");
+				 softAssert.assertEquals(result_folder, Folder); 
+				 Reporter.log( "[ERROR] -> Upload Video-> Search -> Folder Name Is Not Same.");
+				 
+			 }
+			 
+			 
+			 
+			 
+			 
+	 }
+	 
+	 
 	
 }

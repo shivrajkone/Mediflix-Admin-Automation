@@ -89,7 +89,7 @@ public class Tags_category  extends admin_user
 		// save
 				 
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 		 
 		 Thread.sleep(4000);
 		 
@@ -132,7 +132,7 @@ public class Tags_category  extends admin_user
 		// close
 								
 		WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-		close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+		close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 
 		Thread.sleep(4000);
 		
@@ -161,7 +161,7 @@ public class Tags_category  extends admin_user
 		 // save
 									
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 		 
 		 Thread.sleep(4000);
 		
@@ -169,7 +169,8 @@ public class Tags_category  extends admin_user
 //	 @Test (enabled = false)
 	 @Test (priority=4)
 	 public void View_And_Verify_Edited_Tags_Category() throws InterruptedException 
-	 {
+	 { 
+		
 		System.out.println("Tags Catagory -> view and verify edited Tags Catagory*******************");
 		Reporter.log("Tags Catagory ->  View The Edited Created Tags Catagory ");
 		
@@ -206,7 +207,7 @@ public class Tags_category  extends admin_user
 		// close
 								
 		WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-		close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+		close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 
 		Thread.sleep(4000);
 		
@@ -219,7 +220,7 @@ public class Tags_category  extends admin_user
 		Reporter.log("Tags Catagory ->  Delete Tags Catagory ");
 		
 		WebDriverWait load_category = new WebDriverWait(driver, Duration.ofSeconds(30));
-		load_category.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+		load_category.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]"))).click();
 		 
 		WebDriverWait delete_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 		delete_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[3]/button[3]"))).click();
@@ -231,12 +232,12 @@ public class Tags_category  extends admin_user
 		
 		Thread.sleep(5000);
 	 }
-	 @AfterTest
-	 public void closeBrowser() 
-	 {
-	 	driver.quit();
-	 	
-	 }
+//	 @AfterTest
+//	 public void closeBrowser() 
+//	 {
+//	 	driver.quit();
+//	 	
+//	 }
 		 
 
 }
