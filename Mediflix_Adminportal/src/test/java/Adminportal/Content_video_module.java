@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.WebStorage;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import org.apache.logging.log4j.LogManager;
@@ -76,14 +77,13 @@ public class Content_video_module extends admin_user
 //	 @Test (enabled = false)
 	 public void Create_Content_With_Madatory_fields() throws InterruptedException 
 	 {
-		 driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com");
-		    
+		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
+			driver.manage().window().maximize();
+	    	driver.navigate().refresh();
+	    
 		    Thread.sleep(5000);
 		    
-		    WebElement click_content  = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div/div[1]/button[4]"));
-		    click_content.click();		
-		    
-		    Thread.sleep(10000);
+		   
 		 
 		 System.out.println("Content -> Verifying Mandatory Fields Validation Is Working Or Not**************");
 		 
@@ -123,9 +123,9 @@ public class Content_video_module extends admin_user
 	 @Test (priority=2)
 	 public void View_And_Verify_Content_With_Mandatory_Fields() throws InterruptedException 
 	 {
-		 	
-		 	driver.manage().window().maximize();
-		 	driver.navigate().refresh();
+		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
+			driver.manage().window().maximize();
+	    	driver.navigate().refresh();
 		 	
 		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 	load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/div[1]"))).click();
@@ -140,13 +140,21 @@ public class Content_video_module extends admin_user
 			
 			WebDriverWait view_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 			view_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/div[12]/button[3]"))).click();
-
+			
+			Thread.sleep(2000);
+			
 			// content name
 			
 			String s1 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div/div/div/div[1]/div/div/div[1]/div/textarea[1]")).getText();
 	        System.out.println("content name is_________________________"+s1);
 	        
+	        Thread.sleep(5000);
 	        
+	        //close  
+	        WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
+			close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/header/div/button[2]"))).click();
+	        
+	    	Thread.sleep(3000);
 	 
 	 
 	 }
@@ -155,8 +163,9 @@ public class Content_video_module extends admin_user
 	 @Test (priority=3)
 	 public void Edit_Content_With_All_Fields() throws InterruptedException 
 	 {
-		 	driver.manage().window().maximize();
-		 	driver.navigate().refresh();
+		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
+			driver.manage().window().maximize();
+	    	driver.navigate().refresh();
 		 	
 		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 	load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/div[1]"))).click();
@@ -193,18 +202,18 @@ public class Content_video_module extends admin_user
 			 
 			 WebDriverWait click_ramdom = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 click_ramdom.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/header/div/div"))).click();
-
+			 Thread.sleep(2000);
 			//tags
 			 
 			 WebDriverWait tags_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 tags_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div/div/div/div[3]/div/div/div[2]/div/button"))).click();
-
+			 Thread.sleep(2000);
 			 WebDriverWait tags_select = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 tags_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[3]/div[1]/div[1]/input"))).click();
-			 	 
+			 Thread.sleep(2000);
 			 WebDriverWait select_button = new WebDriverWait(driver, Duration.ofSeconds(30));
-			 select_button.until(ExpectedConditions.presenceOfElementLocated(By.xpath(" /html/body/div[3]/div[3]/div/div[2]/button[2]"))).click();
-
+			 select_button.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"))).click();
+			 Thread.sleep(2000);
 			 //sponsor
 			 WebDriverWait sponsor_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 sponsor_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div/div/div/div[3]/div/div/div[3]/div[1]/div/div/input"))).click();
@@ -281,8 +290,9 @@ public class Content_video_module extends admin_user
 	 @Test (priority=4)
 	 public void View_And_Verify_Edited_Advice() throws InterruptedException 
 	 {
-		 	driver.manage().window().maximize();
-		 	driver.navigate().refresh();
+		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
+			driver.manage().window().maximize();
+	    	driver.navigate().refresh();
 		 	
 		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 	load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/div[1]"))).click();
@@ -449,9 +459,29 @@ public class Content_video_module extends admin_user
 				Reporter.log( "[ERROR] -> Content -> View Screen -> Content Connect Exp is not present in Content View Screen.");
 			}	
 	        
+	   
+	        Thread.sleep(3000);
+	        
+	        //view parent collection 
+	        //click  
+	        WebDriverWait view_parent_coll = new WebDriverWait(driver, Duration.ofSeconds(30));
+	        view_parent_coll.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/header/div/button[1]"))).click();
+			  
+	        //load 
+	        WebDriverWait load_parent = new WebDriverWait(driver, Duration.ofSeconds(30));
+	        load_parent.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/ul"))).click();
+			 
+	        //read parent collection 
+	        String s10 =driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/ul")).getText();
+	        System.out.println("Parent collection is _______________________"+s10);
+	        
+	        //close parent_coll 
+	        WebDriverWait close_parent_coll = new WebDriverWait(driver, Duration.ofSeconds(30));
+	        close_parent_coll.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button"))).click();
+			 
+	        Thread.sleep(3000);
 	        
 	        softAssert.assertAll();
-	        
 	        
 	        WebDriverWait close_view = new WebDriverWait(driver, Duration.ofSeconds(30));
 			close_view.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/header/div/button[2]"))).click();
@@ -464,9 +494,9 @@ public class Content_video_module extends admin_user
 		 @Test (priority=5)
 		 public void Create_New_Content_With_All_Fields() throws InterruptedException
 		 {		
-			 	driver.navigate().refresh();
-			 	driver.manage().window().maximize();
-			 	driver.navigate().refresh();
+			 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
+				driver.manage().window().maximize();
+		    	driver.navigate().refresh();
 			 	
 			 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 	load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/div[1]"))).click();
@@ -503,18 +533,18 @@ public class Content_video_module extends admin_user
 				 
 				 WebDriverWait click_ramdom = new WebDriverWait(driver, Duration.ofSeconds(30));
 				 click_ramdom.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/header/div/div"))).click();
-
+				 Thread.sleep(3000);
 				//tags
 				 
 				 WebDriverWait tags_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 				 tags_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div/div/div/div[3]/div/div/div[2]/div/button"))).click();
-
+				 Thread.sleep(2000);
 				 WebDriverWait tags_select = new WebDriverWait(driver, Duration.ofSeconds(30));
-				 tags_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[3]/div[1]/div[1]/input"))).click();
-				 	 
+				 tags_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[7]/div[1]/div[1]/input"))).click();
+				 Thread.sleep(2000);
 				 WebDriverWait select_button = new WebDriverWait(driver, Duration.ofSeconds(30));
-				 select_button.until(ExpectedConditions.presenceOfElementLocated(By.xpath(" /html/body/div[3]/div[3]/div/div[2]/button[2]"))).click();
-
+				 select_button.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"))).click();
+				 Thread.sleep(2000);
 				 //sponsor
 				 WebDriverWait sponsor_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 				 sponsor_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div/div/div/div[3]/div/div/div[3]/div[1]/div/div/input"))).click();
@@ -589,8 +619,9 @@ public class Content_video_module extends admin_user
 		 @Test (priority=6)
 		 public void View_And_Verify_New_Content() throws InterruptedException 
 		 {
-			 	driver.manage().window().maximize();
-			 	driver.navigate().refresh();
+			 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
+				driver.manage().window().maximize();
+		    	driver.navigate().refresh();
 			 	
 			 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 	load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/div[1]"))).click();
@@ -757,9 +788,31 @@ public class Content_video_module extends admin_user
 				}	
 		        
 		        
-		        softAssert.assertAll();
+		        
 		        
 		        Thread.sleep(2000);
+		        
+		      //view parent collection 
+		        //click  
+		        WebDriverWait view_parent_coll = new WebDriverWait(driver, Duration.ofSeconds(30));
+		        view_parent_coll.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/header/div/button[1]"))).click();
+				  
+		      //load 
+		        WebDriverWait load_parent = new WebDriverWait(driver, Duration.ofSeconds(30));
+		        load_parent.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/ul"))).click();
+				 
+		        
+		        //read parent collection 
+		        String s10 =driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/ul")).getText();
+		        System.out.println("Parent collection is _______________________"+s10);
+		        
+		        //close parent_coll 
+		        WebDriverWait close_parent_coll = new WebDriverWait(driver, Duration.ofSeconds(30));
+		        close_parent_coll.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button"))).click();
+				 
+		        Thread.sleep(3000);
+		        
+		        softAssert.assertAll();
 		        
 		        WebDriverWait close_view = new WebDriverWait(driver, Duration.ofSeconds(30));
 				close_view.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/header/div/button[2]"))).click();
@@ -772,9 +825,11 @@ public class Content_video_module extends admin_user
 		 @Test (priority=7)
 		 public void View_And_Verify_Delete_Content() throws InterruptedException 
 		 {
-			 	driver.navigate().refresh();
-			 	driver.manage().window().maximize();
-			 	driver.navigate().refresh();
+			 
+			 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
+				driver.manage().window().maximize();
+		    	driver.navigate().refresh();
+			
 			 	
 			 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 	load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/div[1]"))).click();
@@ -797,22 +852,26 @@ public class Content_video_module extends admin_user
 			    WebElement advice_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 				advice_searchbox.sendKeys(content_name);
 				
-				Thread.sleep(7000); 
+				// load /html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/div[2]
 				
-//				WebDriverWait delete_icon = new WebDriverWait(driver, Duration.ofSeconds(30));
-//				delete_icon.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div/div[12]/button[5]"))).click();
-					 		   
+				WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			 	load2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/div[1]")));
+			 		
+				 		   
 				WebDriverWait delete = new WebDriverWait(driver, Duration.ofSeconds(30));
-				delete.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+				delete.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/div[12]/button[5]"))).click();
 				
+				
+				WebDriverWait delete1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				delete1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
 				Thread.sleep(3000);
 				
 				//delete 2 content
 				
 				driver.navigate().refresh();
 				
-				WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
-			 	load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/div[1]"))).click();
+				WebDriverWait load3 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			 	load3.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/div[1]"))).click();
 			 				 	 			 	 
 			 	WebElement advice_searchbox2 = driver.findElement(By.xpath("//input[@type='text']"));
 				advice_searchbox2.sendKeys(content_name2);
@@ -829,12 +888,176 @@ public class Content_video_module extends admin_user
 			     
 		 }
 		 
-		 @AfterTest
-		 public void closeBrowser() 
-		 {
-		 	driver.quit();
-		 	
-		 }
+//		 @AfterTest
+//		 public void closeBrowser() 
+//		 {
+//		 	driver.quit();
+//		 	
+//		 }
+		 
+//		 @Test (enabled = false)
+		 @Test (priority=9)
+		 public void Verify_Filter_Content_Video() throws InterruptedException
+			{
+				
+			 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
+				driver.manage().window().maximize();
+		    	driver.navigate().refresh();
+		    	Thread.sleep(4000);
+		    	
+				System.out.println("Content Video -> Verify  Filter Working Or Not**************");
+				 
+				Reporter.log("Content Video -> Verify  Filter Working Or Not");
+				
+				WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+				load.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/div[2]")));
+
+				// click filter  
+				
+				WebDriverWait click_filter = new WebDriverWait(driver, Duration.ofSeconds(30));
+				click_filter.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div[2]/button[1]"))).click();
+
+				Thread.sleep(2000);
+				// click tag  
+				
+				WebDriverWait click_tag = new WebDriverWait(driver, Duration.ofSeconds(30));
+				click_tag.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[1]/div/button"))).click();
+				Thread.sleep(2000);
+				
+				//click checkbox   
+				
+				WebDriverWait click_checkbox = new WebDriverWait(driver, Duration.ofSeconds(30));
+				click_checkbox.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[7]/div[1]/div[1]/input"))).click();
+				Thread.sleep(2000);                 
+				
+				// read selected tags  
+				String s1 = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[2]/div[2]/div/div")).getText();
+				System.out.println("selected tags are________________________"+s1);
+				
+				Thread.sleep(2000);
+				//click select  
+				
+				WebDriverWait select = new WebDriverWait(driver, Duration.ofSeconds(30));
+				select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"))).click();
+				
+				Thread.sleep(3000);
+				
+				//apply  
+				
+				WebDriverWait apply = new WebDriverWait(driver, Duration.ofSeconds(30));
+				apply.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+				Thread.sleep(5000);
+				
+				
+				//read tooltip 
+				WebElement ele = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/div[3]"));
+														      
+				 Actions act = new Actions(driver);
+				 
+				 act.moveToElement(ele).perform();
+				
+				
+				// read tags from listing screen 
+				String s2 = driver.findElement(By.xpath("/html/body/div[2]/div")).getText();
+				System.out.println("Filter -> tags are________________________"+s2);
+				
+//				if(s1.equals(s2))
+//					{
+//						System.out.println("Filter with Tags are working");
+//						AssertJUnit.assertEquals(s1, s2);
+//					}
+//					else
+//					{
+//						System.out.println("Filter with Tags are not working");
+//						AssertJUnit.assertEquals(s1, s2);
+//						Reporter.log( "[ERROR] -> Filter -> Listing Screen -> Filter Are Not Working");
+//					}			
+				
+				
+					
+				Thread.sleep(4000);
+				Thread.sleep(4000);
+				//second filter
+				// click filter  
+				WebDriverWait click_filter2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				click_filter2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div[2]/button[1]"))).click();
+
+				Thread.sleep(2000);
+				
+				//click sponsor  
+				WebDriverWait click_sponsor = new WebDriverWait(driver, Duration.ofSeconds(30));
+				click_sponsor.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div/div/input"))).click();
+				
+				
+				//select sponsor  
+				WebDriverWait select_sponsor = new WebDriverWait(driver, Duration.ofSeconds(30));
+				select_sponsor.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div/ul/li[2]"))).click();
+				
+				
+				//ramdom   
+				WebDriverWait click_ramdom = new WebDriverWait(driver, Duration.ofSeconds(30));
+				click_ramdom.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/span"))).click();
+				
+				
+				//apply  
+				
+				WebDriverWait apply2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				apply2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+				
+				Thread.sleep(5000);
+				
+				WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				load2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/div[2]"))).click();
+
+				//read sponsor  
+				
+				String s3 = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/div[5]")).getText();
+				System.out.println("Filter -> Sponsor is _______________"+s3);
+				
+				//third filter
+				// click filter  
+				WebDriverWait click_filter3 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				click_filter3.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div[2]/button[1]"))).click();
+
+				Thread.sleep(2000);
+				
+				//click expert  
+				WebDriverWait click_expert = new WebDriverWait(driver, Duration.ofSeconds(30));
+				click_expert.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[3]/div[1]/div/div/input"))).click();
+				
+				
+				//select expert  
+				WebDriverWait select_expert  = new WebDriverWait(driver, Duration.ofSeconds(30));
+				select_expert.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[3]/div[2]/div/ul/li[3]"))).click();
+				
+				
+				//ramdom   
+				WebDriverWait click_ramdom3 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				click_ramdom3.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/span"))).click();
+				
+				
+				//apply  
+				
+				WebDriverWait apply3 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				apply3.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+				
+				Thread.sleep(5000);
+				
+				//read tooltip 
+				WebElement ele2 = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/div[4]"));
+														      
+				 Actions act2 = new Actions(driver);
+				 
+				 act2.moveToElement(ele2).perform();
+				
+				
+				// read expert from listing screen 
+				String s5 = driver.findElement(By.xpath("/html/body/div[2]/div")).getText();
+				System.out.println("Filter -> Expert is________________________"+s5);
+				
+				softAssert.assertAll();
+				
+			}
 		 
 
 }

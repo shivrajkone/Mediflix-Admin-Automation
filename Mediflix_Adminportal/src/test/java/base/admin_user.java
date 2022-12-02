@@ -18,7 +18,7 @@ public class admin_user
 	@BeforeTest
 	public void Local_Storage()
 	{
-		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/106/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C://Users//Prasad_aute//Downloads//selenium/108/chromedriver.exe");
 	    driver = new ChromeDriver();
 	    driver.get("https://admin-portal.us-east-1.dev.mediflix.com");
 
@@ -50,12 +50,12 @@ public class admin_user
 	
 	  
 	                
-//	 @AfterTest
-//	 public void closeBrowser() 
-//	 {
-//	 	driver.quit();
-//	 	
-//	 }
+	 @AfterTest
+	 public void closeBrowser() 
+	 {
+	 	driver.quit();
+	 	
+	 }
 
 	
 	

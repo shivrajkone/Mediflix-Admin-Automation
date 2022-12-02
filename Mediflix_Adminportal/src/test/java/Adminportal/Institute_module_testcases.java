@@ -92,7 +92,7 @@ public class Institute_module_testcases extends admin_user
 		    
 		 WebDriverWait wait_save = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 wait_save.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
-
+		 																 
 		 Thread.sleep(2000);
 		 
 		 System.out.println(" Verify The Create Institutions With Mandatory Fields Only**************");
@@ -584,7 +584,7 @@ public class Institute_module_testcases extends admin_user
 					 Thread.sleep(1000);
 					    
 					 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"));
-					 selectbutton.click();
+					 selectbutton.click();                                  
 					    
 					 Thread.sleep(1000);
 					 

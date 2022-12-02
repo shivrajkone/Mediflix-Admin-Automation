@@ -46,7 +46,7 @@ public class Message_module_testcases extends BaseTest
 	
 	WebElement search;
 	String search_key="davor";
-	
+	 
 	WebElement message;
 	String message_data="need to close";
 	String read_msg;

@@ -38,7 +38,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class Tags_relationship extends admin_user
 {
-	
+	 
 	SoftAssert softAssert = new SoftAssert();
 	
 	WebElement strength;

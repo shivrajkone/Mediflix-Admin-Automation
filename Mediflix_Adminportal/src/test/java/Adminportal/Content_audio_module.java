@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.WebStorage;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import org.apache.logging.log4j.LogManager;
@@ -70,14 +71,11 @@ public class Content_audio_module extends admin_user
 //	 @Test (enabled = false)
 	 public void Create_Audio_With_Madatory_fields() throws InterruptedException 
 	 {
-		 driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com");
+		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
+			driver.manage().window().maximize();
+	    	driver.navigate().refresh();
 	    
-	    Thread.sleep(5000);
-	    //click the content on side-panel
-	    WebElement click_content  = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div/div[1]/button[4]"));
-	    click_content.click();		
-	    
-	    Thread.sleep(10000);
+		    Thread.sleep(5000);
 			 
 		
 		 System.out.println("Content Audio-> Verifying Mandatory Fields Validation Is Working Or Not**************");
@@ -98,7 +96,7 @@ public class Content_audio_module extends admin_user
 		 Thread.sleep(3000);
 		 
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 
 		 Thread.sleep(5000);
 		 		 
@@ -126,7 +124,7 @@ public class Content_audio_module extends admin_user
 		 Thread.sleep(4000);
 		 
 		 WebDriverWait save2 = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 save2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+		 save2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 
 		 Thread.sleep(4000);
 		 
@@ -171,7 +169,7 @@ public class Content_audio_module extends admin_user
 			// close
 						
 			WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-			close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+			close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 
 			Thread.sleep(4000);
 			
@@ -217,13 +215,13 @@ public class Content_audio_module extends admin_user
 			 
 			 WebDriverWait tag_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 tag_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[5]/div/button"))).click();
-			 
+			 Thread.sleep(2000);
 			 WebDriverWait tags_select= new WebDriverWait(driver, Duration.ofSeconds(30));
 			 tags_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[7]/div[1]/div[1]/input"))).click();
-
-			 WebDriverWait select_button_clcik= new WebDriverWait(driver, Duration.ofSeconds(30));
-			 select_button_clcik.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"))).click();
-
+			 Thread.sleep(2000);
+			 WebDriverWait select_button = new WebDriverWait(driver, Duration.ofSeconds(30));
+			 select_button.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"))).click();
+			 Thread.sleep(2000);
 			 // folder
 			 
 			 WebDriverWait folder_click = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -239,7 +237,7 @@ public class Content_audio_module extends admin_user
 			 Thread.sleep(4000);
 			 
 			 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-			 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+			 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 
 			 Thread.sleep(5000);
 	 
@@ -351,7 +349,7 @@ public class Content_audio_module extends admin_user
 			// close
 						
 			WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-			close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+			close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 
 			Thread.sleep(4000);		
 	 }
@@ -418,13 +416,13 @@ public class Content_audio_module extends admin_user
 				 
 				 WebDriverWait tag_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 				 tag_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[5]/div/button"))).click();
-
+				 Thread.sleep(2000);
 				 WebDriverWait tags_select= new WebDriverWait(driver, Duration.ofSeconds(30));
 				 tags_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[7]/div[1]/div[1]/input"))).click();
-
-				 WebDriverWait select_button_clcik= new WebDriverWait(driver, Duration.ofSeconds(30));
-				 select_button_clcik.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"))).click();
-
+				 Thread.sleep(2000);
+				 WebDriverWait select_button2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 select_button2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"))).click();
+				 Thread.sleep(2000);
 				 // folder
 				 
 				 WebDriverWait folder_click = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -440,7 +438,7 @@ public class Content_audio_module extends admin_user
 				 Thread.sleep(4000);
 				 
 				 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-				 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+				 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 
 				 Thread.sleep(5000);
 				 
@@ -563,7 +561,7 @@ public class Content_audio_module extends admin_user
 					// close
 								
 					WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-					close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+					close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
 
 					Thread.sleep(4000);		
 				 
@@ -589,13 +587,112 @@ public class Content_audio_module extends admin_user
 								 
 			 }
 			 
-			 @AfterTest
-			 public void closeBrowser() 
-			 {
-			 	driver.quit();
-			 	
-			 }
-				
+//			 @AfterTest
+//			 public void closeBrowser() 
+//			 {
+//			 	driver.quit();
+//			 	
+//			 }
+//				
+			 
+//			 @Test (enabled = false)
+			 @Test (priority=9)
+			 public void Verify_Content_Audio_Filter() throws InterruptedException
+				{
+					
+				 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
+					driver.manage().window().maximize();
+			    	driver.navigate().refresh();
+			    	Thread.sleep(4000);
+			    	
+					System.out.println("Content audio -> Verify Content Audio Filter Working Or Not**************");
+					 
+					Reporter.log("Content audio  -> Verify Content Audio Filter Working Or Not");
+					
+					WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+					load.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/div[2]")));
+					
+					Thread.sleep(5000);
+					//click audio toggle button 
+					WebDriverWait click_audio = new WebDriverWait(driver, Duration.ofSeconds(30));
+					click_audio.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div[1]/div/div/button[2]"))).click();
+
+					
+					// load
+					WebDriverWait load_audiopage = new WebDriverWait(driver, Duration.ofSeconds(30));
+					load_audiopage.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/div[2]")));
+
+					
+					
+					// click filter  
+					
+					WebDriverWait click_filter = new WebDriverWait(driver, Duration.ofSeconds(30));
+					click_filter.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[1]"))).click();
+
+					Thread.sleep(2000);
+					// click tag  
+					
+					WebDriverWait click_tag = new WebDriverWait(driver, Duration.ofSeconds(30));
+					click_tag.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div/button"))).click();
+					Thread.sleep(2000);
+					
+					//click checkbox   
+					
+					WebDriverWait click_checkbox = new WebDriverWait(driver, Duration.ofSeconds(30));
+					click_checkbox.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[7]/div[1]/div[1]/input"))).click();
+					Thread.sleep(2000);
+					
+					// read selected tags  
+					String s1 = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[2]/div[2]/div/div")).getText();
+					System.out.println("selected tags are________________________"+s1);
+					
+					Thread.sleep(2000);
+					//click select  
+					
+					WebDriverWait select = new WebDriverWait(driver, Duration.ofSeconds(30));
+					select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"))).click();
+					
+					Thread.sleep(3000);
+					
+					//apply  
+					
+					WebDriverWait apply = new WebDriverWait(driver, Duration.ofSeconds(30));
+					apply.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+					Thread.sleep(5000);
+					
+					
+					//read tooltip 
+					WebElement ele = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div/div[4]"));
+					
+					 Actions act = new Actions(driver);
+					 
+					 act.moveToElement(ele).perform();
+					
+					
+					// read tags from listing screen 
+					String s2 = driver.findElement(By.xpath("/html/body/div[2]/div")).getText();
+					System.out.println("tags are________________________"+s2);
+					
+//					if(s1.equals(s2))
+//						{
+//							System.out.println("Filter with Tags are working");
+//							AssertJUnit.assertEquals(s1, s2);
+//						}
+//						else
+//						{
+//							System.out.println("Filter with Tags are not working");
+//							AssertJUnit.assertEquals(s1, s2);
+//							Reporter.log( "[ERROR] -> Filter -> Listing Screen -> Filter Are Not Working");
+//						}			
+					
+					softAssert.assertAll();
+						
+					Thread.sleep(2000);
+					
+					
+				}
+			 
+			 
 	 
 }
 	 

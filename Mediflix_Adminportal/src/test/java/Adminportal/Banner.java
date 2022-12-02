@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.WebStorage;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import org.apache.logging.log4j.LogManager;
@@ -92,7 +93,7 @@ public class Banner extends admin_user
 		 driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/banners");
 		 driver.manage().window().maximize();
 		 
-		 Thread.sleep(20000);
+		 Thread.sleep(5000);
 		 
 		 System.out.println("Banner -> Verifying Mandatory Fields Validation Is Working Or Not**************");
 		 
@@ -136,10 +137,11 @@ public class Banner extends admin_user
 		 
 		 Thread.sleep(1000);
 
-		 WebElement save_banner=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"));
-		 save_banner.click();
+		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+	
 		 
-		 Thread.sleep(20000);
+		 Thread.sleep(7000);
 
 	 }
 	  
@@ -147,32 +149,28 @@ public class Banner extends admin_user
 	 @Test (priority=3)
 	 public void View_And_Verify_Banner_With_Mandatory_Fields() throws InterruptedException 
 	 {
-//		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/banners");
+		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/banners");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
-//		 	Thread.sleep(3000);
-		 	
-		 	 Thread.sleep(10000);
-		 			 	 
+		 	 
 		    System.out.println("Banner -> search and view the newly created banner*******************");
 		    Reporter.log("Banner -> Search And View The Newly Created Banner");
 		    
 		    WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
+			load.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
 
 		 			 
 			WebElement banner_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			banner_searchbox.sendKeys(banner_title);
 			
-			 WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
-			 load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[6]/button[2]"))).click();
+			WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
 
-//			Thread.sleep(3000);
-			
-//			WebElement icon_view = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[6]/button[2]"));
-//			icon_view.click();
-			
-			Thread.sleep(3000);
+			//click view
+			WebDriverWait view = new WebDriverWait(driver, Duration.ofSeconds(30));
+			view.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[6]/button[2]"))).click();
+
+			Thread.sleep(5000);
 			
 			//banner title
 			String s1 = driver.findElement(By.xpath("//input[@id='title']")).getAttribute("value");
@@ -220,11 +218,13 @@ public class Banner extends admin_user
 	 @Test (priority=4)
 	 public void Edit_Banner_With_All_Fields() throws InterruptedException 
 	 { 		
-//		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/banners");
+		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/banners");
 		 	driver.manage().window().maximize();
 		    driver.navigate().refresh();
 
-		    Thread.sleep(20000);
+		    WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load1.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+
 		   
 		    System.out.println("Banner -> Search And Edit The Newly Created Banner With Remaining Fields");
 		    Reporter.log("Banner -> Search And Edit The Newly Created Banner With Remaining Fields");
@@ -232,8 +232,8 @@ public class Banner extends admin_user
 		    WebElement banner_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			banner_searchbox.sendKeys(banner_title);
 
-			WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+			WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
 			
 			WebElement icon_edit = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[6]/button[1]"));
 			icon_edit.click();
@@ -254,28 +254,15 @@ public class Banner extends admin_user
 			
 			 WebDriverWait tab_button = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 tab_button.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[7]/button"))).click();
+			 Thread.sleep(2000);
 			
 			 WebDriverWait tab_topic = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 tab_topic.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[6]/div[1]/div[1]/label"))).click();
+			 Thread.sleep(2000);
 			 
 			 WebDriverWait selectbutton = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 selectbutton.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"))).click();
-			
-			
-	/*		
-			 WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[7]/button"));
-		     tab_button.click();
-			    
-		     Thread.sleep(1000);
 			 
-		     WebElement tab_topic = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[6]/div[1]/div[1]/label"));
-			 tab_topic.click();
-
-			 Thread.sleep(1000);
-			    
-			 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
-			 selectbutton.click();
-	*/		    
 			 Thread.sleep(1000);
 			
 			 // tags count
@@ -306,23 +293,25 @@ public class Banner extends admin_user
 			 WebElement save_actionbutton=driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"));
 			 save_actionbutton.click();
 			 
-			 Thread.sleep(3000);
+			 Thread.sleep(5000);
 
-			 WebElement savebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"));
-			 savebutton.click();								 
-			
-			 Thread.sleep(20000);
+			 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
+			 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+		
+			 Thread.sleep(7000);
 			 
 	 }
 	 
 	 @Test (priority=5)
 	 public void View_And_Verify_Edited_Banner()  throws InterruptedException 
 	 {
-//		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/banners");
+		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/banners");
 		 	driver.manage().window().maximize();
 		    driver.navigate().refresh();
 		 
-		     Thread.sleep(10000);
+		    WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load1.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+
 		 	 
 		    System.out.println("Banner -> search and view the edited banner*******************");
 		    Reporter.log("Banner -> Search and View The Edited Banner");
@@ -330,13 +319,14 @@ public class Banner extends admin_user
 			WebElement banner_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			banner_searchbox.sendKeys(banner_title);
 		 
-			WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
-						
-			WebElement icon_view = driver.findElement(By.xpath("(//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1muvhzt'])[1]"));
-			icon_view.click();
-			
-			Thread.sleep(1000);
+			WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+	
+			//click view
+			WebDriverWait view = new WebDriverWait(driver, Duration.ofSeconds(30));
+			view.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[6]/button[2]"))).click();
+
+			Thread.sleep(3000);
 			
 			//banner title
 			String s1 = driver.findElement(By.xpath("//input[@id='title']")).getAttribute("value");
@@ -482,17 +472,19 @@ public class Banner extends admin_user
 	 @Test (priority=6)
 	 public void Create_New_Banner_With_All_Fields() throws InterruptedException
 	 {
-//		 driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/banners");
+		 driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/banners");
 		 driver.manage().window().maximize();
 		 driver.navigate().refresh();
 		 
-		 Thread.sleep(20000);
+		 WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 load1.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+
 	
 		 System.out.println("Banner -> Verifying Create New Banner With All Information");
 		 Reporter.log("Banner -> Verifying Create New Banner With All Information");
 		 
-		 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
+//		 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+//		 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
 
 		 WebElement create_banner_button = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[2]"));
 		 create_banner_button.click();
@@ -550,28 +542,14 @@ public class Banner extends admin_user
 			 
 			 WebDriverWait  tab_button2= new WebDriverWait(driver, Duration.ofSeconds(30));
 			 tab_button2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[7]/button"))).click();
-			 
+			 Thread.sleep(3000);
 			 WebDriverWait tab_topic2 = new WebDriverWait(driver, Duration.ofSeconds(30));
-			 tab_topic2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[6]/div[1]/div[1]/label"))).click();
-			 
+			 tab_topic2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[6]/div[1]/div[1]/input"))).click();
+			 Thread.sleep(3000);
 			 WebDriverWait selectbutton = new WebDriverWait(driver, Duration.ofSeconds(30));
 			 selectbutton.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Select']"))).click();
-			 
-/*			 
-			WebElement tab_button2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[7]/button"));
-		     tab_button2.click();
-			    
-		     Thread.sleep(3000);
-			 
-		     WebElement tab_topic2 = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[6]/div[1]/div[1]/label"));
-			 tab_topic2.click();
-			
-			 Thread.sleep(1000);
-			    
-			 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
-			 selectbutton.click();
-*/			    
-			 Thread.sleep(1000);
+			 	    
+			 Thread.sleep(2000);
 			
 			 // tags count
 			 tagcount3 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[7]/button/p")).getText();
@@ -723,22 +701,22 @@ public class Banner extends admin_user
 			
 			 Thread.sleep(5000);
 			 
-			 WebElement savebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"));
-			 Thread.sleep(1000);
-			 
-			 savebutton.click();
+			 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
+			 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 		
-			 Thread.sleep(20000);
+			 Thread.sleep(10000);
 	 }
 	
 	 @Test (priority=7)
 	 public void View_And_Verify_The_New_Banner() throws InterruptedException
 	 {
-//		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/banners");
+		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/banners");
 		 	driver.manage().window().maximize();
 		    driver.navigate().refresh();
 		 
-		    Thread.sleep(10000);
+		    WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load1.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+
 		     
 		    System.out.println("Banner -> search and view the new banner*******************");
 		    Reporter.log("Banner -> Search and View The New Banner");
@@ -746,13 +724,15 @@ public class Banner extends admin_user
 			WebElement banner_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			banner_searchbox.sendKeys(banner_title2);
 		 
-			WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+			WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+
 							
-			WebElement icon_view = driver.findElement(By.xpath("(//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1muvhzt'])[1]"));
-			icon_view.click();
-			
-			Thread.sleep(1000);
+			//click view
+			WebDriverWait view = new WebDriverWait(driver, Duration.ofSeconds(30));
+			view.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[6]/button[2]"))).click();
+
+			Thread.sleep(3000);
 			
 			//banner title
 			String s11 = driver.findElement(By.xpath("//input[@id='title']")).getAttribute("value");
@@ -970,14 +950,16 @@ public class Banner extends admin_user
 	 @Test (priority=8)
 	 public void Delete_Banner() throws InterruptedException 
 	 {
-//		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/banners");
+		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/banners");
 		 	driver.manage().window().maximize();
 		    driver.navigate().refresh();
 		 
-		    Thread.sleep(20000);
+		    WebDriverWait load1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load1.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+
 		 			 	
-		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+//		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+//			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
 
 		 	
 		    System.out.println("Banner -> search and delete the banner*******************");
@@ -1085,38 +1067,87 @@ public class Banner extends admin_user
 	 
 	 
 	  
-	 @Test (enabled = false)
-//	 @Test (priority=8)
-	 public void filter_banner() throws InterruptedException
+//	 @Test (enabled = false)
+	 @Test (priority=9)
+	 public void Verify_Filter_Banner() throws InterruptedException
 		{
 			
-			driver.navigate().refresh();
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-			System.out.println("Banner -> verifying the filter from banner page");
-			Reporter.log("Banner -> Verifying the filter from banner page");
+		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/banners");
+			driver.manage().window().maximize();
+	    	driver.navigate().refresh();
+	    	Thread.sleep(4000);
+	    	
+			System.out.println("Banner -> Verify Banners Filter Working Or Not**************");
+			 
+			Reporter.log("Banner -> Verify Banners Filter Working Or Not");
 			
-			WebElement filter = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[1]"));
-			filter.click();
+			WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+
+			// click filter  
+			
+			WebDriverWait click_filter = new WebDriverWait(driver, Duration.ofSeconds(30));
+			click_filter.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[1]"))).click();
+
+			Thread.sleep(2000);
+			// click tag  
+			
+			WebDriverWait click_tag = new WebDriverWait(driver, Duration.ofSeconds(30));
+			click_tag.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div/button"))).click();
+			Thread.sleep(2000);
+			
+			//click checkbox   
+			
+			WebDriverWait click_checkbox = new WebDriverWait(driver, Duration.ofSeconds(30));
+			click_checkbox.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[7]/div[1]/div[1]/input"))).click();
+			Thread.sleep(2000);
+			
+			// read selected tags  
+			String s1 = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[2]/div[2]/div/div")).getText();
+			System.out.println("selected tags are________________________"+s1);
+			
+			Thread.sleep(2000);
+			//click select  
+			
+			WebDriverWait select = new WebDriverWait(driver, Duration.ofSeconds(30));
+			select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"))).click();
 			
 			Thread.sleep(3000);
 			
-			WebElement filter_tags = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div/button"));
-			filter_tags.click();
+			//apply  
 			
-			Thread.sleep(3000);
-			 
-		     WebElement tab_topic = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[4]/div[1]/div[1]/label"));
-			 tab_topic.click();
-					  
-			 Thread.sleep(3000);
-			    
-			 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
-			 selectbutton.click();
+			WebDriverWait apply = new WebDriverWait(driver, Duration.ofSeconds(30));
+			apply.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+			Thread.sleep(5000);
 			
-			 Thread.sleep(3000);
+			
+			//read tooltip 
+			WebElement ele = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[4]"));
+			
+			 Actions act = new Actions(driver);
 			 
-			 WebElement filter_apply = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
-			 filter_apply.click();
+			 act.moveToElement(ele).perform();
+			
+			
+			// read tags from listing screen 
+			String s2 = driver.findElement(By.xpath("/html/body/div[2]/div")).getText();
+			System.out.println("tags are________________________"+s2);
+			
+			if(s1.equals(s2))
+				{
+					System.out.println("Filter with Tags are working");
+					AssertJUnit.assertEquals(s1, s2);
+				}
+				else
+				{
+					System.out.println("Filter with Tags are not working");
+					AssertJUnit.assertEquals(s1, s2);
+					Reporter.log( "[ERROR] -> Filter -> Listing Screen -> Filter Are Not Working");
+				}			
+			
+			softAssert.assertAll();
+				
+			Thread.sleep(2000);
 			
 			
 		}

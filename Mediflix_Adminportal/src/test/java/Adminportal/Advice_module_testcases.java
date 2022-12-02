@@ -75,7 +75,7 @@ public class Advice_module_testcases extends admin_user
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
 		 	Thread.sleep(10000);
-		 
+		  
 		 System.out.println("Advice -> Verifying Mandatory Fields Validation Is Working Or Not**************");
 		 
 		 Reporter.log("Advice -> Verifying Mandatory Fields Validation Is Working Or Not");

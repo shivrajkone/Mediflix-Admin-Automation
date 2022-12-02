@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.WebStorage;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -73,7 +74,7 @@ public class Collection_module_testcases extends admin_user
 	String coll_slug2="11jh488";
 	String coll_desc2="How to live happy life";
 	String tagcount2;
-	
+	String search_key="wellness";
 	
 	
 	
@@ -348,12 +349,12 @@ public class Collection_module_testcases extends admin_user
 			    m6.click();
 			    
 			    //tags
-			    WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[8]/div/button"));
-			    tab_button.click();
+			    WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[3]/div/div/div/button"));
+			    tab_button.click();                                  
 				    
 			     Thread.sleep(2000);
 				 
-			     WebElement tab_topic = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[6]/div[1]/div[1]/label"));
+			     WebElement tab_topic = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[7]/div[1]/div[1]/input"));
 				 tab_topic.click();
 							  
 				 Thread.sleep(2000);
@@ -735,13 +736,13 @@ public class Collection_module_testcases extends admin_user
 			    WebElement m6=driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/h2/p"));
 			    m6.click();
 			    
-			    //tags
-			    WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div[8]/div/button"));
-			    tab_button.click();
+			  //tags
+			    WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[3]/div/div/div/button"));
+			    tab_button.click();                                  
 				    
 			     Thread.sleep(2000);
 				 
-			     WebElement tab_topic = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[6]/div[1]/div[1]/label"));
+			     WebElement tab_topic = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[7]/div[1]/div[1]/input"));
 				 tab_topic.click();
 							  
 				 Thread.sleep(2000);
@@ -990,8 +991,8 @@ public class Collection_module_testcases extends admin_user
 				load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[8]/button[2]")));
 			    
 				
-			    System.out.println("Collection -> search and view the newly created collection*******************");
-			    Reporter.log("Collection -> Search And View The Newly Created Collection");
+			    System.out.println("Collection -> search and view the parent collection*******************");
+			    Reporter.log("Collection -> Search And View The Parent Collection");
 			    
 				WebElement coll_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 				coll_searchbox.sendKeys(coll_name);
@@ -1028,7 +1029,7 @@ public class Collection_module_testcases extends admin_user
 	 						Reporter.log( "[ERROR] -> Collection -> View Screen -> Parent collection is not present in Collection view screen.");
 	 				 }		
 	 			 
-	 				// close parent  /html/body/div[3]/div[3]/div/div[2]/button
+	 				// close parent  
 	 				 
 	 				 WebDriverWait wait_close_parent = new WebDriverWait(driver, Duration.ofSeconds(30));
 	 				 wait_close_parent.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button"))).click();
@@ -1075,50 +1076,177 @@ public class Collection_module_testcases extends admin_user
 	     
 	     
 	     
-	 	@Test (enabled = false)
-//		 @Test (priority=9)
-		 public void filter_banner() throws InterruptedException
+//	 	@Test (enabled = false)
+		 @Test (priority=9)
+		 public void Verify_Filter_Collection() throws InterruptedException
 			{
-				
+	 			driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/collections");
+	 			driver.manage().window().maximize();
 				driver.navigate().refresh();
 				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 				System.out.println("Collection -> Verifying the filter from collection page");
 				Reporter.log("Collection -> Verifying the filter from collection page");
+				
+				WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+				load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[8]/button[2]")));
+			    
 				
 				WebElement filter = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[1]"));
 				filter.click();
 				
 				Thread.sleep(3000);
 				
-				WebElement filter_coll_type = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div/div/input"));
-				filter_coll_type.click();
-				
-				Thread.sleep(2000);
-				
-				WebElement filter_coll_page = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div/ul/li[2]"));
-				filter_coll_page.click();
-				
-					
-				
-/*				
+//				WebElement filter_coll_type = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[1]/div/div/input"));
+//				filter_coll_type.click();
+//				
+//				Thread.sleep(2000);
+//				
+//				WebElement filter_coll_page = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div/ul/li[2]"));
+//				filter_coll_page.click();
+	
 				WebElement filter_tags = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div/button"));
 				filter_tags.click();
 				
 				Thread.sleep(3000);
 				 
-			     WebElement tab_topic = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[4]/div[1]/div[1]/label"));
+			     WebElement tab_topic = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[7]/div[1]/div[1]/label"));
 				 tab_topic.click();
 						  
 				 Thread.sleep(3000);
 				    
-				 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
+				 WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"));
 				 selectbutton.click();
 				
 				 Thread.sleep(3000);
-*/		 
-				 WebElement filter_apply = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
+		 
+				 WebElement filter_apply = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"));
 				 filter_apply.click();
 				 
+				 Thread.sleep(3000);
+				 
+				 
+				 //edit click   
+				 
+				 WebDriverWait edit_click = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 edit_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[8]/button[1]"))).click();
+//				 //verify the tags
+//				 
+//				 String s1 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[3]/div/div/div/button")).getText();
+//				 System.out.println("Tags count is ________________________"+s1);
+				 
+				 // tag click  
+				 WebDriverWait tag_click = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 tag_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[3]/div/div/div/button"))).click();
+ 
+				 // tag search   
+				 WebElement coll_searchbox = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[1]/div/input"));
+				 coll_searchbox.sendKeys(search_key);
+				 
+				 Thread.sleep(3000);
+				 // click ramdom
+				 WebDriverWait click_ramdom = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 click_ramdom.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/h2/p"))).click();
+				 Thread.sleep(3000);
+				 
+				 //tag select  
+				 WebDriverWait tag_select = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 tag_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[3]/div[1]/div[1]/input"))).click();
+				 
+				// read selected tags  
+					String s1 = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[2]/div[2]")).getText();
+					System.out.println("selected tags are________________________"+s1);
+				 
+				 //click select button   
+				 WebDriverWait click_select = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 click_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"))).click();
+				 
+				 Thread.sleep(3000);
+//				 String s2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[3]/div/div/div/button")).getText();
+//				 System.out.println("After Edit Tags Count is ________________________"+s2);
+				 
+				 
+				 // click save button  
+				 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+				 
+				 Thread.sleep(5000);
+				 // load
+				 WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 load2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+				    
+				 
+				 
+				//read tooltip 
+					WebElement ele = driver.findElement(By.xpath("/html/body/div[1]/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[6]"));
+					
+					 Actions act = new Actions(driver);
+					 
+					 act.moveToElement(ele).perform();
+					
+					
+					// read tags from listing screen 
+					String s2 = driver.findElement(By.xpath("/html/body/div[2]/div")).getText();
+					System.out.println("tags are________________________"+s2);
+					
+//					if(s1.equals(s2))
+//						{
+//							System.out.println("Filter with Tags are working");
+//							AssertJUnit.assertEquals(s1, s2);
+//						}
+//						else
+//						{
+//							System.out.println("Filter with Tags are not working");
+//							AssertJUnit.assertEquals(s1, s2);
+//							Reporter.log( "[ERROR] -> Filter -> Listing Screen -> Filter Are Not Working");
+//						}			
+//					
+					
+						
+					Thread.sleep(3000);
+				 
+				 
+//				// read from listing screen
+//				 String s3 = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[6]/p")).getText();
+//				 System.out.println("listing screen tags count is____________________"+s3);
+				 
+				 System.out.println("Second Filter for collection type");
+				 //click filter   
+				 WebDriverWait click_filter = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 click_filter.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[1]"))).click();
+				 
+				 
+				 //click reset button 
+				 WebDriverWait reset = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 reset.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[1]"))).click();
+				 
+				 Thread.sleep(5000);
+				 
+				 //click filter   
+				 WebDriverWait click_filter2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 click_filter2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[1]"))).click();
+				 Thread.sleep(2000);
+				 //click coll type  
+				 WebDriverWait click_coll_type = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 click_coll_type.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div/div/input"))).click();
+				 Thread.sleep(2000);
+				 // select coll type  
+				 WebDriverWait select_coll_type = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 select_coll_type.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div[2]/div/ul/li[4]"))).click();
+				 Thread.sleep(2000);
+				 //apply 
+				 WebDriverWait apply = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 apply.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+				 Thread.sleep(2000);
+				 WebDriverWait load3 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 load3.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+				    
+			
+				 
+				 // selected collection type
+				 String s4 = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[2]/div")).getText();
+				 System.out.println("Filter Selection Collection Type is________________________"+s4);
+				 
+				 softAssert.assertAll();
 				
 			}
 	     

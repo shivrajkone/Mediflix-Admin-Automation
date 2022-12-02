@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.WebStorage;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import org.apache.logging.log4j.LogManager;
@@ -416,8 +417,77 @@ public class Tags_module_testcase extends admin_user
 		 
 		 
 						 
-	 }
-	  
+	 } 
+	 @Test (enabled = false)
+//	 @Test (priority=9)
+	 public void Verify_Filter_Tags() throws InterruptedException
+		{
+			
+		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/tags");
+			driver.manage().window().maximize();
+	    	driver.navigate().refresh();
+	    	Thread.sleep(5000);
+	    	
+			System.out.println("Tags -> Verify Tags Filter Working Or Not**************");
+			 
+			Reporter.log("Tags -> Verify Tags Filter Working Or Not");
+			
+			WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+
+			// click filter  
+			
+			WebDriverWait click_filter = new WebDriverWait(driver, Duration.ofSeconds(30));
+			click_filter.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[1]"))).click();
+
+			Thread.sleep(2000);
+			// click tag  
+			
+			WebDriverWait click_tag = new WebDriverWait(driver, Duration.ofSeconds(30));
+			click_tag.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div/div/div/input"))).click();
+			Thread.sleep(2000);                                                   
+			
+			//select cat 
+			
+			WebDriverWait select_cat = new WebDriverWait(driver, Duration.ofSeconds(30));
+			select_cat.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[2]/div/ul/li[1]"))).click();
+			Thread.sleep(2000);
+			
+			
+			
+			//apply  
+			
+			WebDriverWait apply = new WebDriverWait(driver, Duration.ofSeconds(30));
+			apply.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+			Thread.sleep(5000);
+
+			// read tags from listing screen 
+			String s2 = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[3]")).getText();
+			System.out.println("tags catagory are________________________"+s2);
+			
+//			if(s1.equals(s2))
+//				{
+//					System.out.println("Filter with Tags are working");
+//					AssertJUnit.assertEquals(s1, s2);
+//				}
+//				else
+//				{
+//					System.out.println("Filter with Tags are not working");
+//					AssertJUnit.assertEquals(s1, s2);
+//					Reporter.log( "[ERROR] -> Filter -> Listing Screen -> Filter Are Not Working");
+//				}			
+			
+			softAssert.assertAll();
+				
+			Thread.sleep(2000);
+			
+			
+		} 
+	 
+	 
+	 
+	 
+	 
 //	 @AfterTest
 //	 public void closeBrowser() 
 //	 {

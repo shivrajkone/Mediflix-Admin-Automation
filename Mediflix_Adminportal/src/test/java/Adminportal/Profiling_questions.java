@@ -274,7 +274,7 @@ public class Profiling_questions extends Super_user
 		 
 		 Thread.sleep(5000);
 		 
-	 }
+	 } 
 	 
 	 @Test (priority=4)
 //	 @Test (enabled = false)
@@ -352,8 +352,8 @@ public class Profiling_questions extends Super_user
 				}
 */				
 				//answer type
-		 String s4 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[4]/div/div/div")).getText();
-		 System.out.println("Answer Type is ____________________________"+s4);
+		 		String s4 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[4]/div/div/div")).getText();
+		 		System.out.println("Answer Type is ____________________________"+s4);
 							
 				if(s4.equals(s4))
 				{
@@ -374,9 +374,9 @@ public class Profiling_questions extends Super_user
 				
 				
 				//close
-			WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-			close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
-			 Thread.sleep(4000);
+			    WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
+			    close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+			    Thread.sleep(4000);
 		 
 	 }
 	 
@@ -405,6 +405,100 @@ public class Profiling_questions extends Super_user
 		 delete.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[5]/button[3]"))).click();
 			    			
 		 Thread.sleep(4000);
+	 }
+	 
+	 
+	 
+	 @Test (priority=6)
+//	 @Test (enabled = false)
+	 public  void Verify_Profiling_Questions_Filter() throws InterruptedException 
+	 {
+		 driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/settings");
+		 driver.manage().window().maximize();
+		 driver.navigate().refresh();
+		 Thread.sleep(10000);
+	
+		 System.out.println("Profiling Questions-> Verify Filters Working Or Not**************");
+		 Reporter.log("Profiling Questions -> Verify the Filter of  Profiling Questions");
+		 
+		 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 load.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]"))).click();
+	
+		 // click filter  
+			
+		 WebDriverWait click_filter = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 click_filter.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[1]/div/button"))).click();
+
+		 Thread.sleep(2000);
+		
+		 //click polarity   
+		 WebDriverWait click_polarity = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 click_polarity.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[1]/div/div/div"))).click();
+		 
+		 //select  
+		 WebDriverWait select_polarity = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 select_polarity.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/ul/li[1]"))).click();
+		 
+		 Thread.sleep(2000);
+		 
+		 //read the text from textfield  
+		 String s1 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[1]/div/div/div")).getText();
+		 System.out.println("Selected filter is __________"+s1);
+		 
+		 //apply  
+		 WebDriverWait apply = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 apply.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+		 
+		 Thread.sleep(4000);
+		 //load   
+		 WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 load2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+		 
+		 //read the polarity from listing screen  
+		 String s2 = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[3]")).getText();
+		 System.out.println("Applyed filter is ___________"+s2);
+		 
+		 
+		 // click filter  
+			
+		 WebDriverWait click_filter2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 click_filter2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[1]/div/button"))).click();
+
+		 Thread.sleep(2000);
+		 
+		 //click ans type   
+		 WebDriverWait click_ans_type = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 click_ans_type.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[2]/div/div/div"))).click();
+
+		 //select ans type
+		 WebDriverWait select_ans_type = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 select_ans_type.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/ul/li[4]"))).click();
+ 
+		 Thread.sleep(2000);
+		 
+		 // read text from textfield   
+		 String s3 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[2]/div/div/div")).getText();
+		 System.out.println("selected answer type is___________"+s3);
+		 
+		 Thread.sleep(2000);
+		 
+		 
+		//apply  
+		 WebDriverWait apply2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 apply2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+		 
+		 Thread.sleep(4000);
+		 //load   
+		 WebDriverWait load3 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 load3.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+		 
+		 //read the ans type from listing screen  
+		 String s4 = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[2]")).getText();
+		 System.out.println("Applyed filter is ___________"+s4);
+		 
+		 
+		 
+	
 	 }
 	 
 	 

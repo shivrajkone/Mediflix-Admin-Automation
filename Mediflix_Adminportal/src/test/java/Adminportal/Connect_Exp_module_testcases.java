@@ -325,7 +325,7 @@ public class Connect_Exp_module_testcases extends admin_user
 		delete.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
 		
 		Thread.sleep(5000);
-	 }
+	 } 
 	 
 //	 @AfterTest
 //	 public void closeBrowser() 

@@ -7,6 +7,7 @@ import org.testng.AssertJUnit;
 import org.openqa.selenium.html5.LocalStorage;
 
 import org.openqa.selenium.html5.WebStorage;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -29,6 +30,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.TakesScreenshot;
+import javax.swing.Action;
 
 public class Expert_module_test_cases  extends admin_user
 {
@@ -58,18 +60,24 @@ public class Expert_module_test_cases  extends admin_user
     	driver.navigate().refresh();
     	Thread.sleep(3000);
     	
+    	// load
+    	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+		load.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+    	
 		System.out.println("Expert -> Verifying Mandatory Fields Validation Is Working Or Not**************");
 		 
 		Reporter.log("Expert -> Verifying Mandatory Fields Validation Is Working Or Not");
 		
-		WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-		load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+		WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
 
 		WebDriverWait create_expert = new WebDriverWait(driver, Duration.ofSeconds(30));
-		create_expert.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[2]"))).click();
-	
+//		create_expert.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[2]"))).click();
+		create_expert.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()=' Create Expert']"))).click();
+																			
 	    WebDriverWait wait_save = new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait_save.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+	    wait_save.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Save']"))).click();
+//		wait_save.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 	
 	    String s1="Expert Name is required";
 	    String s2 = driver.findElement(By.xpath("//p[text()='Expert Name is required']")).getText();
@@ -88,8 +96,10 @@ public class Expert_module_test_cases  extends admin_user
 	    
 	    Thread.sleep(5000);
 	    
-	    WebElement save_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"));
-	    save_button.click();
+	    WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
+//		save.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+		save.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Save']"))).click();
+		
 	    Thread.sleep(10000);
 	}
 	
@@ -97,50 +107,55 @@ public class Expert_module_test_cases  extends admin_user
 	@Test (priority=3)
 	public void View_And_Verify_Expert_With_Mandatory_Fields() throws InterruptedException
 	{
+		driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/experts");
 		driver.manage().window().maximize();
     	driver.navigate().refresh();
     	Thread.sleep(3000);
+    	// load
+    	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+		load.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@data-colindex='0']"))).click();
     	
-	System.out.println("Expert -> search and view the newly created expert*******************");
-    Reporter.log("Expert -> Search And View The Newly Created Expert");
+    	
+		System.out.println("Expert -> search and view the newly created expert*******************");
+		Reporter.log("Expert -> Search And View The Newly Created Expert");
 			   
-	WebElement searchbox1 = driver.findElement(By.xpath("//input[@type='text']"));
+		WebElement searchbox1 = driver.findElement(By.xpath("//input[@type='text']"));
 
-	searchbox1.sendKeys(expert_name);
+		searchbox1.sendKeys(expert_name);
 	
-//	Thread.sleep(3000);
+		//	Thread.sleep(3000);
 	
-	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-	load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+		WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@data-colindex='0']"))).click();
 
-	WebElement icon_view = driver.findElement(By.xpath("(//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1muvhzt'])[1]"));
-	icon_view.click();
+		WebElement icon_view = driver.findElement(By.xpath("(//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1muvhzt'])[1]"));
+		icon_view.click();
 	
-	Thread.sleep(3000);
+		Thread.sleep(3000);
 	
-	//expert name
-	String s1 = driver.findElement(By.xpath("//input[@id='expert-name']")).getAttribute("value");
-	System.out.println("Expert name is ____________________________"+s1);
+		//expert name
+		String s1 = driver.findElement(By.xpath("//input[@id='expert-name']")).getAttribute("value");
+		System.out.println("Expert name is ____________________________"+s1);
 
-	if(s1.equals(expert_name))
-	{
+		if(s1.equals(expert_name))
+		{
 		System.out.println("Expert name is present  "+s1);
 		AssertJUnit.assertEquals(s1, expert_name);
-	}
-	else
-	{
+		}
+		else
+		{
 		System.out.println("Expert name is not present"+s1);
 		AssertJUnit.assertEquals(s1, expert_name);
 		Reporter.log( "[ERROR] -> Expert -> View Screen -> Expert Name is not present in Expert view screen.");
-	}
+		}
 	
 	
-	softAssert.assertAll();
+		softAssert.assertAll();
 	
-	WebElement closebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"));
-    closebutton.click();
-   
-    Thread.sleep(3000);
+		WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
+		close.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Close']"))).click();
+
+		Thread.sleep(3000);
 			
 	}
 	   
@@ -148,9 +163,14 @@ public class Expert_module_test_cases  extends admin_user
 	  @Test (priority=4)
 	public void Edit_Expert_With_All_Fields() throws InterruptedException
 	{
+		  driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/experts");
 		  	driver.manage().window().maximize();
 	    	driver.navigate().refresh();
 	    	Thread.sleep(3000);
+	    	// load
+	    	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+	    	
 			
 			System.out.println("Expert -> Search And Edit The Newly Created Expert With Remaining Fields");
 			Reporter.log("Expert -> Search And Edit The Newly Created Expert With Remaining Fields");
@@ -159,8 +179,8 @@ public class Expert_module_test_cases  extends admin_user
 			WebElement searchbox2 = driver.findElement(By.xpath("//input[@type='text']"));
 			searchbox2.sendKeys(expert_name);
 			
-			WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+			WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
 						
 	//		Thread.sleep(3000);
 			
@@ -173,7 +193,7 @@ public class Expert_module_test_cases  extends admin_user
 		    driver.findElement(By.id("expert-bio")).sendKeys(expert_bio);
 		    
 		    
-		    WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[6]/div/button"));
+		    WebElement tab_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[7]/div/button"));
 		    tab_button.click();
 		    
 		    Thread.sleep(1000);
@@ -183,13 +203,13 @@ public class Expert_module_test_cases  extends admin_user
 		    
 		    Thread.sleep(1000);
 		    
-		    WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
+		    WebElement selectbutton = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"));
 		    selectbutton.click();
 			
 		    Thread.sleep(1000);
 			
 			 // tags count
-		     expert_tagcount = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[6]/div/button")).getText();
+		     expert_tagcount = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[7]/div/button")).getText();
 			 System.out.println("the tag count is __________________"+expert_tagcount); 
 		
 			// headshot image select
@@ -221,7 +241,17 @@ public class Expert_module_test_cases  extends admin_user
 			    
 			    Thread.sleep(1000);
 			    
-			    WebElement zip_click = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[7]/div/div"));
+			    //click pick
+			    WebDriverWait click_pick = new WebDriverWait(driver, Duration.ofSeconds(30));
+			    click_pick.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[5]/div/div/input"))).click();
+			     
+			    
+			    //select pick
+			    WebDriverWait select_pick = new WebDriverWait(driver, Duration.ofSeconds(30));
+			    select_pick.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div/ul/li[1]"))).click();
+			    Thread.sleep(1000);
+			    
+			    WebElement zip_click = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[2]/div/div[8]/div/div"));
 			    zip_click.click();
 			    
 			    WebElement zip_select = driver.findElement(By.xpath("/html/body/div[3]/div[3]/ul/li[2]"));
@@ -230,9 +260,9 @@ public class Expert_module_test_cases  extends admin_user
 			    Thread.sleep(5000);
 			
 			    WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
-			    save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
+			    save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
 			     
-			    Thread.sleep(20000);
+			    Thread.sleep(10000);
 		
 		   
 	}   
@@ -241,10 +271,15 @@ public class Expert_module_test_cases  extends admin_user
 		@Test (priority=5)
 	public void View_And_Verify_Edited_Expert() throws InterruptedException
 	{
+			driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/experts");
 			
 			driver.manage().window().maximize();
 	    	driver.navigate().refresh();
 	    	Thread.sleep(3000);
+	    	// load
+	    	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+	    	
 	    	    	
 	    	System.out.println("Expert -> search and view the edited  expert*******************");
 	        Reporter.log("Expert -> Search And View The Edited  Expert");
@@ -253,8 +288,8 @@ public class Expert_module_test_cases  extends admin_user
 
 	    	searchbox1.sendKeys(expert_name);
 	    	
-	    	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+	    	WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
 		
 	    	WebElement icon_view = driver.findElement(By.xpath("(//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1muvhzt'])[1]"));
 	    	icon_view.click();
@@ -329,8 +364,9 @@ public class Expert_module_test_cases  extends admin_user
 	    	
 	    	softAssert.assertAll();
 	    	
-	    	WebElement closebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"));
-	        closebutton.click();
+	    	WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
+	    	close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
+
 	       
 	        Thread.sleep(5000);
 	   	
@@ -346,12 +382,16 @@ public class Expert_module_test_cases  extends admin_user
 			  	driver.manage().window().maximize();
 		    	driver.navigate().refresh();
 		    	Thread.sleep(3000);
+		    	// load
+		    	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+				load.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+		    	
 			
 				System.out.println("Expert -> Verifying Verifying Create New Expert With All Information**************");
 				Reporter.log("Expert ->Verifying Create New Expert With All Information");
 				
-				WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-				load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+				WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
 
 				WebDriverWait create_expert = new WebDriverWait(driver, Duration.ofSeconds(30));
 				create_expert.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[2]"))).click();
@@ -433,14 +473,12 @@ public class Expert_module_test_cases  extends admin_user
 				 
 				 Thread.sleep(5000);
 				 
-				 WebElement save_button = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"));
-				 save_button.click();
+				 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 save.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+				
 				 
 				 Thread.sleep(10000);
-			
-			
-				 
-				 
+	
 		
 		 }
       
@@ -451,13 +489,17 @@ public class Expert_module_test_cases  extends admin_user
 					driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/experts");
 					driver.manage().window().maximize();
 			    	driver.navigate().refresh();
-			    	Thread.sleep(10000);
+			    	Thread.sleep(5000);
+			    	// load
+			    	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+					load.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+			    	
 			    	
 			    	System.out.println("Expert -> search and view the new created expert*******************");
 			        Reporter.log("Expert -> Search And View The New Created Expert");
 			        
-			        WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-					load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
+			        WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+					load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
 			   
 			    	WebElement searchbox1 = driver.findElement(By.xpath("//input[@type='text']"));
 
@@ -541,9 +583,9 @@ public class Expert_module_test_cases  extends admin_user
 			    	
 			    	softAssert.assertAll();
 			    	
-			    	WebElement closebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"));
-			        closebutton.click();
-			       
+			    	WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
+			    	close.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button"))).click();
+
 			        Thread.sleep(3000);
 
 			 }
@@ -554,10 +596,14 @@ public class Expert_module_test_cases  extends admin_user
 		@Test (priority=8)
 		public void Verify_delete_Expert_is_working() throws InterruptedException
 		{
-	    	
+			driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/experts");
 	   		driver.manage().window().maximize();
 	   		driver.navigate().refresh();
 	   		Thread.sleep(3000);
+	   		// load
+	    	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+	    	
 	   		
 	   		System.out.println("Expert -> Verifying the Delete from expert page");
 			Reporter.log("Expert -> Verifying the Delete from expert page");
@@ -601,8 +647,90 @@ public class Expert_module_test_cases  extends admin_user
 			
 		}
 		
-		
+	//	@Test (enabled = false)
+		@Test (priority=9)
+		public void Verify_Expert_Filter() throws InterruptedException 
+		{
+			driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/experts");
+			driver.manage().window().maximize();
+	    	driver.navigate().refresh();
+	    	Thread.sleep(4000);
+	    	
+			System.out.println("Expert -> Verify Expert Filter Working Or Not**************");
+			 
+			Reporter.log("Expert -> Verify Expert Filter Working Or Not");
+			
+			WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
 
+			// click filter  
+			
+			WebDriverWait click_filter = new WebDriverWait(driver, Duration.ofSeconds(30));
+			click_filter.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button[1]"))).click();
+
+			Thread.sleep(2000);
+			// click tag  
+			
+			WebDriverWait click_tag = new WebDriverWait(driver, Duration.ofSeconds(30));
+			click_tag.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div/button"))).click();
+			Thread.sleep(2000);
+			
+			//click checkbox   
+			
+			WebDriverWait click_checkbox = new WebDriverWait(driver, Duration.ofSeconds(30));
+			click_checkbox.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[1]/div/div[7]/div[1]/div[1]/input"))).click();
+			Thread.sleep(2000);
+			
+			// read selected tags  
+			String s1 = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[1]/div/div[2]/div[2]/div/div")).getText();
+			System.out.println("selected tags are________________________"+s1);
+			
+			Thread.sleep(2000);
+			//click select  
+			
+			WebDriverWait select = new WebDriverWait(driver, Duration.ofSeconds(30));
+			select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/div/div[2]/div/button[2]"))).click();
+			
+			Thread.sleep(3000);
+			
+			//apply  
+			
+			WebDriverWait apply = new WebDriverWait(driver, Duration.ofSeconds(30));
+			apply.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"))).click();
+			Thread.sleep(5000);
+			
+			
+			//   
+			WebElement ele = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[4]"));
+			
+			 Actions act = new Actions(driver);
+			 
+			 act.moveToElement(ele).perform();
+			
+			
+			// read tags from listing screen 
+			String s2 = driver.findElement(By.xpath("/html/body/div[2]/div")).getText();
+			System.out.println("tags are________________________"+s2);
+			
+//			if(s1.equals(s2))
+//				{
+//					System.out.println("Filter with Tags are working");
+//					AssertJUnit.assertEquals(s1, s2);
+//				}
+//				else
+//				{
+//					System.out.println("Filter with Tags are not working");
+//					AssertJUnit.assertEquals(s1, s2);
+//					Reporter.log( "[ERROR] -> Filter -> Listing Screen -> Filter Are Not Working");
+//				}			
+			
+			softAssert.assertAll();
+				
+			Thread.sleep(2000);
+			
+			
+		}
+		
 		
 		
 		

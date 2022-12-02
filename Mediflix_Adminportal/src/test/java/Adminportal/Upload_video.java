@@ -47,7 +47,7 @@ public class Upload_video extends admin_user
 	String Brighcove_ID;
 	String Folder;
 	String Filename;
-	
+	 
 	String view_filename;
 	String view_brightcove_id;
 	
