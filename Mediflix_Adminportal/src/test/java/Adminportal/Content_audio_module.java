@@ -692,6 +692,67 @@ public class Content_audio_module extends admin_user
 					
 				}
 			 
+			 @Test (priority=10)
+			 public void Verify_Bulk_update_Content_Audio() throws InterruptedException
+			 {	
+				 driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
+				 driver.manage().window().maximize();
+//				 driver.navigate().refresh();
+				 Thread.sleep(4000);
+				 
+				 System.out.println("Content Audio -> Verifying Bulk Update Working Or Not*****************");
+				 Reporter.log("Content Audio -> Verifying Bulk Update Working Or Not");
+				 
+				 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(60));
+				 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/div[1]"))).click();
+
+				 // click the all audio   
+				 WebDriverWait click_all_audio = new WebDriverWait(driver, Duration.ofSeconds(60));
+				 click_all_audio.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[@value='audio']"))).click();
+
+				 //load 
+				 WebDriverWait load2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 load2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/div[1]"))).click();
+
+				 Thread.sleep(3000);
+				 //click the 2 check box and  
+				 
+				 WebDriverWait click_audio1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 click_audio1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+					
+				 WebDriverWait click_audio2= new WebDriverWait(driver, Duration.ofSeconds(30));
+				 click_audio2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[2]/div[1]"))).click();
+					
+				 //click bulk update 
+				 
+				 WebDriverWait click_bulk_update = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 click_bulk_update.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='MuiBox-root css-11qw4wg']//button[2]"))).click();
+					
+				 Thread.sleep(3000);
+					//tags
+					 
+				 WebDriverWait tags_click = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 tags_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Tags to Add']"))).click();
+				 Thread.sleep(2000);
+					
+				 WebDriverWait tags_select = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 tags_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[text()='Stage']"))).click();
+				 Thread.sleep(2000);
+					 
+				 WebDriverWait select_button = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 select_button.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Select']"))).click();
+				 Thread.sleep(2000);
+				 
+				 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Save']"))).click();
+				 Thread.sleep(5000);
+				 
+				
+				 
+				 
+				 
+				 
+			 }
 			 
 	 
 }

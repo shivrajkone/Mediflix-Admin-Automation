@@ -47,7 +47,7 @@ public class Tags_relationship extends admin_user
 	WebElement strength2;
 	String strength_value2 = "45";
 		
-
+ 
 	@Test (priority=1)
 //	 @Test (enabled = false)
 	 public void Create_Tags_Relationship() throws InterruptedException 

@@ -14,6 +14,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
 import base.BaseTest;
+import base.Super_user;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -41,7 +42,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.TakesScreenshot;
 
-public class Message_module_testcases extends BaseTest	
+public class Message_module_testcases extends Super_user
 {
 	
 	WebElement search;

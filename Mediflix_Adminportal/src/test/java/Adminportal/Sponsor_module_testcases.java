@@ -38,7 +38,7 @@ import org.openqa.selenium.TakesScreenshot;
 public class Sponsor_module_testcases extends admin_user
 {
 	
-	
+	 
 	SoftAssert softAssert = new SoftAssert();
 	
 	WebElement sponsor;

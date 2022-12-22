@@ -13,6 +13,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 
 import base.BaseTest;
+import base.Super_user;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -35,7 +36,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.TakesScreenshot;
 
-public class User_managment_testcases extends BaseTest	
+public class User_managment_testcases extends Super_user
 {
 	
 	ChromeDriver driver; 

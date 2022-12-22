@@ -74,26 +74,22 @@ public class Advice_module_testcases extends admin_user
 		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
-		 	Thread.sleep(10000);
+		 	
 		  
 		 System.out.println("Advice -> Verifying Mandatory Fields Validation Is Working Or Not**************");
 		 
 		 Reporter.log("Advice -> Verifying Mandatory Fields Validation Is Working Or Not");
 		 
 		 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
-
+		 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath(prop.getProperty("load_page"))));
 		 
 		 WebDriverWait Create_advice_click = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 Create_advice_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button"))).click();
-	 
-//		 WebElement create_advice_button = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button"));
-//		 create_advice_button.click();
-			
+
 		 Thread.sleep(1000);
 		    
-		 WebElement savebutton = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[2]/div/button[2]"));
-		 savebutton.click();
+		 WebDriverWait wait_save = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 wait_save.until(ExpectedConditions.elementToBeClickable(By.xpath(prop.getProperty("save")))).click();
 		 
 		 Thread.sleep(1000);
 		 
@@ -121,16 +117,13 @@ public class Advice_module_testcases extends admin_user
 		 WebDriverWait wait_click_yes = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 wait_click_yes.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"))).click();
 		 
-//		 WebElement click_yes_button = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[2]"));
-//		 click_yes_button.click();
-		 
 		 Thread.sleep(3000);
 		 
-		 WebElement ans_expert_click=driver.findElement(By.xpath("/html/body/div[4]/div[3]/div/div[1]/div[2]/div/div/div/input"));
-		 ans_expert_click.click();
+		 WebDriverWait ans_expert_click = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 ans_expert_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[4]/div[3]/div/div[1]/div[2]/div/div/div/input")));
 		 
-		 WebElement ans_expert_select=driver.findElement(By.xpath("/html/body/div[4]/div[3]/div/div[1]/div[2]/div[2]/div/ul/li[1]"));
-		 ans_expert_select.click();
+		 WebDriverWait ans_expert_select = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 ans_expert_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[4]/div[3]/div/div[1]/div[2]/div[2]/div/ul/li[1]")));
 		 
 		 Thread.sleep(2000);
 		 
@@ -139,16 +132,17 @@ public class Advice_module_testcases extends admin_user
 		 
 		 Thread.sleep(2000);
 		 
-		 WebElement video_click=driver.findElement(By.xpath("/html/body/div[4]/div[3]/div/div[1]/div[4]/div/div/input"));
-		 video_click.click();
+		 WebDriverWait video_click = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 video_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[4]/div[3]/div/div[1]/div[4]/div/div/input")));
 		 
-		 WebElement video_select=driver.findElement(By.xpath("/html/body/div[4]/div[3]/div/div[1]/div[5]/div/ul/li[3]"));
-		 video_select.click();
+		 WebDriverWait video_select = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 video_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[4]/div[3]/div/div[1]/div[5]/div/ul/li[3]")));
 		 
 		 Thread.sleep(2000);
 		 
-		 WebElement save_button=driver.findElement(By.xpath("/html/body/div[4]/div[3]/div/div[2]/div/button[2]"));
-		 save_button.click();
+		 WebDriverWait wait_save2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 wait_save2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[4]/div[3]/div/div[2]/div/button[2]"))).click();
+		 
 		 Thread.sleep(2000);
 		 
 		 //cancel click
@@ -156,8 +150,6 @@ public class Advice_module_testcases extends admin_user
 		 WebDriverWait wait_click_cancel = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 wait_click_cancel.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[1]"))).click();
 		 		 
-//		 WebElement cancel_button = driver.findElement(By.xpath("/html/body/div[3]/div[3]/div/div[2]/button[1]"));
-//		 cancel_button.click();
 		 Thread.sleep(3000);
 		 
 		 
@@ -167,14 +159,13 @@ public class Advice_module_testcases extends admin_user
 	 @Test (priority=2)
 	 public void View_And_Verify_Advice_With_Mandatory_Fields() throws InterruptedException 
 	 {
-		// 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
+		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
-		 	Thread.sleep(10000);
 		 	
-		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
-
+		 	
+		 	 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath(prop.getProperty("load_page"))));
 		 			 	 
 		    System.out.println("Advice -> search and view the newly created Advice*******************");
 		    Reporter.log("Advice -> Search And View The Newly Created Advice");
@@ -185,7 +176,7 @@ public class Advice_module_testcases extends admin_user
 			Thread.sleep(3000);
 			
 			WebDriverWait view_icon_click = new WebDriverWait(driver, Duration.ofSeconds(30));
-			view_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div[1]/div[6]/button[2]"))).click();
+			view_icon_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath(prop.getProperty("view")))).click();
 
 			Thread.sleep(3000);
 			
@@ -233,14 +224,14 @@ public class Advice_module_testcases extends admin_user
 	 @Test (priority=3)
 	 public void Edit_Advice_With_All_Fields() throws InterruptedException 
 	 {
-		//  driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
+		  driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
-		 	Thread.sleep(10000);
 		 	
-		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
-		 			 	 
+		 	
+		 	 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath(prop.getProperty("load_page"))));
+			 
 		    System.out.println("Advice -> Search And Edit The Newly Created Advice With Remaining Fields");
 			Reporter.log("Advice -> Search And Edit The Newly Created Advice With Remaining Fields");
 		 			 
@@ -329,16 +320,16 @@ public class Advice_module_testcases extends admin_user
 	 @Test (priority=4)
 	 public void View_And_Verify_Edited_Advice() throws InterruptedException 
 	 {
-		//  driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
+		  driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
-		 	Thread.sleep(10000);
+		 	
 		 	 
-		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
-		 		
-		 	System.out.println("Banner -> search and view the edited advice*******************");
-		    Reporter.log("Banner -> Search and View The Edited Advice");
+		 	 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath(prop.getProperty("load_page"))));
+			 
+		 	System.out.println("Advice -> search and view the edited advice*******************");
+		    Reporter.log("Advice -> Search and View The Edited Advice");
 		    
 			WebElement advice_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			advice_searchbox.sendKeys(advice_question);
@@ -444,17 +435,17 @@ public class Advice_module_testcases extends admin_user
 	 @Test (priority=5)
 	 public void Create_New_Advice_With_All_Fields() throws InterruptedException
 	 {
-		//  driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
+		  driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
-		 	Thread.sleep(10000);
+		 	
 	
 		 System.out.println("Advice -> Verifying Create New Advice With All Information");
 		 Reporter.log("Advice -> Verifying Create New Advice With All Information");
 		 
 		 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-		 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[2]/div/div/div[1]/div[1]/div[1]"))).click();
-
+		 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath(prop.getProperty("load_page"))));
+		 
 		 WebElement create_advice_button = driver.findElement(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[1]/div/button"));
 		 create_advice_button.click();
 		 
@@ -552,13 +543,16 @@ public class Advice_module_testcases extends admin_user
 	 @Test (priority=6)
 	 public void View_And_Verify_New_Advice() throws InterruptedException 
 	 {
-		//  driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
+		  driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
-		 	Thread.sleep(10000);
+		 	
 		 			 	 
 		 	System.out.println("Advice -> search and view the new advice*******************");
 		    Reporter.log("Advice -> Search and View The New Advice");
+		    
+		    WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath(prop.getProperty("load_page"))));
 		    
 			WebElement advice_searchbox = driver.findElement(By.xpath("//input[@type='text']"));
 			advice_searchbox.sendKeys(advice_question2);
@@ -663,14 +657,14 @@ public class Advice_module_testcases extends admin_user
 	 @Test (priority=7)
 	 public void View_And_Verify_Delete_Advice() throws InterruptedException 
 	 {
-		 //	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
+		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/advice");
 		 	driver.manage().window().maximize();
 		 	driver.navigate().refresh();
-		 	Thread.sleep(10000);
 		 	
-		 	WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
-			load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div/div[2]/div[1]/div/div/div[1]/div[1]/div[1]"))).click();
-		 				 			 	 
+		 	
+		 	 WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(30));
+			 load.until(ExpectedConditions.presenceOfElementLocated(By.xpath(prop.getProperty("load_page"))));
+			 
 		 	System.out.println("Advice -> search and delete the  advice*******************");
 		    Reporter.log("Advice -> Search and Delete The  Advice");
 		    

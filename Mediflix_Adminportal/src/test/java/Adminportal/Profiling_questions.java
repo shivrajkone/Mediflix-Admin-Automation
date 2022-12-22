@@ -101,7 +101,8 @@ public class Profiling_questions extends Super_user
 		 // select
 		 WebDriverWait ans_type_select = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 ans_type_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[3]/div[3]/ul/li[2]"))).click();
-		 
+		
+		 Thread.sleep(4000);
 		 //save  
 		 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[2]"))).click();
@@ -133,8 +134,20 @@ public class Profiling_questions extends Super_user
 		 WebDriverWait wait_view = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 wait_view.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[5]/button[2]"))).click();
 			    			
-		 Thread.sleep(4000);
+		 Thread.sleep(3000);
 		 
+		 WebDriverWait close1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 close1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+		 
+		 Thread.sleep(3000);
+		 
+		 WebDriverWait wait_view2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 wait_view2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[5]/button[2]"))).click();
+			    			
+		 
+		 WebDriverWait load_view = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 load_view.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[2]/div/div/div/input")));
+			    			
 		 //verify question
 		 
 		 String s1 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[1]/div/input")).getAttribute("value");
@@ -200,10 +213,11 @@ public class Profiling_questions extends Super_user
 					Reporter.log( "[ERROR] -> Profiling Question -> View Screen -> Answer Type Is Not Present In Profiling Question View Screen.");
 				}
 				
+				Thread.sleep(4000);
 				//close
-			WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
-			close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
-			 Thread.sleep(4000);
+			WebDriverWait close2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+			close2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+			Thread.sleep(4000);
 		 
 	 }
 	 
@@ -231,7 +245,19 @@ public class Profiling_questions extends Super_user
 		 wait_edit.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[5]/button[1]"))).click();
 			    			
 		 Thread.sleep(4000);
-	 
+		 
+		 //close  
+		 
+		 WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button[1]"))).click();
+			    			
+		 Thread.sleep(4000);
+		 
+		 WebDriverWait wait_edit2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 wait_edit2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[5]/button[1]"))).click();
+			    			
+		 Thread.sleep(4000);
+		 
 		 // multiple choice 
 		 
 		 //click 
@@ -299,9 +325,21 @@ public class Profiling_questions extends Super_user
 			
 		 WebDriverWait wait_view = new WebDriverWait(driver, Duration.ofSeconds(30));
 		 wait_view.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[5]/button[2]"))).click();
+			    				 
+		 Thread.sleep(3000);
+		 
+		 WebDriverWait close1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 close1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[2]/button"))).click();
+		 
+		 Thread.sleep(3000);
+		 
+		 WebDriverWait wait_view2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 wait_view2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div/div[2]/div/div/div[2]/div[2]/div/div/div/div/div[5]/button[2]"))).click();
 			    			
-		 Thread.sleep(4000);
-/*		 
+		 
+		 WebDriverWait load_view = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 load_view.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[2]/div/div/div/input")));
+
 		 //verify question
 		 
 		 String s1 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[1]/div/input")).getAttribute("value");
@@ -320,8 +358,8 @@ public class Profiling_questions extends Super_user
 			}
 		 
 			//related tag
-		 String s2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[2]/div/div/div/input")).getAttribute("value");
-		 System.out.println("Related Tag is____________________________"+s2);
+		 	String s2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[2]/div/div/div/input")).getAttribute("value");
+		 	System.out.println("Related Tag is____________________________"+s2);
 			
 				if(s2.equals(s2))
 				{
@@ -336,8 +374,8 @@ public class Profiling_questions extends Super_user
 				}
 				
 				//polarity
-		 String s3 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[3]/div/div/div")).getText();
-		 System.out.println("Polarity is ____________________________"+s3);
+		 		String s3 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[3]/div/div/div")).getText();
+		 		System.out.println("Polarity is ____________________________"+s3);
 					
 				if(s3.equals(s3))
 				{
@@ -350,7 +388,7 @@ public class Profiling_questions extends Super_user
 					AssertJUnit.assertEquals(s3, s3);
 					Reporter.log( "[ERROR] -> Profiling Question -> View Screen -> Polarity Is Not Present In Profiling Question View Screen.");
 				}
-*/				
+				
 				//answer type
 		 		String s4 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[4]/div/div/div")).getText();
 		 		System.out.println("Answer Type is ____________________________"+s4);

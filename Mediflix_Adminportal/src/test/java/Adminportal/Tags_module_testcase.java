@@ -48,7 +48,7 @@ public class Tags_module_testcase extends admin_user
 	
 	String tags_name="spine";
 	String tags_desc="The bones in the spine are called vertebrae.";
-	
+	 
 	WebElement name2;
 	WebElement category2;
 	WebElement desc2;

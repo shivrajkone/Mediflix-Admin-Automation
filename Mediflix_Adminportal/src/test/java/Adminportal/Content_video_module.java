@@ -79,7 +79,7 @@ public class Content_video_module extends admin_user
 	 {
 		 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
 			driver.manage().window().maximize();
-	    	driver.navigate().refresh();
+//	    	driver.navigate().refresh();
 	    
 		    Thread.sleep(5000);
 		    
@@ -1058,6 +1058,253 @@ public class Content_video_module extends admin_user
 				softAssert.assertAll();
 				
 			}
+		 
+		 
+//		 @Test (enabled = false)
+		 @Test (priority=10)
+		 public void Verify_Bulk_Update_Content_Video() throws InterruptedException
+			{
+				
+			 	driver.navigate().to("https://admin-portal.us-east-1.dev.mediflix.com/content-manager");
+				driver.manage().window().maximize();
+//		    	driver.navigate().refresh();
+		    	Thread.sleep(4000);
+		    	
+				System.out.println("Content Video -> Verify Bulk Update Working Or Not**************");
+				 
+				Reporter.log("Content Video -> Verify Bulk Update Working Or Not");
+				
+				WebDriverWait load = new WebDriverWait(driver, Duration.ofSeconds(60));
+				load.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/div[1]"))).click();
+
+				//click the content for bulk update
+				
+				WebDriverWait click_content1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				click_content1.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+				
+				WebDriverWait click_content2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				click_content2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[2]/div[1]"))).click();
+				
+				//click bulk update
+				
+				WebDriverWait click_bulk_update = new WebDriverWait(driver, Duration.ofSeconds(30));
+				click_bulk_update.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='MuiBox-root css-11qw4wg']//button[2]"))).click();
+				
+				Thread.sleep(3000);
+				//tags
+				 
+				 WebDriverWait tags_click = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 tags_click.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Tags to Add']"))).click();
+				 Thread.sleep(2000);
+				
+				 WebDriverWait tags_select = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 tags_select.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[text()='Stage']"))).click();
+				 Thread.sleep(2000);
+				 
+				 WebDriverWait select_button = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 select_button.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Select']"))).click();
+				 Thread.sleep(2000);
+				 
+				 //click coll   
+				 
+				 WebDriverWait click_coll = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 click_coll.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[2]/div[1]/div/div/div/input"))).click();
+				 Thread.sleep(2000);
+				 
+				 WebDriverWait select_coll = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 select_coll.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[2]/div[1]/div[2]/div/ul/li[4]"))).click();
+				 Thread.sleep(2000);
+				 
+				 // ramdom  
+				 
+				 WebDriverWait ramdom = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 ramdom.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/h2"))).click();
+				 Thread.sleep(2000);
+				 
+				 // sponsor   
+				 
+				
+				 WebDriverWait click_sponsor = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 click_sponsor.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[3]/div/div[1]/div/div/input"))).click();
+				 Thread.sleep(2000);
+				 
+				 WebDriverWait select_sponsor = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 select_sponsor.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[3]/div/div[2]/div/ul/li[5]"))).click();
+				 Thread.sleep(2000);
+				 
+				 // ramdom  
+				 
+				 WebDriverWait ramdom2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 ramdom2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/h2"))).click();
+				 Thread.sleep(2000);
+				
+				
+				 // click check box of publish and listed
+				 
+				
+				 WebDriverWait click_published = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 click_published.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@value='published']"))).click();
+				 Thread.sleep(2000);
+				 
+				 WebDriverWait click_listed = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 click_listed.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@value='listed']"))).click();
+				 Thread.sleep(2000);
+				 
+				
+				 WebDriverWait save = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 save.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Save']"))).click();
+				 Thread.sleep(10000);
+				 
+				 //load 
+				 WebDriverWait load3 = new WebDriverWait(driver, Duration.ofSeconds(60));
+				 load3.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/div[1]"))).click();
+				 
+				 //click view 
+				 WebDriverWait view = new WebDriverWait(driver, Duration.ofSeconds(60));
+				 view.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//Button[@aria-label='View'])[1]"))).click();
+
+				 Thread.sleep(4000);
+				 //verify
+		
+				 //sponsor
+				 String sponsor = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div/div/div/div[3]/div/div/div[3]/div/div/div/input")).getAttribute("value");
+				 System.out.println("Sponsor are ________________"+sponsor);
+				 
+				 //collection
+				 String coll = driver.findElement(By.xpath("//div[@class='MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary Mui-disabled MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-1lrih1s']")).getText();
+				 System.out.println("Collection are ________________"+coll);
+				 
+				 //tags  
+				 String tagcount = driver.findElement(By.xpath("//button[@type='button']//p[@class='MuiTypography-root MuiTypography-body1 css-3goc0o']")).getText();
+				 System.out.println("tags count is ________________"+tagcount);
+
+				 //Premium
+		//		 String Premium_check =driver.findElement(By.id("tag-premium")).getAttribute("checked");
+		//		 System.out.println("Premium is______________"+Premium_check);
+				 
+				 if ( driver.findElement(By.id("tag-premium")).isSelected() )
+				 {
+					 System.out.println("Premium is checked");
+				 }
+				 else 
+				 {
+					 System.out.println("Premium is Not Checked");
+				 }
+				 
+				 //published
+			//	 String published_check =driver.findElement(By.id("tag-published")).getAttribute("checked");
+			//	 System.out.println("published is______________"+published_check);
+				 
+				 if ( driver.findElement(By.id("tag-published")).isSelected() )
+				 {
+					 	System.out.println("Published is checked");
+				 }
+				 else 
+				 {
+					 System.out.println("Published is Not Checked");
+				 }
+				 
+				 //listed
+		//		 String listed_check =driver.findElement(By.id("tag-listed")).getAttribute("checked");
+		//		 System.out.println("listed is______________"+listed_check);
+				
+				 if ( driver.findElement(By.id("tag-listed")).isSelected() )
+				 {
+					 	System.out.println("listed is checked");
+				 }
+				 else 
+				 {
+					 System.out.println("listed is Not Checked");
+				 }
+				 
+				//close   
+				 
+				 WebDriverWait close = new WebDriverWait(driver, Duration.ofSeconds(30));
+				 close.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Close']"))).click();
+					
+				 Thread.sleep(5000);
+				 
+				//click the content for bulk update
+					
+					WebDriverWait click_content3 = new WebDriverWait(driver, Duration.ofSeconds(30));
+					click_content3.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[1]/div[1]"))).click();
+					
+					WebDriverWait click_content4 = new WebDriverWait(driver, Duration.ofSeconds(30));
+					click_content4.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[2]/div/div/div/div[2]/div[1]"))).click();
+					
+					//click bulk update
+					
+					WebDriverWait click_bulk_update2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+					click_bulk_update2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='MuiBox-root css-11qw4wg']//button[2]"))).click();
+					
+					Thread.sleep(3000);
+					
+					//remove 
+					WebDriverWait click_remove_tag = new WebDriverWait(driver, Duration.ofSeconds(30));
+					click_remove_tag.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//p[normalize-space()='Tags to Remove']"))).click();
+					Thread.sleep(2000);
+					
+					 WebDriverWait tags_select2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+					 tags_select2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[text()='Stage']"))).click();
+					 Thread.sleep(2000);
+					 
+					 WebDriverWait select_button2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+					 select_button2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Select']"))).click();
+					 Thread.sleep(2000);
+					 
+					 				 
+					 //click remove coll
+					 WebDriverWait click_remove_coll = new WebDriverWait(driver, Duration.ofSeconds(30));
+					 click_remove_coll.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[2]/div[2]/div/div/div/input"))).click();
+					 Thread.sleep(2000);
+					 
+					 //select coll
+					 WebDriverWait select_coll2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+					 select_coll2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div/div[2]/div[2]/div[2]/div/ul/li[4]"))).click();
+					 Thread.sleep(2000);
+				 
+					 WebDriverWait ramdom3 = new WebDriverWait(driver, Duration.ofSeconds(30));
+					 ramdom3.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div[2]/div[3]/div/h2"))).click();
+					 Thread.sleep(2000);
+					 
+					 WebDriverWait save2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+					 save2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Save']"))).click();
+					 Thread.sleep(10000);
+					 
+					//load 
+					 WebDriverWait load4 = new WebDriverWait(driver, Duration.ofSeconds(60));
+					 load4.until(ExpectedConditions.presenceOfElementLocated(By.xpath("/html/body/div/div/div[2]/main/div[2]/div/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div[1]/div[1]"))).click();
+					 
+					 //click view 
+					 WebDriverWait view2 = new WebDriverWait(driver, Duration.ofSeconds(60));
+					 view2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//Button[@aria-label='View'])[1]"))).click();
+
+					 Thread.sleep(4000);
+					 //verify
+					 //sponsor
+					 String sponsor2 = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div/div/div/div[3]/div/div/div[3]/div/div/div/input")).getAttribute("value");
+					 System.out.println("Sponsor are ________________"+sponsor2);
+					 
+					 //collection
+					 String coll2 = driver.findElement(By.xpath("//div[@class='MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary Mui-disabled MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-1lrih1s']")).getText();
+					 System.out.println("Collection are ________________"+coll2);
+					 
+					 //tags  
+					 String tagcount2 = driver.findElement(By.xpath("//button[@type='button']//p[@class='MuiTypography-root MuiTypography-body1 css-3goc0o']")).getText();
+					 System.out.println("tags count is ________________"+tagcount2);
+					 
+					//close   
+					 
+					WebDriverWait close2 = new WebDriverWait(driver, Duration.ofSeconds(30));
+					close2.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Close']"))).click();
+						
+					 
+					 
+				
+			}
+
+		 
+		 
 		 
 
 }
